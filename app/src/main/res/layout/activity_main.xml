@@ -1,95 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
     tools:context=".MainActivity">
+    
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="64dp">
+        <TextView
+            android:id="@+id/main_tv_main_password_title"
+            style="@style/text.h2"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="38dp"
+            android:text="Password"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/main_til_username" />
 
-    <TextView
-        android:id="@+id/main_tv_main_password_title"
-        style="@style/text.h2"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="38dp"
-        android:text="Password"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_til_username" />
+        <TextView
+            android:id="@+id/main_tv_title"
+            style="@style/text.h1"
+            android:text="Login"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.07999998" />
 
-    <TextView
-        android:id="@+id/main_tv_title"
-        style="@style/text.h1"
-        android:text="Login"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.07999998" />
+        <TextView
+            android:id="@+id/fr_register_tv_email_title"
+            style="@style/text.h2"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="48dp"
+            android:text="Email"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/main_tv_title" />
 
-    <TextView
-        android:id="@+id/main_tv_username_title"
-        style="@style/text.h2"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="48dp"
-        android:text="Username"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_tv_title" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/main_til_username"
+            style="@style/text_input_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fr_register_tv_email_title">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/main_til_username"
-        style="@style/text_input_layout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_tv_username_title">
+            <com.tripaza.tripaza.customview.EditTextEmail
+                android:id="@+id/main_et_username"
+                style="@style/input_field"
+                android:hint="Masukkan Alamat Email"
+                tools:layout_editor_absoluteX="5dp"
+                tools:layout_editor_absoluteY="30dp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
-            android:id="@+id/main_et_username"
-            style="@style/input_field"
-            android:hint="Masukkan username"
-            tools:layout_editor_absoluteX="5dp"
-            tools:layout_editor_absoluteY="30dp" />
-    </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/main_til_password"
+            style="@style/text_input_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:passwordToggleEnabled="true"
+            app:layout_constraintTop_toBottomOf="@+id/main_tv_main_password_title">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/main_til_password"
-        style="@style/text_input_layout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:passwordToggleEnabled="true"
-        app:layout_constraintTop_toBottomOf="@+id/main_tv_main_password_title">
+            <com.tripaza.tripaza.customview.EditTextPassword
+                android:id="@+id/main_et_password"
+                style="@style/input_field.password"
+                android:hint="Masukkan Password"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
-            android:id="@+id/main_et_password"
-            style="@style/input_field.password"
-            android:hint="Masukkan Password"
-            tools:layout_editor_absoluteX="5dp"
-            tools:layout_editor_absoluteY="30dp" />
-    </com.google.android.material.textfield.TextInputLayout>
+        <Button
+            android:id="@+id/main_btn_login"
+            style="@style/button.wide"
+            android:text="Login"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/main_til_password"
+            app:layout_constraintVertical_bias="0.25" />
 
-    <Button
-        android:id="@+id/main_btn_login"
-        style="@style/button.wide"
-        android:text="Login"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_til_password"
-        app:layout_constraintVertical_bias="0.25" />
+        <TextView
+            android:id="@+id/main_tv_do_not_have_account"
+            style="@style/text.p3"
+            android:layout_marginTop="16dp"
+            android:text="Don’t have an account? Sign up here"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/main_iv_separator" />
 
-    <TextView
-        android:id="@+id/main_tv_do_not_have_account"
-        style="@style/text.p3"
-        android:layout_marginTop="16dp"
-        android:text="Don’t have an account? Sign up here"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_iv_separator" />
-
-    <ImageView
-        android:id="@+id/main_iv_separator"
-        style="@style/separator"
-        android:layout_marginTop="32dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/main_btn_login" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+            android:id="@+id/main_iv_separator"
+            style="@style/separator"
+            android:layout_marginTop="32dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/main_btn_login" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
