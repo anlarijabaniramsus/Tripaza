@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fillViewport="true"
+    tools:context=".RegisterFragment">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="64dp">
+
+        <TextView
+            android:id="@+id/fr_register_tv_title"
+            style="@style/text.h1"
+            android:text="Sign up"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.060000002" />
+
+        <TextView
+            android:id="@+id/fr_register_tv_name_title"
+            style="@style/text.h2"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:text="Full Name"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fr_register_tv_title" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/fr_register_til_name"
+            style="@style/text_input_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fr_register_tv_name_title">
+
+            <com.tripaza.tripaza.customview.EditTextGeneral
+                android:id="@+id/fr_register_et_name"
+                style="@style/input_field"
+                android:hint="Enter full name" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/fr_register_tv_dob_title"
+            style="@style/text.h2"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:text="Date of Birth"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fr_register_til_name" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/fr_register_til_dob"
+            style="@style/text_input_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fr_register_tv_dob_title">
+
+            <com.tripaza.tripaza.customview.EditTextGeneral
+                android:id="@+id/fr_register_et_dob"
+                style="@style/input_field"
+                android:cursorVisible="false"
+                android:enabled="true"
+                android:focusable="false"
+                android:hint="22-Maret-1999"
+                android:inputType="date" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/fr_register_tv_email_title"
+            style="@style/text.h2"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:text="Email"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fr_register_til_dob" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/fr_register_til_email"
+            style="@style/text_input_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fr_register_tv_email_title">
+
+            <com.tripaza.tripaza.customview.EditTextEmail
+                android:id="@+id/fr_register_et_email"
+                style="@style/input_field"
+                android:hint="xxxx@mail.com"
+                android:inputType="textEmailAddress" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/fr_register_tv_phone_title"
+            style="@style/text.h2"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:text="Phone Number"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fr_register_til_email" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/fr_register_til_phone"
+            style="@style/text_input_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fr_register_tv_phone_title">
+
+            <com.tripaza.tripaza.customview.EditTextPhone
+                android:id="@+id/fr_register_et_phone"
+                style="@style/input_field"
+                android:hint="+62811223344"
+                android:inputType="phone" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <TextView
+            android:id="@+id/fr_register_tv_password_title"
+            style="@style/text.h2"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:text="Password"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fr_register_til_phone" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/fr_register_til_password"
+            style="@style/text_input_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fr_register_tv_password_title"
+            app:passwordToggleEnabled="true">
+
+            <com.tripaza.tripaza.customview.EditTextPassword
+                android:id="@+id/fr_register_et_password"
+                style="@style/input_field.password"
+                android:hint="Password" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <Button
+            android:id="@+id/fr_register_btn_register"
+            style="@style/button.wide"
+            android:text="Register"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fr_register_til_password"
+            app:layout_constraintVertical_bias="0.19999999" />
+
+        <TextView
+            android:id="@+id/fr_register_already_have_account"
+            style="@style/text.p3"
+            android:layout_marginTop="16dp"
+            android:text="Already have an account? Login"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/main_iv_separator" />
+
+        <ImageView
+            android:id="@+id/main_iv_separator"
+            style="@style/separator"
+            android:layout_marginTop="32dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fr_register_btn_register" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
+    
