@@ -36,5 +36,10 @@
       <option name="name" value="injected_offline_com" />
       <option name="url" value="file:/C:/Users/Muhammad%20Aufa/.android/manual-offline-m2/com/" />
     </remote-repository>
+    <remote-repository>
+      <option name="id" value="injected_offline_gmaven_stable" />
+      <option name="name" value="injected_offline_gmaven_stable" />
+      <option name="url" value="file:/C:/Users/Muhammad%20Aufa/.android/manual-offline-m2/gmaven_stable/" />
+    </remote-repository>
   </component>
 </project>

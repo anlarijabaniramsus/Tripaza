@@ -3,13 +3,9 @@ package com.tripaza.tripaza
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
-class MainActivity : AppCompatActivity() {
+class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        
-        supportActionBar?.title = ""
-//        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        
+        setContentView(R.layout.activity_register)
     }
 }
