@@ -5,11 +5,13 @@ import android.content.Context
 class ValidatorResult(var valid: Boolean,var errorMessage: String)
 object Validator {
     fun isEmailValid(context: Context, email: String): ValidatorResult{
-        return if(email.isEmpty()){
+        return if(email.isEmpty())
                     ValidatorResult(false, "Email can't be empty")
-                }else if(!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+                else if(email[0].isWhitespace())
+                    ValidatorResult(false, "password should start with character")
+                else if(!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches())
                     ValidatorResult(false, "Email is not valid")
-                }else
+                else
                     ValidatorResult(true, "Valid")
     }
     
@@ -35,5 +37,13 @@ object Validator {
                     ValidatorResult(false, "Phone is not valid")
                 else
                     ValidatorResult(true, "Valid")
+    }
+    fun isInputValid(context: Context, text: String): ValidatorResult{
+        return if(text.isEmpty())
+            ValidatorResult(false, "Field can't be empty")
+        else if(text[0].isWhitespace())
+            ValidatorResult(false, "Field should start with character")
+        else
+            ValidatorResult(true, "Valid")
     }
 }

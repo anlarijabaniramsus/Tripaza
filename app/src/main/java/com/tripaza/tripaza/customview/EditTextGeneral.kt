@@ -4,13 +4,14 @@ import android.content.Context
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.AttributeSet
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import androidx.appcompat.widget.AppCompatEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.tripaza.tripaza.helper.Validator
 
-class EditTextPassword: AppCompatEditText, View.OnTouchListener{
+class EditTextGeneral: AppCompatEditText, View.OnTouchListener{
     constructor(context: Context): super(context){
         init()
     }
@@ -48,7 +49,7 @@ class EditTextPassword: AppCompatEditText, View.OnTouchListener{
     private fun errorHandler() {
         val textInputLayout = this.parent.parent as TextInputLayout
 
-        val validity = Validator.isPasswordValid(context, text.toString())
+        val validity = Validator.isInputValid(context, text.toString())
         if (validity.valid){
             textInputLayout.error = null
         }else{
