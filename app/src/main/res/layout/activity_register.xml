@@ -5,6 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/register_fragment_container"
-    tools:context=".RegisterActivity">
+    tools:context=".ui.registration.RegisterActivity">
 
 </FrameLayout>

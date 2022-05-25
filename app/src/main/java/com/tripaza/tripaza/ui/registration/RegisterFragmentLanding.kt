@@ -1,4 +1,4 @@
-package com.tripaza.tripaza
+package com.tripaza.tripaza.ui.registration
 
 import android.content.res.Configuration
 import android.opengl.Visibility

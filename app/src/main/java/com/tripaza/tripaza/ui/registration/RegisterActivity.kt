@@ -1,9 +1,8 @@
-package com.tripaza.tripaza
+package com.tripaza.tripaza.ui.registration
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.SystemClock
-import java.time.Clock
+import com.tripaza.tripaza.R
 
 class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
