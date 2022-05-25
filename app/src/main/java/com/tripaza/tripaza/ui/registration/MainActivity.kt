@@ -1,10 +1,11 @@
-package com.tripaza.tripaza
+package com.tripaza.tripaza.ui.registration
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.tripaza.tripaza.databinding.ActivityMainBinding
+import com.tripaza.tripaza.navigation.MainNavigationActivity
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -24,6 +25,21 @@ class MainActivity : AppCompatActivity() {
             val  intent = Intent(this, RegisterActivity::class.java)
             registerResultLauncher.launch(intent)
         }
+        binding.mainBtnLogin.setOnClickListener {
+            val LOGIN_SUCCESS = true
+            // LOGIC LOGIN, DATA CHECK, AND OTHER STUFF
+            if(LOGIN_SUCCESS){
+                devImmediateLaunchMainApp()
+                finish()
+            }    
+        }
+        // devImmediateLaunchMainApp()
+    }
+    
+    private fun devImmediateLaunchMainApp(){
+        val intent = Intent(this, MainNavigationActivity::class.java)
+        startActivity(intent)
+        finish()
     }
     
     private val registerResultLauncher = registerForActivityResult( ActivityResultContracts.StartActivityForResult()) { result ->
