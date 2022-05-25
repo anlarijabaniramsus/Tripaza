@@ -30,13 +30,16 @@ class MainActivity : AppCompatActivity() {
             // LOGIC LOGIN, DATA CHECK, AND OTHER STUFF
             if(LOGIN_SUCCESS){
                 devImmediateLaunchMainApp()
+                finish()
             }    
         }
+        // devImmediateLaunchMainApp()
     }
     
     private fun devImmediateLaunchMainApp(){
         val intent = Intent(this, MainNavigationActivity::class.java)
         startActivity(intent)
+        finish()
     }
     
     private val registerResultLauncher = registerForActivityResult( ActivityResultContracts.StartActivityForResult()) { result ->

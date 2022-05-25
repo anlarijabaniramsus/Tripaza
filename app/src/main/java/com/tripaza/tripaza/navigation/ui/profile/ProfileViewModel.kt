@@ -1,13 +1,12 @@
-package com.tripaza.tripaza.navigation.ui.home
+package com.tripaza.tripaza.navigation.ui.profile
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class HomeViewModel : ViewModel() {
-
+class ProfileViewModel : ViewModel(){
     private val _text = MutableLiveData<String>().apply {
-        value = "Home Fragment"
+        value = "Profile Fragment"
     }
     val text: LiveData<String> = _text
 }
