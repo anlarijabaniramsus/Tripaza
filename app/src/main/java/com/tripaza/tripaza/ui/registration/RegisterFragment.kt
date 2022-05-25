@@ -116,12 +116,8 @@ class RegisterFragment : Fragment() {
         if (allowRegister){
             // DO REGISTRATION PROCESS HERE
             Toast.makeText(requireContext(), "EXECUTING REGISTRATION PROCESS", Toast.LENGTH_SHORT).show()
-            if ( true /* IF Registration Success*/){
-                setActivityResult()
-                launchLandingFragment()
-            }else{
-//                toggleFormEditability()
-            }
+            setActivityResult()
+            launchLandingFragment()
         }
     }
     
