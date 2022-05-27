@@ -99,8 +99,43 @@
     <style name="separator">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginStart">32sp</item>
-        <item name="android:layout_marginEnd">32sp</item>
+        <item name="android:layout_marginStart">24dp</item>
+        <item name="android:layout_marginEnd">24dp</item>
         <item name="android:src">@drawable/separator_line</item>
     </style>
+    
+<!-- SPECIFIC ITEM STYLE -->
+<!-- PROFILE FRAGMENT -->
+    <style name="profile_list_item">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="profile_list_item_layout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">32dp</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+    <style name="profile_list_text_layout">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">0.99</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+    <style name="profile_list_text_header" parent="text.h3">
+        <item name="android:textColor">@color/dark_grey</item>
+    </style>
+    <style name="profile_list_text_value" parent="text.p3">
+        <item name="android:textSize">20dp</item>
+    </style>
+    <style name="profile_list_item_btn">
+        <item name="android:layout_width">16dp</item>
+        <item name="android:layout_height">16dp</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:layout_marginRight">16dp</item>
+        <item name="android:src">@drawable/ic_pen_to_square_solid</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+    
+    
 </resources>

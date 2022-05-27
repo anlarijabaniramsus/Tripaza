@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         binding.mainBtnLogin.setOnClickListener {
             login()
         }
-        // devImmediateLaunchMainApp()
+         devImmediateLaunchMainApp()
     }
     
     private fun login(){
