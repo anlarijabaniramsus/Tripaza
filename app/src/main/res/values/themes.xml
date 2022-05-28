@@ -115,6 +115,10 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginBottom">32dp</item>
         <item name="android:orientation">horizontal</item>
+        <item name="android:clickable">true</item>
+        <item name="android:paddingEnd">24dp</item>
+        <item name="android:paddingStart">24dp</item>
+        <item name="android:background">?attr/selectableItemBackground</item>
     </style>
     <style name="profile_list_text_layout">
         <item name="android:layout_width">0dp</item>
@@ -131,8 +135,6 @@
     <style name="profile_list_item_btn">
         <item name="android:layout_width">32dp</item>
         <item name="android:layout_height">32dp</item>
-<!--        <item name="android:layout_marginLeft">16dp</item>-->
-<!--        <item name="android:layout_marginRight">16dp</item>-->
         <item name="android:padding">10dp</item>
         <item name="android:src">@drawable/ic_pen_to_square_solid</item>
         <item name="android:layout_gravity">center</item>
