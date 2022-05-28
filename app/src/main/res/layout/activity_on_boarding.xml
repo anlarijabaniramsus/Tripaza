@@ -2,6 +2,7 @@
 <androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/onboarding"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layoutDescription="@xml/activity_main_scene"
@@ -12,7 +13,7 @@
         android:layout_width="0dp"
         android:layout_height="300dp"
         android:layout_marginStart="16dp"
-        android:src="@drawable/image_welcometotripaza"
+        android:src="@drawable/im_image_welcometotripaza"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -37,7 +38,7 @@
         android:id="@+id/logoMenu2"
         android:layout_width="0dp"
         android:layout_height="300dp"
-        android:src="@drawable/image_letsfind"
+        android:src="@drawable/im_image_letsfind"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -76,7 +77,7 @@
         android:id="@+id/logoMenu3"
         android:layout_width="0dp"
         android:layout_height="300dp"
-        android:src="@drawable/image_findyour"
+        android:src="@drawable/im_image_findyour"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -115,7 +116,7 @@
         android:id="@+id/logoMenu4"
         android:layout_width="0dp"
         android:layout_height="300dp"
-        android:src="@drawable/image_prepare"
+        android:src="@drawable/im_image_prepare"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -154,40 +155,40 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginStart="32dp"
-        app:altSrc="@drawable/ic_circle_full_24"
+        app:altSrc="@drawable/ic_onboarding_circle_full"
         app:layout_constraintEnd_toStartOf="@+id/menu2"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="parent"
-        app:srcCompat="@drawable/ic_circle_24"
+        app:srcCompat="@drawable/ic_onboarding_circle_empty"
         app:tint="@color/primary_blue" />
 
     <androidx.constraintlayout.utils.widget.ImageFilterView
         android:id="@+id/menu2"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        app:altSrc="@drawable/ic_circle_full_24"
+        app:altSrc="@drawable/ic_onboarding_circle_full"
         app:layout_constraintBottom_toBottomOf="@+id/menu1"
         app:layout_constraintEnd_toStartOf="@+id/menu3"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/menu1"
         app:layout_constraintTop_toTopOf="@+id/menu1"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/ic_circle_24"
+        app:srcCompat="@drawable/ic_onboarding_circle_empty"
         app:tint="@color/primary_blue" />
 
     <androidx.constraintlayout.utils.widget.ImageFilterView
         android:id="@+id/menu3"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        app:altSrc="@drawable/ic_circle_full_24"
+        app:altSrc="@drawable/ic_onboarding_circle_full"
         app:layout_constraintBottom_toBottomOf="@+id/menu2"
         app:layout_constraintEnd_toStartOf="@+id/menu4"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/menu2"
         app:layout_constraintTop_toTopOf="@+id/menu2"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/ic_circle_24"
+        app:srcCompat="@drawable/ic_onboarding_circle_empty"
         app:tint="@color/primary_blue" />
 
     <androidx.constraintlayout.utils.widget.ImageFilterView
@@ -195,13 +196,13 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginEnd="32dp"
-        app:altSrc="@drawable/ic_circle_full_24"
+        app:altSrc="@drawable/ic_onboarding_circle_full"
         app:layout_constraintBottom_toBottomOf="@+id/menu3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/menu3"
         app:layout_constraintTop_toTopOf="@+id/menu3"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/ic_circle_24"
+        app:srcCompat="@drawable/ic_onboarding_circle_empty"
         app:tint="@color/primary_blue" />
 
     <Button
@@ -224,6 +225,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo_onboarding" />
+        app:srcCompat="@drawable/im_image_prepare" />
 
 </androidx.constraintlayout.motion.widget.MotionLayout>
