@@ -1,22 +1,229 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="true"
+    android:paddingBottom="128dp"
     tools:context=".navigation.ui.profile.ProfileFragment">
-    
-    <TextView
-        android:id="@+id/text_profile"
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/fr_profile_iv_profile_background"
+            android:layout_width="match_parent"
+            android:layout_height="179dp"
+            android:src="@drawable/rounded_bottom"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!--Account Header-->
+        <ImageView
+            android:id="@+id/fr_profile_iv_profile_photo"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+
+            android:scaleType="centerCrop"
+            android:src="@drawable/profile_images"
+            app:layout_constraintBottom_toTopOf="@+id/fr_profile_tv_profile_header_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fr_profile_iv_profile_background" />
+
+        <TextView
+            android:id="@+id/fr_profile_tv_separator_account"
+            style="@style/text.h1"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="48dp"
+            android:text="Account"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fr_profile_iv_profile_background" />
+
+        <TextView
+            android:id="@+id/fr_profile_tv_profile_header_name"
+            style="@style/text.h1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Alicia Yana"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toTopOf="@+id/fr_profile_iv_profile_background"
+            app:layout_constraintEnd_toEndOf="@+id/fr_profile_iv_profile_photo"
+            app:layout_constraintStart_toStartOf="@+id/fr_profile_iv_profile_photo"
+            app:layout_constraintTop_toBottomOf="@+id/fr_profile_iv_profile_photo" />
+
+        <ImageView
+            android:id="@+id/fr_profile_iv_separator_line_account"
+            style="@style/separator"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fr_profile_tv_separator_account" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="48dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fr_profile_iv_separator_line_account">
+
+            <LinearLayout style="@style/profile_list_item_layout">
+
+                <LinearLayout style="@style/profile_list_text_layout">
+
+                    <TextView
+                        android:id="@+id/fr_profile_tv_title_name"
+                        style="@style/profile_list_text_header"
+                        android:text="Name" />
+
+                    <TextView
+                        android:id="@+id/fr_profile_tv_value_name"
+                        style="@style/profile_list_text_value"
+                        android:text="Alicia Yana" />
+
+                </LinearLayout>
+                
+                <ImageView
+                    android:id="@+id/fr_profile_iv_edit_name"
+                    style="@style/profile_list_item_btn" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/profile_list_item_layout">
+
+                <LinearLayout style="@style/profile_list_text_layout">
+
+                    <TextView
+                        android:id="@+id/fr_profile_tv_title_email"
+                        style="@style/profile_list_text_header"
+                        android:text="Email" />
+
+                    <TextView
+                        android:id="@+id/fr_profile_tv_value_email"
+                        style="@style/profile_list_text_value"
+                        android:text="yana@mail.com" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/fr_profile_iv_edit_email"
+                    style="@style/profile_list_item_btn" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/profile_list_item_layout">
+
+                <LinearLayout style="@style/profile_list_text_layout">
+
+                    <TextView
+                        android:id="@+id/fr_profile_tv_title_dob"
+                        style="@style/profile_list_text_header"
+                        android:text="Date of birth" />
+
+                    <TextView
+                        android:id="@+id/fr_profile_tv_value_dob"
+                        style="@style/profile_list_text_value"
+                        android:text="22-Mar-1999" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/fr_profile_iv_edit_dob"
+                    style="@style/profile_list_item_btn" />
+            </LinearLayout>
+
+
+            <LinearLayout style="@style/profile_list_item_layout">
+
+                <LinearLayout style="@style/profile_list_text_layout">
+
+                    <TextView
+                        android:id="@+id/fr_profile_tv_title_phone"
+                        style="@style/profile_list_text_header"
+                        android:text="Phone" />
+
+                    <TextView
+                        android:id="@+id/fr_profile_tv_value_phone"
+                        style="@style/profile_list_text_value"
+                        android:text="081177773333" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/fr_profile_iv_edit_phone"
+                    style="@style/profile_list_item_btn" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/profile_list_item_layout">
+
+                <LinearLayout style="@style/profile_list_text_layout">
+
+                    <TextView
+                        android:id="@+id/fr_profile_tv_title_password"
+                        style="@style/profile_list_text_header"
+                        android:text="Password" />
+
+                    <TextView
+                        android:id="@+id/fr_profile_tv_value_password"
+                        style="@style/profile_list_text_value"
+                        android:text="******" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/fr_profile_iv_edit_password"
+                    style="@style/profile_list_item_btn" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/fr_profile_tv_separator_settings"
+            style="@style/text.h1"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="32dp"
+            android:text="Settings"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+        <ImageView
+            android:id="@+id/fr_profile_iv_separator_line_settings"
+            style="@style/separator"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fr_profile_tv_separator_settings" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="48dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fr_profile_iv_separator_line_settings">
+
+            <LinearLayout style="@style/profile_list_item_layout">
+
+                <LinearLayout
+                    style="@style/profile_list_text_layout"
+                    android:paddingVertical="16dp">
+
+                    <TextView
+                        android:id="@+id/fr_profile_tv_settings"
+                        style="@style/profile_list_text_value"
+                        android:text="Settings" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/fr_profile_iv_setting_button"
+                    style="@style/profile_list_item_btn"
+                    android:src="@drawable/ic_angle_right_solid" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
