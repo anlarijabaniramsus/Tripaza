@@ -6,4 +6,11 @@
     <string name="title_home">Home</string>
     <string name="title_cameras">Camera</string>
     <string name="title_maps">Maps</string>
+    <string name="title_menu_1">Welcome To Tripaza</string>
+    <string name="title_menu_2">Lets Find Traditional Food Easily</string>
+    <string name="title_menu_3">Find Your Dream Destination</string>
+    <string name="title_menu_4">Prepare For Exploring</string>
+    <string name="desc_menu_1">Look for the food you want and there are many traditional foods available.</string>
+    <string name="desc_menu_2">Find a place to stay easily and with a destination that suits your wishes.</string>
+    <string name="learn_now">Lets Go Join</string>
 </resources>
