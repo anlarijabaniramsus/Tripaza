@@ -140,5 +140,10 @@
         <item name="android:layout_gravity">center</item>
     </style>
     
+    <style name="onboarding">
+        <item name="android:background">@null</item>
+    </style>
+    
+    
     
 </resources>

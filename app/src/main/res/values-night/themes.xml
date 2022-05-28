@@ -20,4 +20,25 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/light_grey</item>
     </style>
+    <style name="text_input_layout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="boxBackgroundColor">@color/dark_grey</item>
+        <item name="boxBackgroundMode">outline</item>
+        <item name="android:padding">1dp</item>
+        <item name="boxStrokeColor">#000000ff</item>
+        <item name="boxCornerRadiusTopEnd">8dp</item>
+        <item name="boxCornerRadiusTopStart">8dp</item>
+        <item name="boxCornerRadiusBottomEnd">8dp</item>
+        <item name="boxCornerRadiusBottomStart">8dp</item>
+        <item name="errorEnabled">false</item>
+        <item name="boxStrokeErrorColor">@color/error</item>
+        <item name="boxStrokeWidth">0dp</item>
+        <item name="android:layout_marginStart">24dp</item>
+        <item name="android:layout_marginEnd">24dp</item>
+        <item name="hintEnabled">false</item>
+    </style>
+    <style name="onboarding">
+        <item name="android:background">#BABABA</item>
+    </style>
 </resources>
