@@ -129,10 +129,11 @@
         <item name="android:textSize">20dp</item>
     </style>
     <style name="profile_list_item_btn">
-        <item name="android:layout_width">16dp</item>
-        <item name="android:layout_height">16dp</item>
-        <item name="android:layout_marginLeft">16dp</item>
-        <item name="android:layout_marginRight">16dp</item>
+        <item name="android:layout_width">32dp</item>
+        <item name="android:layout_height">32dp</item>
+<!--        <item name="android:layout_marginLeft">16dp</item>-->
+<!--        <item name="android:layout_marginRight">16dp</item>-->
+        <item name="android:padding">10dp</item>
         <item name="android:src">@drawable/ic_pen_to_square_solid</item>
         <item name="android:layout_gravity">center</item>
     </style>
