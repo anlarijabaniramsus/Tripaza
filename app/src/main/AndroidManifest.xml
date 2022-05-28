@@ -14,8 +14,8 @@
         android:theme="@style/Theme.Tripaza"
         tools:targetApi="31">
         <activity
-            android:name=".onboarding.OnBoardingActivity"
-            android:exported="true" >
+            android:name=".ui.onboarding.OnBoardingActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".navigation.MainNavigationActivity"
+            android:name=".ui.navigation.MainNavigationActivity"
             android:exported="false"
             android:label="@string/title_activity_main_navigation" />
         <activity
@@ -32,7 +32,8 @@
             android:exported="false" />
         <activity
             android:name=".ui.registration.MainActivity"
-            android:exported="false"/>
+            android:exported="false">
+        </activity>
     </application>
 
 </manifest>

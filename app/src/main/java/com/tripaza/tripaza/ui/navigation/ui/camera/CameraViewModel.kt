@@ -1,4 +1,4 @@
-package com.tripaza.tripaza.navigation.ui.camera
+package com.tripaza.tripaza.ui.navigation.ui.camera
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

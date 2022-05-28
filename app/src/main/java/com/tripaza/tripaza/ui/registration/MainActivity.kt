@@ -7,7 +7,8 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.tripaza.tripaza.databinding.ActivityMainBinding
 import com.tripaza.tripaza.helper.Validator
-import com.tripaza.tripaza.navigation.MainNavigationActivity
+import com.tripaza.tripaza.ui.navigation.MainNavigationActivity
+import com.tripaza.tripaza.ui.onboarding.OnBoardingActivity
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -30,9 +31,16 @@ class MainActivity : AppCompatActivity() {
         binding.mainBtnLogin.setOnClickListener {
             login()
         }
-         devImmediateLaunchMainApp()
+        
+        
+        
+
+        
     }
-    
+
+
+
+
     private fun login(){
         if (isExecutingRegistration){
             Toast.makeText(this, "Please wait", Toast.LENGTH_SHORT).show()
@@ -69,12 +77,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
     
-    private fun devImmediateLaunchMainApp(){
-        val intent = Intent(this, MainNavigationActivity::class.java)
-        startActivity(intent)
-        finish()
-    }
-    
     private val registerResultLauncher = registerForActivityResult( ActivityResultContracts.StartActivityForResult()) { result ->
         if (result.resultCode == REGISTER_EXTRA_CODE && result.data != null) {
             val email = result.data!!.getStringExtra(REGISTER_EXTRA_EMAIL)
@@ -82,5 +84,17 @@ class MainActivity : AppCompatActivity() {
             binding.mainEtEmail.setText(email)
             binding.mainEtPassword.setText(password)
         }
+    }
+
+
+    private fun devImmediateLaunchOnboarding() {
+        val intent = Intent(this, OnBoardingActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun devImmediateLaunchMainApp(){
+        val intent = Intent(this, MainNavigationActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 }

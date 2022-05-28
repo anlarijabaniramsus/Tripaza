@@ -1,4 +1,4 @@
-package com.tripaza.tripaza.navigation.ui.profile
+package com.tripaza.tripaza.ui.navigation.ui.profile
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

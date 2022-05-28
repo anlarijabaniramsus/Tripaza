@@ -14,7 +14,7 @@ import androidx.fragment.app.Fragment
 import com.tripaza.tripaza.R
 import com.tripaza.tripaza.databinding.FragmentRegisterBinding
 import com.tripaza.tripaza.helper.Validator
-import com.tripaza.tripaza.helper.date.DateHelper
+import com.tripaza.tripaza.helper.DateHelper
 import java.util.*
 
 

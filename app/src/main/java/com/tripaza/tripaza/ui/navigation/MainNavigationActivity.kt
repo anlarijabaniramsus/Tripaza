@@ -1,4 +1,4 @@
-package com.tripaza.tripaza.navigation
+package com.tripaza.tripaza.ui.navigation
 
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView

@@ -7,25 +7,25 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.tripaza.tripaza.navigation.ui.home.HomeFragment"
+        android:name="com.tripaza.tripaza.ui.navigation.ui.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_camera"
-        android:name="com.tripaza.tripaza.navigation.ui.camera.CameraFragment"
+        android:name="com.tripaza.tripaza.ui.navigation.ui.camera.CameraFragment"
         android:label="@string/title_cameras"
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
         android:id="@+id/navigation_maps"
-        android:name="com.tripaza.tripaza.navigation.ui.maps.MapsFragment"
+        android:name="com.tripaza.tripaza.ui.navigation.ui.maps.MapsFragment"
         android:label="@string/title_maps"
         tools:layout="@layout/fragment_notifications" />
 
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.tripaza.tripaza.navigation.ui.profile.ProfileFragment"
+        android:name="com.tripaza.tripaza.ui.navigation.ui.profile.ProfileFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_profile" />
 </navigation>

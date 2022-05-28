@@ -1,4 +1,4 @@
-package com.tripaza.tripaza.helper.date
+package com.tripaza.tripaza.helper
 
 import java.lang.Exception
 import java.text.SimpleDateFormat

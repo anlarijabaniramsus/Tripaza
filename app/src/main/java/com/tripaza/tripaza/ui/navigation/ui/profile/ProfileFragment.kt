@@ -1,4 +1,4 @@
-package com.tripaza.tripaza.navigation.ui.profile
+package com.tripaza.tripaza.ui.navigation.ui.profile
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
