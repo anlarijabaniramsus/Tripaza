@@ -27,13 +27,17 @@
         <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/layout/activity_main_navigation.xml" value="0.209375" />
         <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/layout/activity_on_boarding.xml" value="0.18" />
+        <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/layout/activity_preferences.xml" value="0.2" />
         <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/layout/activity_register.xml" value="0.22" />
         <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/layout/fragment_notifications.xml" value="0.11875" />
+        <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/layout/fragment_preferences.xml" value="0.10104166666666667" />
         <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/layout/fragment_profile.xml" value="0.16" />
         <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/layout/fragment_register.xml" value="0.1" />
         <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/layout/fragment_register_landing.xml" value="0.12" />
+        <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/layout/fragment_settings.xml" value="0.18" />
         <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/menu/bottom_nav_menu.xml" value="0.2" />
+        <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/xml/preferences.xml" value="0.22" />
       </map>
     </option>
   </component>
@@ -42,5 +46,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.14" />
+      </ProjectState>
+    </option>
   </component>
 </project>

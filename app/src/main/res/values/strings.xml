@@ -13,4 +13,7 @@
     <string name="desc_menu_1">Look for the food you want and there are many traditional foods available.</string>
     <string name="desc_menu_2">Find a place to stay easily and with a destination that suits your wishes.</string>
     <string name="learn_now">Lets Go Join</string>
+    <string name="APP_PREFERENCES_NAME">app_preferences_dark_mode</string>
+    <string name="APP_PREFERENCES_DARK_MODE_KEY">app_preferences_dark_mode</string>
+    
 </resources>

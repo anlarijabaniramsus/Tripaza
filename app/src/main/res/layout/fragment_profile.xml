@@ -205,7 +205,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fr_profile_iv_separator_line_settings">
 
-            <LinearLayout style="@style/profile_list_item_layout">
+            <LinearLayout
+                android:id="@+id/fr_profile_iv_setting_item"
+                style="@style/profile_list_item_layout">
 
                 <LinearLayout
                     style="@style/profile_list_text_layout"
