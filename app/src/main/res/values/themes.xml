@@ -89,6 +89,8 @@
     <style name="button.wide">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">64dp</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">12dp</item>
         <item name="android:layout_marginStart">24sp</item>
         <item name="android:layout_marginEnd">24sp</item>
         <item name="android:textSize">21sp</item>
@@ -138,6 +140,7 @@
         <item name="android:padding">10dp</item>
         <item name="android:src">@drawable/ic_pen_to_square_solid</item>
         <item name="android:layout_gravity">center</item>
+        <item name="android:visibility">gone</item>
     </style>
     <!--ONBOARDING-->
     <style name="onboarding">
