@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory android:title="Themes"
+        app:layout="@layout/custom_preference_category"
+        app:iconSpaceReserved="false">
+        <SwitchPreference
+            app:layout="@layout/custom_preference_button"
+            android:defaultValue="false"
+            app:icon="@drawable/ic_dark_mode"
+            android:key="@string/APP_PREFERENCES_DARK_MODE_KEY"
+            app:switchTextOn="Always Dark Mode"
+            app:switchTextOff="Always Light Mode"
+            android:title="Dark Mode" />    
+    </PreferenceCategory>
+    <PreferenceCategory 
+        app:layout="@layout/custom_preference_category"
+        android:title="Preference category"
+        app:iconSpaceReserved="false">
+
+        <Preference
+            app:layout="@layout/custom_preference_button"
+            android:defaultValue="None"
+            app:icon="@drawable/ic_logout"
+            android:key="logout"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="Logout" />
+        
+        <Preference
+            app:layout="@layout/custom_preference_button"
+            android:defaultValue="None"
+            app:icon="@drawable/ic_about"
+            android:key="About app"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="About app" />
+        
+        <Preference
+            app:layout="@layout/custom_preference_button"
+            android:defaultValue="None"
+            app:icon="@drawable/ic_version"
+            android:key="Version"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="Version 0.0.1-beta" />
+    </PreferenceCategory>
+
+
+</PreferenceScreen>

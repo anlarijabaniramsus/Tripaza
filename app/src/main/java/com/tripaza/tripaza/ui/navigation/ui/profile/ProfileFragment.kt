@@ -1,5 +1,6 @@
 package com.tripaza.tripaza.ui.navigation.ui.profile
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,6 +13,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.tripaza.tripaza.R
 import com.tripaza.tripaza.databinding.FragmentProfileBinding
+import com.tripaza.tripaza.ui.preferences.PreferencesActivity
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -46,7 +48,10 @@ class ProfileFragment : Fragment() {
 //        profileViewModel.text.observe(viewLifecycleOwner) {
 //            textView.text = it
 //        }
-
+        binding.profileIvEditAccountButton.setOnClickListener {
+            val intent = Intent(context, ProfileEditActivity::class.java)
+            startActivity(intent)
+        }
 
         val requestOptions = RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL)
 
@@ -62,9 +67,11 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        binding.ttt.setOnClickListener { 
-//            Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show()
-//        }
+        
+        binding.frProfileLinlaySettingItem.setOnClickListener{
+            val intent = Intent(context, PreferencesActivity::class.java)
+            startActivity(intent)
+        }
     }
     
     override fun onDestroyView() {

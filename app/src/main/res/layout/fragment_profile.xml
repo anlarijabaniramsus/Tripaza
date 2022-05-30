@@ -57,6 +57,16 @@
             app:layout_constraintTop_toBottomOf="@+id/fr_profile_iv_profile_photo" />
 
         <ImageView
+            android:id="@+id/profile_iv_edit_account_button"
+            style="@style/profile_list_item_btn"
+            android:layout_marginStart="8dp"
+            android:src="@drawable/ic_pen_to_square_solid"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="@+id/fr_profile_tv_separator_account"
+            app:layout_constraintStart_toEndOf="@+id/fr_profile_tv_separator_account"
+            app:layout_constraintTop_toTopOf="@+id/fr_profile_tv_separator_account" />
+
+        <ImageView
             android:id="@+id/fr_profile_iv_separator_line_account"
             style="@style/separator"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -67,15 +77,15 @@
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="48dp"
             android:layout_marginTop="32dp"
-            android:layout_marginEnd="48dp"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fr_profile_iv_separator_line_account">
 
-            <LinearLayout style="@style/profile_list_item_layout">
+            <LinearLayout
+                android:id="@+id/fr_profile_linlay_name_item" 
+                style="@style/profile_list_item_layout">
 
                 <LinearLayout style="@style/profile_list_text_layout">
 
@@ -96,7 +106,9 @@
                     style="@style/profile_list_item_btn" />
             </LinearLayout>
 
-            <LinearLayout style="@style/profile_list_item_layout">
+            <LinearLayout
+                android:id="@+id/fr_profile_linlay_email_item"
+                style="@style/profile_list_item_layout">
 
                 <LinearLayout style="@style/profile_list_text_layout">
 
@@ -116,7 +128,9 @@
                     style="@style/profile_list_item_btn" />
             </LinearLayout>
 
-            <LinearLayout style="@style/profile_list_item_layout">
+            <LinearLayout
+                android:id="@+id/fr_profile_linlay_dob_item"
+                style="@style/profile_list_item_layout">
 
                 <LinearLayout style="@style/profile_list_text_layout">
 
@@ -137,7 +151,9 @@
             </LinearLayout>
 
 
-            <LinearLayout style="@style/profile_list_item_layout">
+            <LinearLayout
+                android:id="@+id/fr_profile_linlay_phone_item"
+                style="@style/profile_list_item_layout">
 
                 <LinearLayout style="@style/profile_list_text_layout">
 
@@ -157,7 +173,9 @@
                     style="@style/profile_list_item_btn" />
             </LinearLayout>
 
-            <LinearLayout style="@style/profile_list_item_layout">
+            <LinearLayout
+                android:id="@+id/fr_profile_linlay_password_item"
+                style="@style/profile_list_item_layout">
 
                 <LinearLayout style="@style/profile_list_text_layout">
 
@@ -197,15 +215,15 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="48dp"
             android:layout_marginTop="32dp"
-            android:layout_marginEnd="48dp"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fr_profile_iv_separator_line_settings">
 
-            <LinearLayout style="@style/profile_list_item_layout">
+            <LinearLayout
+                android:id="@+id/fr_profile_linlay_setting_item"
+                style="@style/profile_list_item_layout">
 
                 <LinearLayout
                     style="@style/profile_list_text_layout"
@@ -220,6 +238,7 @@
                 <ImageView
                     android:id="@+id/fr_profile_iv_setting_button"
                     style="@style/profile_list_item_btn"
+                    android:visibility="visible"
                     android:src="@drawable/ic_angle_right_solid" />
             </LinearLayout>
         </LinearLayout>

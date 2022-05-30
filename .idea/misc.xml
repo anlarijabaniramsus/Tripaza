@@ -7,14 +7,17 @@
         <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/drawable-v24/ic_circle_full_24.xml" value="0.1" />
         <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2065" />
         <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/drawable/header_background.xml" value="0.22" />
+        <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/drawable/ic_about.xml" value="0.2165" />
         <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/drawable/ic_angle_right_solid.xml" value="0.2165" />
         <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.103" />
         <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2165" />
         <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/drawable/ic_location_dot_solid.xml" value="0.103" />
+        <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/drawable/ic_logout.xml" value="0.2165" />
         <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.103" />
         <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/drawable/ic_onboarding_circle_empty.xml" value="0.1" />
         <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/drawable/ic_onboarding_circle_full.xml" value="0.1" />
         <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/drawable/ic_pen_to_square_solid.xml" value="0.2165" />
+        <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/drawable/ic_version.xml" value="0.2165" />
         <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/drawable/im_image_findyour.xml" value="0.1" />
         <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/drawable/im_image_letsfind.xml" value="0.1" />
         <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/drawable/im_image_welcometotripaza.xml" value="0.1" />
@@ -27,13 +30,21 @@
         <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/layout/activity_main_navigation.xml" value="0.209375" />
         <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/layout/activity_on_boarding.xml" value="0.18" />
+        <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/layout/activity_preferences.xml" value="0.2" />
+        <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/layout/activity_profile_edit.xml" value="0.18" />
         <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/layout/activity_register.xml" value="0.22" />
+        <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/layout/custom_preference_button.xml" value="0.33" />
+        <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/layout/custom_preference_category.xml" value="0.20833333333333334" />
         <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/layout/fragment_notifications.xml" value="0.11875" />
-        <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/layout/fragment_profile.xml" value="0.16" />
+        <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/layout/fragment_preferences.xml" value="0.10104166666666667" />
+        <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/layout/fragment_profile.xml" value="0.22" />
+        <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/layout/fragment_profile_edit.xml" value="0.22" />
         <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/layout/fragment_register.xml" value="0.1" />
         <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/layout/fragment_register_landing.xml" value="0.12" />
+        <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/layout/fragment_settings.xml" value="0.18" />
         <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/menu/bottom_nav_menu.xml" value="0.2" />
+        <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/xml/preferences.xml" value="0.25" />
       </map>
     </option>
   </component>
@@ -42,5 +53,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.14" />
+      </ProjectState>
+    </option>
   </component>
 </project>
