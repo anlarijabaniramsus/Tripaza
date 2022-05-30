@@ -6,15 +6,24 @@
     android:layout_height="wrap_content">
 
     <TextView
+        android:id="@+id/b4"
+        style="@style/text.h2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="24dp"
+        android:text="Instagramable spots"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/item_header_rv_horizontal" />
+
+    <TextView
         android:id="@+id/b2"
-        style="@style/text.h1"
+        style="@style/text.h2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="132dp"
         android:text="Popular in Padang"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -30,7 +39,7 @@
 
     <TextView
         android:id="@+id/b"
-        style="@style/text.h1"
+        style="@style/text.h2"
         android:layout_marginStart="16dp"
         android:text="Change Profile"
         app:layout_constraintStart_toEndOf="@+id/v"
@@ -48,7 +57,7 @@
 
     <TextView
         android:id="@+id/b3"
-        style="@style/text.h1"
+        style="@style/text.h2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
