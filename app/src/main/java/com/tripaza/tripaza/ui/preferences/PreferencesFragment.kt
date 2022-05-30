@@ -1,12 +1,16 @@
 package com.tripaza.tripaza.ui.preferences
 
+import android.R.attr.button
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
-import androidx.preference.SwitchPreference
 import com.tripaza.tripaza.R
+import com.tripaza.tripaza.ui.registration.MainActivity
+
 
 class PreferencesFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedPreferenceChangeListener {
     private lateinit var keyDarkMode: String
@@ -15,8 +19,39 @@ class PreferencesFragment : PreferenceFragmentCompat(), SharedPreferences.OnShar
         preferenceManager.sharedPreferencesName = getString(R.string.APP_PREFERENCES_NAME)
         keyDarkMode = getString(R.string.APP_PREFERENCES_DARK_MODE_KEY)
         addPreferencesFromResource(R.xml.preferences)
+        
+        val btn = preferenceManager.findPreference<Preference>("logout")
+        if (btn != null) {
+            btn.setOnPreferenceClickListener(Preference.OnPreferenceClickListener {
+                logOutAlert()
+                true
+            })
+        }
+        
     }
-    
+
+    private fun logout() {
+        // CLEAR UP USER DATA HERE
+//        userPreference.setUser(User()) ::for examples
+        // TODO()
+        val intent = Intent(context, MainActivity::class.java)
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(intent)
+        activity?.finish()
+    }
+    private fun logOutAlert(){
+        val builder = AlertDialog.Builder(requireContext())
+        with(builder){
+            setTitle("Logout")
+            setMessage("Are you sure?")
+            setPositiveButton("yes, log me out") { _, _ ->
+                logout()
+            }
+            setNegativeButton("Cancel", null)
+            show()
+        }
+    }
     override fun onResume() {
         super.onResume()
         preferenceScreen.sharedPreferences?.registerOnSharedPreferenceChangeListener(this)
