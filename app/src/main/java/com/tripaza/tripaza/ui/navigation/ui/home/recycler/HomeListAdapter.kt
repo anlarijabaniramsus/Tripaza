@@ -14,7 +14,8 @@ import com.tripaza.tripaza.databinding.RvItemHeaderBinding
 
 class HomeListAdapter(private val itemList: ArrayList<ListItem>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private lateinit var onItemClickCallback: OnItemClickCallback
-
+    val HEADER = 0
+    private val ITEM = 1
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         if (viewType == 0 )
             return ListViewHolderHeader(RvItemHeaderBinding.inflate(LayoutInflater.from(parent.context), parent, false)) 
@@ -27,7 +28,7 @@ class HomeListAdapter(private val itemList: ArrayList<ListItem>): RecyclerView.A
     
 
     override fun getItemViewType(position: Int): Int {
-        return if (position == 0) 0 else 1 
+        return if (position == HEADER) 0 else 1 
 //        return super.getItemViewType(position)
     }
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {

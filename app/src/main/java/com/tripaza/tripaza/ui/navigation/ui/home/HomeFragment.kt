@@ -1,22 +1,14 @@
 package com.tripaza.tripaza.ui.navigation.ui.home
 
-import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
-import androidx.core.app.ActivityOptionsCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.tripaza.tripaza.R
-import com.tripaza.tripaza.databinding.FragmentDashboardBinding
+import androidx.recyclerview.widget.GridLayoutManager
 import com.tripaza.tripaza.databinding.FragmentHomeBinding
 import com.tripaza.tripaza.ui.navigation.ui.home.recycler.HomeListAdapter
-import com.tripaza.tripaza.ui.navigation.ui.home.recycler.HomeListHorizontalAdapter
 import com.tripaza.tripaza.ui.navigation.ui.home.recycler.ListItem
 
 class HomeFragment : Fragment() {
@@ -44,6 +36,7 @@ class HomeFragment : Fragment() {
         data.add(ListItem("j", "My J"))
         data.add(ListItem("k", "My K"))
         data.add(ListItem("l", "My L"))
+//        binding.frHomeRvHomeList.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL,false)
         
         homeListAdapter = HomeListAdapter(data)
         showStoryRecyclerList()
@@ -64,9 +57,18 @@ class HomeFragment : Fragment() {
 //                binding.storiesSwipeRefreshContainer.isRefreshing = false
 //            }
 //        }
-        
 
-        binding.frHomeRvHomeList.layoutManager = LinearLayoutManager(requireContext())
+//        binding.frHomeRvHomeList.layoutManager = LinearLayoutManager(requireContext())
+        val gridLayoutManager = GridLayoutManager(requireContext(),2)
+        gridLayoutManager.setSpanSizeLookup(object : GridLayoutManager.SpanSizeLookup() {
+            override fun getSpanSize(position: Int): Int {
+                return when (homeListAdapter.getItemViewType(position)) {
+                    homeListAdapter.HEADER -> 2
+                    else -> 1
+                }
+            }
+        })
+        binding.frHomeRvHomeList.layoutManager = gridLayoutManager
         
         
         
