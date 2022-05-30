@@ -65,7 +65,7 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         
-        binding.frProfileIvSettingItem.setOnClickListener{
+        binding.frProfileLinlaySettingItem.setOnClickListener{
             val intent = Intent(context, PreferencesActivity::class.java)
             startActivity(intent)
         }

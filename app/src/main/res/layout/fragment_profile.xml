@@ -73,7 +73,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fr_profile_iv_separator_line_account">
 
-            <LinearLayout style="@style/profile_list_item_layout">
+            <LinearLayout
+                android:id="@+id/fr_profile_linlay_name_item" 
+                style="@style/profile_list_item_layout">
 
                 <LinearLayout style="@style/profile_list_text_layout">
 
@@ -94,7 +96,9 @@
                     style="@style/profile_list_item_btn" />
             </LinearLayout>
 
-            <LinearLayout style="@style/profile_list_item_layout">
+            <LinearLayout
+                android:id="@+id/fr_profile_linlay_email_item"
+                style="@style/profile_list_item_layout">
 
                 <LinearLayout style="@style/profile_list_text_layout">
 
@@ -114,7 +118,9 @@
                     style="@style/profile_list_item_btn" />
             </LinearLayout>
 
-            <LinearLayout style="@style/profile_list_item_layout">
+            <LinearLayout
+                android:id="@+id/fr_profile_linlay_dob_item"
+                style="@style/profile_list_item_layout">
 
                 <LinearLayout style="@style/profile_list_text_layout">
 
@@ -135,7 +141,9 @@
             </LinearLayout>
 
 
-            <LinearLayout style="@style/profile_list_item_layout">
+            <LinearLayout
+                android:id="@+id/fr_profile_linlay_phone_item"
+                style="@style/profile_list_item_layout">
 
                 <LinearLayout style="@style/profile_list_text_layout">
 
@@ -155,7 +163,9 @@
                     style="@style/profile_list_item_btn" />
             </LinearLayout>
 
-            <LinearLayout style="@style/profile_list_item_layout">
+            <LinearLayout
+                android:id="@+id/fr_profile_linlay_password_item"
+                style="@style/profile_list_item_layout">
 
                 <LinearLayout style="@style/profile_list_text_layout">
 
@@ -202,7 +212,7 @@
             app:layout_constraintTop_toBottomOf="@+id/fr_profile_iv_separator_line_settings">
 
             <LinearLayout
-                android:id="@+id/fr_profile_iv_setting_item"
+                android:id="@+id/fr_profile_linlay_setting_item"
                 style="@style/profile_list_item_layout">
 
                 <LinearLayout
