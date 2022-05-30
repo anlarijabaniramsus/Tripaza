@@ -2,6 +2,7 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <PreferenceCategory android:title="Themes"
+        app:layout="@layout/custom_preference_category"
         app:iconSpaceReserved="false">
         <SwitchPreference
             app:layout="@layout/custom_preference_button"
@@ -12,7 +13,9 @@
             app:switchTextOff="Always Light Mode"
             android:title="Dark Mode" />    
     </PreferenceCategory>
-    <PreferenceCategory android:title="Preference category"
+    <PreferenceCategory 
+        app:layout="@layout/custom_preference_category"
+        android:title="Preference category"
         app:iconSpaceReserved="false">
 
         <Preference
@@ -40,7 +43,7 @@
             android:key="Version"
             android:selectAllOnFocus="true"
             android:singleLine="true"
-            android:title="Version" />
+            android:title="Version 0.0.1-beta" />
     </PreferenceCategory>
 
 
