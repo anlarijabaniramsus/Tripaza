@@ -16,12 +16,14 @@ import com.tripaza.tripaza.R
 import com.tripaza.tripaza.databinding.FragmentDashboardBinding
 import com.tripaza.tripaza.databinding.FragmentHomeBinding
 import com.tripaza.tripaza.ui.navigation.ui.home.recycler.HomeListAdapter
+import com.tripaza.tripaza.ui.navigation.ui.home.recycler.HomeListHorizontalAdapter
 import com.tripaza.tripaza.ui.navigation.ui.home.recycler.ListItem
 
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private lateinit var homeListAdapter: HomeListAdapter
+    
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -64,6 +66,7 @@ class HomeFragment : Fragment() {
         
 
         binding.frHomeRvHomeList.layoutManager = LinearLayoutManager(requireContext())
+        
         
         
 
