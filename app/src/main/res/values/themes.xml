@@ -139,11 +139,28 @@
         <item name="android:src">@drawable/ic_pen_to_square_solid</item>
         <item name="android:layout_gravity">center</item>
     </style>
-    
+    <!--ONBOARDING-->
     <style name="onboarding">
         <item name="android:background">@null</item>
     </style>
     
+    <!--PREFERENCES-->
+    <!--this is for parent only, this help organize our style-->
+    <style name="preference"></style>
     
+    <style name="preference.icon">
+        <item name="android:layout_width">32dp</item>
+        <item name="android:layout_height">32dp</item>
+        <item name="android:tint">@color/primary_blue_dark</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="srcCompat">@drawable/ic_home_black_24dp</item>
+    </style>
+
+    <style name="preference.title" parent="text.p2">
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_weight">0.8</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:layout_marginLeft">16dp</item>
+    </style>
     
 </resources>

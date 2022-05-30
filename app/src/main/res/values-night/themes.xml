@@ -41,4 +41,13 @@
     <style name="onboarding">
         <item name="android:background">#BABABA</item>
     </style>
+
+    <!--PREFERENCES-->
+    <style name="preference.icon">
+        <item name="android:layout_width">32dp</item>
+        <item name="android:layout_height">32dp</item>
+        <item name="android:tint">@color/light_grey</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="srcCompat">@drawable/ic_home_black_24dp</item>
+    </style>
 </resources>
