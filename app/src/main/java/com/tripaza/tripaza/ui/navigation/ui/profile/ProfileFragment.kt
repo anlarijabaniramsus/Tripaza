@@ -48,7 +48,10 @@ class ProfileFragment : Fragment() {
 //        profileViewModel.text.observe(viewLifecycleOwner) {
 //            textView.text = it
 //        }
-
+        binding.frProfileLinlayNameItem.setOnClickListener {
+            val intent = Intent(context, ProfileEditActivity::class.java)
+            startActivity(intent)
+        }
 
         val requestOptions = RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL)
 
