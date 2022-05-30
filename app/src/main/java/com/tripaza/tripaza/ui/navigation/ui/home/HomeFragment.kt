@@ -31,6 +31,7 @@ class HomeFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val data = arrayListOf<ListItem>()
+        data.add(ListItem("OFFSET", "OFFSET"))
         data.add(ListItem("a", "My A"))
         data.add(ListItem("b", "My B"))
         data.add(ListItem("c", "My C"))

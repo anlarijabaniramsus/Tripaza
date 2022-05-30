@@ -3,6 +3,8 @@ package com.tripaza.tripaza.ui.navigation.ui.home.recycler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.tripaza.tripaza.R
@@ -92,6 +94,14 @@ class HomeListAdapter(private val itemList: ArrayList<ListItem>): RecyclerView.A
             binding.itemHeaderRvHorizontal
             val homeListHorizontalAdapter = HomeListHorizontalAdapter(result)
             binding.itemHeaderRvHorizontal.layoutManager = LinearLayoutManager(itemView.context, LinearLayoutManager.HORIZONTAL,false)
+            homeListHorizontalAdapter.setOnItemClickCallback(object : HomeListHorizontalAdapter.OnItemClickCallback{
+                override fun onItemClicked(data: ListItem) {
+//                val intent = Intent(requireContext(), DetailStoryActivity::class.java)
+//                intent.putExtra(DetailStoryActivity.USER_DETAIL_EXTRA, data)
+                    Toast.makeText(binding.root.context, "HORIZONTAL Item  Clicked", Toast.LENGTH_SHORT).show()
+//                startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(this@StoriesActivity as Activity).toBundle())
+                }
+            })
             binding.itemHeaderRvHorizontal.adapter = homeListHorizontalAdapter
 
         }
