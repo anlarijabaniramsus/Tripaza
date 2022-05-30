@@ -34,6 +34,13 @@ class HomeFragment : Fragment() {
         data.add(ListItem("c", "My C"))
         data.add(ListItem("d", "My D"))
         data.add(ListItem("e", "My E"))
+        data.add(ListItem("f", "My F"))
+        data.add(ListItem("g", "My G"))
+        data.add(ListItem("h", "My H"))
+        data.add(ListItem("i", "My I"))
+        data.add(ListItem("j", "My J"))
+        data.add(ListItem("k", "My K"))
+        data.add(ListItem("l", "My L"))
         
         homeListAdapter = HomeListAdapter(data)
         showStoryRecyclerList()
