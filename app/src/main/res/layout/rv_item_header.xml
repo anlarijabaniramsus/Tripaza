@@ -4,44 +4,66 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-    
+
+    <TextView
+        android:id="@+id/b2"
+        style="@style/text.h1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="132dp"
+        android:text="Popular in Padang"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/v"
         android:layout_width="127dp"
         android:layout_height="160dp"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="38dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/b2"
         app:srcCompat="@drawable/ic_about" />
 
     <TextView
         android:id="@+id/b"
         style="@style/text.h1"
-        android:layout_marginTop="45dp"
+        android:layout_marginStart="16dp"
         android:text="Change Profile"
         app:layout_constraintStart_toEndOf="@+id/v"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/v" />
 
     <TextView
         android:id="@+id/a"
         style="@style/text.p3"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="21dp"
+        android:layout_marginTop="8dp"
         android:maxEms="10"
         android:text="Wisata biru kota padang. ini hanya ilustrasi. Gambar diambil random dari google. Nama tempat wisata "
         app:layout_constraintStart_toEndOf="@+id/v"
         app:layout_constraintTop_toBottomOf="@+id/b" />
 
+    <TextView
+        android:id="@+id/b3"
+        style="@style/text.h1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:text="You may also like"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/v" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/item_header_rv_horizontal"
         android:layout_width="409dp"
-        android:layout_height="153dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="1dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/a" />
+        app:layout_constraintTop_toBottomOf="@+id/b3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
