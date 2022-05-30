@@ -7,7 +7,7 @@
         <SwitchPreference
             app:layout="@layout/custom_preference_button"
             android:defaultValue="false"
-            app:icon="@drawable/ic_navigation_maps"
+            app:icon="@drawable/ic_dark_mode"
             android:key="@string/APP_PREFERENCES_DARK_MODE_KEY"
             app:switchTextOn="Always Dark Mode"
             app:switchTextOff="Always Light Mode"
