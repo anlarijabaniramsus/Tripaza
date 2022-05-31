@@ -5,7 +5,7 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/b4"
+        android:id="@+id/tv_header_place_list_header"
         style="@style/text.h2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -17,7 +17,7 @@
         app:layout_constraintTop_toBottomOf="@+id/item_header_rv_horizontal" />
 
     <TextView
-        android:id="@+id/b2"
+        android:id="@+id/tv_header_popular_in"
         style="@style/text.h2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -30,15 +30,16 @@
         app:layout_constraintTop_toTopOf="parent" />
     
     <androidx.cardview.widget.CardView
-        android:id="@+id/v"
+        android:id="@+id/card_view_image_place_holder"
         android:layout_width="127dp"
         android:layout_height="160dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         app:cardCornerRadius="8dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/b2">
+        app:layout_constraintTop_toBottomOf="@+id/tv_header_popular_in">
         <ImageView
+            android:id="@+id/iv_featured_item_image"
             android:layout_height="match_parent"
             android:layout_width="match_parent"
             android:scaleType="centerCrop"
@@ -48,31 +49,32 @@
 
 
     <TextView
-        android:id="@+id/b"
+        android:id="@+id/tv_featured_item_header"
         style="@style/text.h2"
         android:layout_width="0dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:text="@string/featured_item"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/v"
-        app:layout_constraintTop_toTopOf="@+id/v" />
+        app:layout_constraintStart_toEndOf="@+id/card_view_image_place_holder"
+        app:layout_constraintTop_toTopOf="@+id/card_view_image_place_holder" />
 
     <TextView
-        android:id="@+id/a"
+        android:id="@+id/tv_featured_item_description"
         style="@style/text.p3"
         android:layout_width="0dp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:maxEms="10"
+        android:ellipsize="end"
+        android:maxLines="7"
         android:text="@string/featured_item_text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/v"
-        app:layout_constraintTop_toBottomOf="@+id/b" />
+        app:layout_constraintStart_toEndOf="@+id/card_view_image_place_holder"
+        app:layout_constraintTop_toBottomOf="@+id/tv_featured_item_header" />
 
     <TextView
-        android:id="@+id/b3"
+        android:id="@+id/tv_header_food_list_header"
         style="@style/text.h2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -82,7 +84,7 @@
         android:text="@string/foods"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/v" />
+        app:layout_constraintTop_toBottomOf="@+id/card_view_image_place_holder" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/item_header_rv_horizontal"
@@ -93,6 +95,6 @@
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/b3" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_header_food_list_header" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

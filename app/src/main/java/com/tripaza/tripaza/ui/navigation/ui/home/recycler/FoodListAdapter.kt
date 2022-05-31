@@ -13,9 +13,10 @@ import com.tripaza.tripaza.helper.StarRatingHelper
 import kotlin.math.abs
 import kotlin.random.Random
 
-class HomeListHorizontalAdapter(private val itemList: ArrayList<Food>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class FoodListAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private lateinit var onItemClickCallback: OnItemClickCallback
-
+    private lateinit var foodList: ArrayList<Food>
+    
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return ListViewHolder(RvItemHorizontalBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
@@ -25,23 +26,27 @@ class HomeListHorizontalAdapter(private val itemList: ArrayList<Food>): Recycler
     }
     
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val data = itemList[position]
+        val data = foodList[position]
         (holder as ListViewHolder).apply {
             StarRatingHelper.setStarRating(this.binding.itemLayout.starRating, abs((Random.nextInt())%5) + 1)
             this.binding.itemLayout.title.text = data.name
             Glide.with(holder.binding.root.context)
                 .load(R.drawable.im_places_dummy_images)
                 .into(holder.binding.itemLayout.ivItemImages)
-            this.itemView.setOnClickListener { onItemClickCallback.onItemClicked(itemList[holder.adapterPosition]) }
+            this.itemView.setOnClickListener { onItemClickCallback.onItemClicked(foodList[holder.adapterPosition]) }
         }
     }
     
-    override fun getItemCount(): Int = itemList.size
+    override fun getItemCount(): Int = foodList.size
+
+    fun setFoodList(foodList: ArrayList<Food>){
+        this.foodList = foodList
+    }
     
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
         this.onItemClickCallback = onItemClickCallback
     }
-
+    
     interface OnItemClickCallback {
         fun onItemClicked(data: Food)
     }
