@@ -132,7 +132,7 @@
         <item name="android:textColor">@color/dark_grey</item>
     </style>
     <style name="profile_list_text_value" parent="text.p3">
-        <item name="android:textSize">20dp</item>
+        <item name="android:textSize">20sp</item>
     </style>
     <style name="profile_list_item_btn">
         <item name="android:layout_width">32dp</item>
@@ -140,7 +140,6 @@
         <item name="android:padding">10dp</item>
         <item name="android:src">@drawable/ic_pen_to_square_solid</item>
         <item name="android:layout_gravity">center</item>
-        <item name="android:visibility">gone</item>
     </style>
     <!--ONBOARDING-->
     <style name="onboarding">
@@ -149,7 +148,7 @@
     
     <!--PREFERENCES-->
     <!--this is for parent only, this help organize our style-->
-    <style name="preference"></style>
+    <style name="preference"/>
     
     <style name="preference.icon">
         <item name="android:layout_width">32dp</item>

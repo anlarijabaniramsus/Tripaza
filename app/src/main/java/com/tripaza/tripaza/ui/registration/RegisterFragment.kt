@@ -55,7 +55,7 @@ class RegisterFragment : Fragment() {
         binding.frRegisterEtDob.setText(DateHelper.getFormattedCurrentDate("dd-MMM-yyyy"))
         binding.frRegisterEtPhone.setText("081111111111")
         binding.frRegisterEtEmail.setText(str)
-        binding.frRegisterEtPassword.setText("$str PAsswoRD")
+        binding.frRegisterEtPassword.setText("$str Password")
     }
     private fun register() {
         if (isExecutingRegistration){

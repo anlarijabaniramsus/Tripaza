@@ -10,7 +10,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/fr_profile_iv_profile_background"
@@ -19,7 +19,8 @@
             android:src="@drawable/rounded_bottom"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/header_background_images" />
 
         <!--Account Header-->
         <ImageView
@@ -32,14 +33,15 @@
             app:layout_constraintBottom_toTopOf="@+id/fr_profile_tv_profile_header_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fr_profile_iv_profile_background" />
+            app:layout_constraintTop_toBottomOf="@+id/fr_profile_iv_profile_background"
+            android:contentDescription="@string/user_profile_photo" />
 
         <TextView
             android:id="@+id/fr_profile_tv_separator_account"
             style="@style/text.h1"
             android:layout_marginStart="24dp"
             android:layout_marginTop="48dp"
-            android:text="Account"
+            android:text="@string/account"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fr_profile_iv_profile_background" />
 
@@ -49,7 +51,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Alicia Yana"
+            android:text="@string/alicia_yana"
             android:textColor="@color/white"
             app:layout_constraintBottom_toTopOf="@+id/fr_profile_iv_profile_background"
             app:layout_constraintEnd_toEndOf="@+id/fr_profile_iv_profile_photo"
@@ -64,14 +66,16 @@
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="@+id/fr_profile_tv_separator_account"
             app:layout_constraintStart_toEndOf="@+id/fr_profile_tv_separator_account"
-            app:layout_constraintTop_toTopOf="@+id/fr_profile_tv_separator_account" />
+            app:layout_constraintTop_toTopOf="@+id/fr_profile_tv_separator_account"
+            android:contentDescription="@string/edit_button" />
 
         <ImageView
             android:id="@+id/fr_profile_iv_separator_line_account"
             style="@style/separator"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fr_profile_tv_separator_account" />
+            app:layout_constraintTop_toBottomOf="@+id/fr_profile_tv_separator_account"
+            android:contentDescription="@string/line_separator" />
 
         <LinearLayout
             android:id="@+id/linearLayout"
@@ -92,18 +96,14 @@
                     <TextView
                         android:id="@+id/fr_profile_tv_title_name"
                         style="@style/profile_list_text_header"
-                        android:text="Name" />
+                        android:text="@string/full_name" />
 
                     <TextView
                         android:id="@+id/fr_profile_tv_value_name"
                         style="@style/profile_list_text_value"
-                        android:text="Alicia Yana" />
+                        android:text="@string/alicia_yana" />
 
                 </LinearLayout>
-                
-                <ImageView
-                    android:id="@+id/fr_profile_iv_edit_name"
-                    style="@style/profile_list_item_btn" />
             </LinearLayout>
 
             <LinearLayout
@@ -115,17 +115,13 @@
                     <TextView
                         android:id="@+id/fr_profile_tv_title_email"
                         style="@style/profile_list_text_header"
-                        android:text="Email" />
+                        android:text="@string/email" />
 
                     <TextView
                         android:id="@+id/fr_profile_tv_value_email"
                         style="@style/profile_list_text_value"
-                        android:text="yana@mail.com" />
+                        android:text="@string/yana_mail_com" />
                 </LinearLayout>
-
-                <ImageView
-                    android:id="@+id/fr_profile_iv_edit_email"
-                    style="@style/profile_list_item_btn" />
             </LinearLayout>
 
             <LinearLayout
@@ -137,17 +133,13 @@
                     <TextView
                         android:id="@+id/fr_profile_tv_title_dob"
                         style="@style/profile_list_text_header"
-                        android:text="Date of birth" />
+                        android:text="@string/date_of_birth" />
 
                     <TextView
                         android:id="@+id/fr_profile_tv_value_dob"
                         style="@style/profile_list_text_value"
-                        android:text="22-Mar-1999" />
+                        android:text="@string/date_22_maret_1999" />
                 </LinearLayout>
-
-                <ImageView
-                    android:id="@+id/fr_profile_iv_edit_dob"
-                    style="@style/profile_list_item_btn" />
             </LinearLayout>
 
 
@@ -160,17 +152,13 @@
                     <TextView
                         android:id="@+id/fr_profile_tv_title_phone"
                         style="@style/profile_list_text_header"
-                        android:text="Phone" />
+                        android:text="@string/phone_number" />
 
                     <TextView
                         android:id="@+id/fr_profile_tv_value_phone"
                         style="@style/profile_list_text_value"
-                        android:text="081177773333" />
+                        android:text="@string/phone_number_62811223344" />
                 </LinearLayout>
-
-                <ImageView
-                    android:id="@+id/fr_profile_iv_edit_phone"
-                    style="@style/profile_list_item_btn" />
             </LinearLayout>
 
             <LinearLayout
@@ -182,17 +170,13 @@
                     <TextView
                         android:id="@+id/fr_profile_tv_title_password"
                         style="@style/profile_list_text_header"
-                        android:text="Password" />
+                        android:text="@string/password" />
 
                     <TextView
                         android:id="@+id/fr_profile_tv_value_password"
                         style="@style/profile_list_text_value"
-                        android:text="******" />
+                        android:text="@string/password_censored" />
                 </LinearLayout>
-
-                <ImageView
-                    android:id="@+id/fr_profile_iv_edit_password"
-                    style="@style/profile_list_item_btn" />
             </LinearLayout>
         </LinearLayout>
 
@@ -201,7 +185,7 @@
             style="@style/text.h1"
             android:layout_marginStart="24dp"
             android:layout_marginTop="32dp"
-            android:text="Settings"
+            android:text="@string/settings"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
@@ -210,7 +194,8 @@
             style="@style/separator"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fr_profile_tv_separator_settings" />
+            app:layout_constraintTop_toBottomOf="@+id/fr_profile_tv_separator_settings"
+            android:contentDescription="@string/line_separator" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -232,17 +217,15 @@
                     <TextView
                         android:id="@+id/fr_profile_tv_settings"
                         style="@style/profile_list_text_value"
-                        android:text="Settings" />
+                        android:text="@string/settings" />
                 </LinearLayout>
 
                 <ImageView
                     android:id="@+id/fr_profile_iv_setting_button"
                     style="@style/profile_list_item_btn"
-                    android:visibility="visible"
-                    android:src="@drawable/ic_angle_right_solid" />
+                    android:src="@drawable/ic_angle_right_solid"
+                    android:contentDescription="@string/setting_button" />
             </LinearLayout>
         </LinearLayout>
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

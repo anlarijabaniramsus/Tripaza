@@ -16,7 +16,7 @@
         <TextView
             android:id="@+id/fr_register_tv_title"
             style="@style/text.h1"
-            android:text="Sign up"
+            android:text="@string/sign_up"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -28,7 +28,7 @@
             style="@style/text.h2"
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
-            android:text="Full Name"
+            android:text="@string/full_name"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fr_register_tv_title" />
 
@@ -42,7 +42,7 @@
             <com.tripaza.tripaza.customview.EditTextGeneral
                 android:id="@+id/fr_register_et_name"
                 style="@style/input_field"
-                android:hint="Enter full name" />
+                android:hint="@string/enter_full_name" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -50,7 +50,7 @@
             style="@style/text.h2"
             android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
-            android:text="Date of Birth"
+            android:text="@string/date_of_birth"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fr_register_til_name" />
 
@@ -67,7 +67,7 @@
                 android:cursorVisible="false"
                 android:enabled="true"
                 android:focusable="false"
-                android:hint="22-Maret-1999"
+                android:hint="@string/date_22_maret_1999"
                 android:inputType="date" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -76,7 +76,7 @@
             style="@style/text.h2"
             android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
-            android:text="Email"
+            android:text="@string/email"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fr_register_til_dob" />
 
@@ -90,7 +90,7 @@
             <com.tripaza.tripaza.customview.EditTextEmail
                 android:id="@+id/fr_register_et_email"
                 style="@style/input_field"
-                android:hint="xxxx@mail.com"
+                android:hint="@string/xxxx_mail_com"
                 android:inputType="textEmailAddress" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -99,7 +99,7 @@
             style="@style/text.h2"
             android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
-            android:text="Phone Number"
+            android:text="@string/phone_number"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fr_register_til_email" />
 
@@ -113,7 +113,7 @@
             <com.tripaza.tripaza.customview.EditTextPhone
                 android:id="@+id/fr_register_et_phone"
                 style="@style/input_field"
-                android:hint="+62811223344"
+                android:hint="@string/phone_number_62811223344"
                 android:inputType="phone" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -123,7 +123,7 @@
             style="@style/text.h2"
             android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
-            android:text="Password"
+            android:text="@string/password"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fr_register_til_phone" />
 
@@ -138,14 +138,14 @@
             <com.tripaza.tripaza.customview.EditTextPassword
                 android:id="@+id/fr_register_et_password"
                 style="@style/input_field.password"
-                android:hint="Password" />
+                android:hint="@string/password_censored" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
         <Button
             android:id="@+id/fr_register_btn_register"
             style="@style/button.wide"
-            android:text="Register"
+            android:text="@string/register"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -156,7 +156,7 @@
             android:id="@+id/fr_register_already_have_account"
             style="@style/text.p3"
             android:layout_marginTop="16dp"
-            android:text="Already have an account? Login"
+            android:text="@string/already_have_an_account"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fr_profile_iv_separator_line_account" />
@@ -167,7 +167,8 @@
             android:layout_marginTop="32dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fr_register_btn_register" />
+            app:layout_constraintTop_toBottomOf="@id/fr_register_btn_register"
+            android:contentDescription="@string/line_separator" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
     
