@@ -23,7 +23,7 @@ class HomeListHorizontalAdapter(private val itemList: ArrayList<Food>): Recycler
     }
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val data = itemList[position]
-        val h = holder as HomeListHorizontalAdapter.ListViewHolder
+        val h = holder as ListViewHolder
         h.binding.itemLayout.title.text = data.name
 //        holder.binding.rvItemRowStory.text = data.description
 //        holder.binding.rvItemRowName.text = data.name
@@ -42,10 +42,7 @@ class HomeListHorizontalAdapter(private val itemList: ArrayList<Food>): Recycler
 
     //    override fun getItemCount(): Int = itemList.size
     override fun getItemCount(): Int = itemList.size
-
-    fun notifyDatasetChangedHelper(){
-        notifyDataSetChanged()
-    }
+    
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
         this.onItemClickCallback = onItemClickCallback
     }

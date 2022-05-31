@@ -8,30 +8,35 @@
             android:id="@+id/star1"
             android:layout_width="16dp"
             android:layout_height="16dp"
-            app:srcCompat="@drawable/ic_baseline_star_rate_24" />
+            app:srcCompat="@drawable/ic_baseline_star_rate_24"
+            android:contentDescription="@string/star_rating" />
     
         <ImageView
             android:id="@+id/star2"
             android:layout_width="16dp"
             android:layout_height="16dp"
-            app:srcCompat="@drawable/ic_baseline_star_rate_24" />
+            app:srcCompat="@drawable/ic_baseline_star_rate_24"
+            android:contentDescription="@string/star_rating" />
     
         <ImageView
             android:id="@+id/star3"
             android:layout_width="16dp"
             android:layout_height="16dp"
-            app:srcCompat="@drawable/ic_baseline_star_rate_24" />
+            app:srcCompat="@drawable/ic_baseline_star_rate_24"
+            android:contentDescription="@string/star_rating" />
     
         <ImageView
             android:id="@+id/star4"
             android:layout_width="16dp"
             android:layout_height="16dp"
-            app:srcCompat="@drawable/ic_baseline_star_rate_24" />
+            app:srcCompat="@drawable/ic_baseline_star_rate_24"
+            android:contentDescription="@string/star_rating" />
     
         <ImageView
             android:id="@+id/star5"
             android:layout_width="16dp"
             android:layout_height="16dp"
-            app:srcCompat="@drawable/ic_baseline_star_rate_24" />
+            app:srcCompat="@drawable/ic_baseline_star_rate_24"
+            android:contentDescription="@string/star_rating" />
     </LinearLayout>
 

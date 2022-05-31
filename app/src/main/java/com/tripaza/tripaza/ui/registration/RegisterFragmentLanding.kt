@@ -1,14 +1,12 @@
 package com.tripaza.tripaza.ui.registration
 
 import android.content.res.Configuration
-import android.opengl.Visibility
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import com.tripaza.tripaza.databinding.FragmentRegisterBinding
 import com.tripaza.tripaza.databinding.FragmentRegisterLandingBinding
 
 class RegisterFragmentLanding : Fragment() {
@@ -17,7 +15,7 @@ class RegisterFragmentLanding : Fragment() {
         super.onCreate(savedInstanceState)
     }
 
-    override fun onCreateView( inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView( inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         (activity as AppCompatActivity).supportActionBar?.hide()
         binding = FragmentRegisterLandingBinding.inflate(inflater)
         return binding.root

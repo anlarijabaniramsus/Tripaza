@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -12,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
-        android:text="Instagramable spots"
+        android:text="@string/instagrammable_spots"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/item_header_rv_horizontal" />
@@ -25,7 +24,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
-        android:text="Popular in Padang"
+        android:text="@string/popular_in"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -38,7 +37,8 @@
         android:layout_marginTop="24dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/b2"
-        app:srcCompat="@drawable/ic_about" />
+        app:srcCompat="@drawable/ic_about"
+        android:contentDescription="@string/featured_images" />
 
     <TextView
         android:id="@+id/b"
@@ -46,7 +46,7 @@
         android:layout_width="0dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:text="Featured Item"
+        android:text="@string/featured_item"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/v"
         app:layout_constraintTop_toTopOf="@+id/v" />
@@ -59,7 +59,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:maxEms="10"
-        android:text="Wisata biru kota padang. ini hanya ilustrasi. Gambar diambil random dari google. Nama tempat wisata "
+        android:text="@string/featured_item_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/v"
         app:layout_constraintTop_toBottomOf="@+id/b" />
@@ -72,7 +72,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
-        android:text="Foods"
+        android:text="@string/foods"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/v" />

@@ -63,7 +63,7 @@ class HomeFragment : Fragment() {
         gridLayoutManager.setSpanSizeLookup(object : GridLayoutManager.SpanSizeLookup() {
             override fun getSpanSize(position: Int): Int {
                 return when (homeListAdapter.getItemViewType(position)) {
-                    homeListAdapter.HEADER -> 2
+                    HomeListAdapter.HEADER -> 2
                     else -> 1
                 }
             }

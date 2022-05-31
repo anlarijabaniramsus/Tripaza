@@ -13,14 +13,14 @@ import com.tripaza.tripaza.databinding.RvItemHeaderBinding
 
 class HomeListAdapter(private val itemList: ArrayList<Food>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private lateinit var onItemClickCallback: OnItemClickCallback
-    val HEADER = 0
-    private val ITEM = 1
+    companion object{
+        const val HEADER = 0
+    }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        if (viewType == 0 )
-            return ListViewHolderHeader(RvItemHeaderBinding.inflate(LayoutInflater.from(parent.context), parent, false)) 
-//            return ListViewHolderHeader(LayoutInflater.from(parent.context), parent, false) 
+        return if (viewType == 0 )
+            ListViewHolderHeader(RvItemHeaderBinding.inflate(LayoutInflater.from(parent.context), parent, false))
         else
-            return ListViewHolder(RvItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+            ListViewHolder(RvItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
 

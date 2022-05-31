@@ -1,6 +1,5 @@
 package com.tripaza.tripaza.ui.preferences
 
-import android.R.attr.button
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -21,13 +20,11 @@ class PreferencesFragment : PreferenceFragmentCompat(), SharedPreferences.OnShar
         addPreferencesFromResource(R.xml.preferences)
         
         val btn = preferenceManager.findPreference<Preference>("logout")
-        if (btn != null) {
-            btn.setOnPreferenceClickListener(Preference.OnPreferenceClickListener {
-                logOutAlert()
-                true
-            })
+        btn?.setOnPreferenceClickListener {
+            logOutAlert()
+            true
         }
-        
+
     }
 
     private fun logout() {

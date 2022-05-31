@@ -1,10 +1,7 @@
-package com.tripaza.tripaza.ui.preferences
+package com.tripaza.tripaza.helper
 
 import android.content.Context
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.preference.PreferenceManager
 import com.tripaza.tripaza.R
 
 class PreferencesHelper(val context: Context){

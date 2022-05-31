@@ -15,7 +15,7 @@
         <TextView
             android:id="@+id/profile_edit_tv_title"
             style="@style/text.h1"
-            android:text="Change Profile"
+            android:text="@string/change_profile"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -27,7 +27,7 @@
             style="@style/text.h2"
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
-            android:text="Full Name"
+            android:text="@string/full_name"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/profile_edit_tv_title" />
 
@@ -41,7 +41,7 @@
             <com.tripaza.tripaza.customview.EditTextGeneral
                 android:id="@+id/profile_edit_et_name"
                 style="@style/input_field"
-                android:hint="Enter full name" />
+                android:hint="@string/enter_full_name" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -49,7 +49,7 @@
             style="@style/text.h2"
             android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
-            android:text="Date of Birth"
+            android:text="@string/date_of_birth"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/profile_edit_til_name" />
 
@@ -66,7 +66,7 @@
                 android:cursorVisible="false"
                 android:enabled="true"
                 android:focusable="false"
-                android:hint="22-Maret-1999"
+                android:hint="@string/date_22_maret_1999"
                 android:inputType="date" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -75,7 +75,7 @@
             style="@style/text.h2"
             android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
-            android:text="Email"
+            android:text="@string/email"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/profile_edit_til_dob" />
 
@@ -89,7 +89,7 @@
             <com.tripaza.tripaza.customview.EditTextEmail
                 android:id="@+id/profile_edit_et_email"
                 style="@style/input_field"
-                android:hint="xxxx@mail.com"
+                android:hint="@string/xxxx_mail_com"
                 android:inputType="textEmailAddress" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -98,7 +98,7 @@
             style="@style/text.h2"
             android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
-            android:text="Phone Number"
+            android:text="@string/phone_number"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/profile_edit_til_email" />
 
@@ -112,7 +112,7 @@
             <com.tripaza.tripaza.customview.EditTextPhone
                 android:id="@+id/profile_edit_et_phone"
                 style="@style/input_field"
-                android:hint="+62811223344"
+                android:hint="@string/phone_number_62811223344"
                 android:inputType="phone" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -122,7 +122,7 @@
             style="@style/text.h2"
             android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
-            android:text="Password"
+            android:text="@string/password"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/profile_edit_til_phone" />
 
@@ -137,14 +137,14 @@
             <com.tripaza.tripaza.customview.EditTextPassword
                 android:id="@+id/profile_edit_et_password"
                 style="@style/input_field.password"
-                android:hint="Password" />
+                android:hint="@string/password" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/profile_edit_btn_update"
             style="@style/button.wide"
             android:layout_height="wrap_content"
-            android:text="Update"
+            android:text="@string/update"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

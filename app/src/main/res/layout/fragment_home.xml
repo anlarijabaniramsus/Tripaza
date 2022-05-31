@@ -28,5 +28,7 @@
         android:src="@drawable/ic_navigation_camera"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/fr_home_rv_home_list"
-        app:tint="@color/white" />
+        app:tint="@color/white"
+        android:contentDescription="@string/floating_button"
+        android:focusable="true" />
 </androidx.constraintlayout.widget.ConstraintLayout>
