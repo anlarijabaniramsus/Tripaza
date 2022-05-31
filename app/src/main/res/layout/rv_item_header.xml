@@ -8,22 +8,25 @@
     <TextView
         android:id="@+id/b4"
         style="@style/text.h2"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:text="Instagramable spots"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/item_header_rv_horizontal" />
 
     <TextView
         android:id="@+id/b2"
         style="@style/text.h2"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
         android:text="Popular in Padang"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -40,37 +43,47 @@
     <TextView
         android:id="@+id/b"
         style="@style/text.h2"
+        android:layout_width="0dp"
         android:layout_marginStart="16dp"
-        android:text="Change Profile"
+        android:layout_marginEnd="16dp"
+        android:text="Featured Item"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/v"
         app:layout_constraintTop_toTopOf="@+id/v" />
 
     <TextView
         android:id="@+id/a"
         style="@style/text.p3"
+        android:layout_width="0dp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
         android:maxEms="10"
         android:text="Wisata biru kota padang. ini hanya ilustrasi. Gambar diambil random dari google. Nama tempat wisata "
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/v"
         app:layout_constraintTop_toBottomOf="@+id/b" />
 
     <TextView
         android:id="@+id/b3"
         style="@style/text.h2"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
         android:text="You may also like"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/v" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/item_header_rv_horizontal"
-        android:layout_width="409dp"
+        android:layout_width="match_parent"
         android:layout_height="200dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="4dp"
+        android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/b3" />

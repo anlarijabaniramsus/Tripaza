@@ -77,7 +77,9 @@ class HomeFragment : Fragment() {
             override fun onItemClicked(data: ListItem) {
 //                val intent = Intent(requireContext(), DetailStoryActivity::class.java)
 //                intent.putExtra(DetailStoryActivity.USER_DETAIL_EXTRA, data)
-                Toast.makeText(requireContext(), "Item Clicked", Toast.LENGTH_SHORT).show()
+                if(data.id != "OFFSET"){
+                    Toast.makeText(requireContext(), "Item ${data.name} Clicked", Toast.LENGTH_SHORT).show()
+                }
 //                startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(this@StoriesActivity as Activity).toBundle())
             }
         })

@@ -49,16 +49,12 @@ class HomeListAdapter(private val itemList: ArrayList<ListItem>): RecyclerView.A
             data.add(ListItem("l", "My L"))
             
             (holder as ListViewHolderHeader).bind(data)
-//            LinearLayoutManager.VERTICAL,false
             
         }else{
             val data = itemList[position]
-            (holder as ListViewHolder).binding.textView.text = data.name
-            
+            (holder as ListViewHolder).binding.itemLayout.title.text = data.name
+            holder.binding.itemLayout.starRating.star1.setImageResource(R.drawable.ic_baseline_star_rate_24_gold)
         }
-        
-//        val h = holder as ListViewHolder
-        
         
 //        holder.binding.rvItemRowName.text = data.name
 //        holder.binding.rvItemRowDateCreated.text = data.createdAt.toString().substring(0,10)
@@ -76,10 +72,7 @@ class HomeListAdapter(private val itemList: ArrayList<ListItem>): RecyclerView.A
 
     //    override fun getItemCount(): Int = itemList.size
     override fun getItemCount(): Int = itemList.size
-
-    fun notifyDatasetChangedHelper(){
-        notifyDataSetChanged()
-    }
+    
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
         this.onItemClickCallback = onItemClickCallback
     }
@@ -99,7 +92,7 @@ class HomeListAdapter(private val itemList: ArrayList<ListItem>): RecyclerView.A
                 override fun onItemClicked(data: ListItem) {
 //                val intent = Intent(requireContext(), DetailStoryActivity::class.java)
 //                intent.putExtra(DetailStoryActivity.USER_DETAIL_EXTRA, data)
-                    Toast.makeText(binding.root.context, "HORIZONTAL Item  Clicked", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(binding.root.context, "HORIZONTAL Item ${data.name}  Clicked", Toast.LENGTH_SHORT).show()
 //                startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(this@StoriesActivity as Activity).toBundle())
                 }
             })

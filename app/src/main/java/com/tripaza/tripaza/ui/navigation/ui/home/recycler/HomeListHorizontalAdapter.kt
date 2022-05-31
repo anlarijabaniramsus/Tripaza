@@ -26,8 +26,7 @@ class HomeListHorizontalAdapter(private val itemList: ArrayList<ListItem>): Recy
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val data = itemList[position]
         val h = holder as HomeListHorizontalAdapter.ListViewHolder
-        h.binding.textView.text = data.name
-        
+        h.binding.itemLayout.title.text = data.name
 //        holder.binding.rvItemRowStory.text = data.description
 //        holder.binding.rvItemRowName.text = data.name
 //        holder.binding.rvItemRowDateCreated.text = data.createdAt.toString().substring(0,10)
