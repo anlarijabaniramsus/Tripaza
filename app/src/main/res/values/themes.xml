@@ -132,7 +132,7 @@
         <item name="android:textColor">@color/dark_grey</item>
     </style>
     <style name="profile_list_text_value" parent="text.p3">
-        <item name="android:textSize">20dp</item>
+        <item name="android:textSize">20sp</item>
     </style>
     <style name="profile_list_item_btn">
         <item name="android:layout_width">32dp</item>
@@ -149,7 +149,7 @@
     
     <!--PREFERENCES-->
     <!--this is for parent only, this help organize our style-->
-    <style name="preference"></style>
+    <style name="preference"/>
     
     <style name="preference.icon">
         <item name="android:layout_width">32dp</item>
