@@ -14,7 +14,7 @@
         app:cardElevation="8dp">
 
         <ImageView
-            android:id="@+id/profile"
+            android:id="@+id/iv_item_images"
             android:layout_width="match_parent"
             android:layout_height="128dp"
             android:adjustViewBounds="true"
@@ -41,7 +41,7 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/location_icon"
             android:layout_width="12dp"
             android:layout_height="12dp"
             android:layout_gravity="center"

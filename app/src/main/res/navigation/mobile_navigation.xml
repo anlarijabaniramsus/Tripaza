@@ -12,12 +12,6 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_camera"
-        android:name="com.tripaza.tripaza.ui.navigation.ui.camera.CameraFragment"
-        android:label="@string/title_cameras"
-        tools:layout="@layout/fragment_dashboard" />
-
-    <fragment
         android:id="@+id/navigation_maps"
         android:name="com.tripaza.tripaza.ui.navigation.ui.maps.MapsFragment"
         android:label="@string/title_maps"

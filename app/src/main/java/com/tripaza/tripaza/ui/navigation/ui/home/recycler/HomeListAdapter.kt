@@ -1,15 +1,16 @@
 package com.tripaza.tripaza.ui.navigation.ui.home.recycler
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.tripaza.tripaza.R
 import com.tripaza.tripaza.databases.dataobject.Food
 import com.tripaza.tripaza.databinding.RvItemBinding
 import com.tripaza.tripaza.databinding.RvItemHeaderBinding
+import com.tripaza.tripaza.helper.StarRatingHelper
 import kotlin.math.abs
 import kotlin.random.Random
 
@@ -25,13 +26,9 @@ class HomeListAdapter(private val itemList: ArrayList<Food>): RecyclerView.Adapt
         else
             ListViewHolder(RvItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
-
-
     
-
     override fun getItemViewType(position: Int): Int {
-        return if (position == HEADER) 0 else 1 
-//        return super.getItemViewType(position)
+        return if (position == HEADER) 0 else 1
     }
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (position == 0){
@@ -52,41 +49,21 @@ class HomeListAdapter(private val itemList: ArrayList<Food>): RecyclerView.Adapt
             
             (holder as ListViewHolderHeader).bind(data)
             
+            
         }else{
             val data = itemList[position]
-            (holder as ListViewHolder).binding.itemLayout.title.text = data.name
-            holder.binding.itemLayout.starRating.star1.setImageResource(R.drawable.ic_baseline_star_rate_24_gold)
-            val x = abs((Random.nextInt())%5) + 1
-            val starRating = x
-            Log.d("TAG", "onBindViewHolder: " + x)
-            if (starRating >= 1){holder.binding.itemLayout.starRating.star1.setImageResource(R.drawable.ic_baseline_star_rate_24_gold)}
-            if (starRating >= 2){holder.binding.itemLayout.starRating.star2.setImageResource(R.drawable.ic_baseline_star_rate_24_gold)}
-            if (starRating >= 3){holder.binding.itemLayout.starRating.star3.setImageResource(R.drawable.ic_baseline_star_rate_24_gold)}
-            if (starRating >= 4){holder.binding.itemLayout.starRating.star4.setImageResource(R.drawable.ic_baseline_star_rate_24_gold)}
-            if (starRating >= 5){holder.binding.itemLayout.starRating.star5.setImageResource(R.drawable.ic_baseline_star_rate_24_gold)}
-
-//            holder.binding.itemLayout.starRating.star1.setImageResource(R.drawable.ic_baseline_star_rate_24_gold)
-//            holder.binding.itemLayout.starRating.star2.setImageResource(R.drawable.ic_baseline_star_rate_24_gold)
-//            holder.binding.itemLayout.starRating.star3.setImageResource(R.drawable.ic_baseline_star_rate_24_gold)
-//            holder.binding.itemLayout.starRating.star4.setImageResource(R.drawable.ic_baseline_star_rate_24_gold)
-            
+            (holder as ListViewHolder).apply {
+                StarRatingHelper.setStarRating(holder.binding.itemLayout.starRating, abs((Random.nextInt())%5) + 1)
+                this.binding.itemLayout.title.text = data.name
+                Glide.with(this.binding.root.context)
+                    .load(R.drawable.im_places_dummy_images)
+                    .into(this.binding.itemLayout.ivItemImages)
+            }
         }
         
-//        holder.binding.rvItemRowName.text = data.name
-//        holder.binding.rvItemRowDateCreated.text = data.createdAt.toString().substring(0,10)
-
-//        Glide.with(holder.binding.root.context)
-//            .load(data.photoUrl)
-//            .into(holder.binding.rvItemRowImgBanner)
-
-        // check if night mode activated
-//        if ( holder.binding.root.resources.configuration.uiMode.and(Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES)
-//            holder.binding.root.setCardBackgroundColor(Color.TRANSPARENT)
-
         holder.itemView.setOnClickListener{onItemClickCallback.onItemClicked(itemList[holder.adapterPosition])}
     }
-
-    //    override fun getItemCount(): Int = itemList.size
+    
     override fun getItemCount(): Int = itemList.size
     
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
@@ -109,6 +86,10 @@ class HomeListAdapter(private val itemList: ArrayList<Food>): RecyclerView.Adapt
 //                val intent = Intent(requireContext(), DetailStoryActivity::class.java)
 //                intent.putExtra(DetailStoryActivity.USER_DETAIL_EXTRA, data)
                     Toast.makeText(binding.root.context, "HORIZONTAL Item ${data.name}  Clicked", Toast.LENGTH_SHORT).show()
+
+//                    (binding as HomeListHorizontalAdapter)
+                    
+                    
 //                startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(this@StoriesActivity as Activity).toBundle())
                 }
             })
