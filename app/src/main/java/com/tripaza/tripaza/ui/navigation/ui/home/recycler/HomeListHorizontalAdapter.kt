@@ -1,15 +1,13 @@
 package com.tripaza.tripaza.ui.navigation.ui.home.recycler
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.tripaza.tripaza.R
+import com.tripaza.tripaza.databases.dataobject.Food
 import com.tripaza.tripaza.databinding.RvItemHorizontalBinding
-import com.tripaza.tripaza.databinding.RvItemHeaderBinding
 
 
-class HomeListHorizontalAdapter(private val itemList: ArrayList<ListItem>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class HomeListHorizontalAdapter(private val itemList: ArrayList<Food>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private lateinit var onItemClickCallback: OnItemClickCallback
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -53,7 +51,7 @@ class HomeListHorizontalAdapter(private val itemList: ArrayList<ListItem>): Recy
     }
 
     interface OnItemClickCallback {
-        fun onItemClicked(data: ListItem)
+        fun onItemClicked(data: Food)
     }
 
     class ListViewHolder(var binding: RvItemHorizontalBinding) : RecyclerView.ViewHolder(binding.root)

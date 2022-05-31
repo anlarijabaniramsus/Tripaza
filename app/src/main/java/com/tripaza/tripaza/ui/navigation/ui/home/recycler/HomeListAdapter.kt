@@ -1,18 +1,17 @@
 package com.tripaza.tripaza.ui.navigation.ui.home.recycler
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.tripaza.tripaza.R
+import com.tripaza.tripaza.databases.dataobject.Food
 import com.tripaza.tripaza.databinding.RvItemBinding
 import com.tripaza.tripaza.databinding.RvItemHeaderBinding
 
 
-class HomeListAdapter(private val itemList: ArrayList<ListItem>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class HomeListAdapter(private val itemList: ArrayList<Food>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private lateinit var onItemClickCallback: OnItemClickCallback
     val HEADER = 0
     private val ITEM = 1
@@ -34,19 +33,19 @@ class HomeListAdapter(private val itemList: ArrayList<ListItem>): RecyclerView.A
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (position == 0){
             
-            val data = arrayListOf<ListItem>()
-            data.add(ListItem("a", "My A"))
-            data.add(ListItem("b", "My B"))
-            data.add(ListItem("c", "My C"))
-            data.add(ListItem("d", "My D"))
-            data.add(ListItem("e", "My E"))
-            data.add(ListItem("f", "My F"))
-            data.add(ListItem("g", "My G"))
-            data.add(ListItem("h", "My H"))
-            data.add(ListItem("i", "My I"))
-            data.add(ListItem("j", "My J"))
-            data.add(ListItem("k", "My K"))
-            data.add(ListItem("l", "My L"))
+            val data = arrayListOf<Food>()
+            data.add(Food("a", "My A"))
+            data.add(Food("b", "My B"))
+            data.add(Food("c", "My C"))
+            data.add(Food("d", "My D"))
+            data.add(Food("e", "My E"))
+            data.add(Food("f", "My F"))
+            data.add(Food("g", "My G"))
+            data.add(Food("h", "My H"))
+            data.add(Food("i", "My I"))
+            data.add(Food("j", "My J"))
+            data.add(Food("k", "My K"))
+            data.add(Food("l", "My L"))
             
             (holder as ListViewHolderHeader).bind(data)
             
@@ -78,18 +77,18 @@ class HomeListAdapter(private val itemList: ArrayList<ListItem>): RecyclerView.A
     }
 
     interface OnItemClickCallback {
-        fun onItemClicked(data: ListItem)
+        fun onItemClicked(data: Food)
     }
 
     class ListViewHolder(var binding: RvItemBinding) : RecyclerView.ViewHolder(binding.root)
 
     class ListViewHolderHeader(var binding: RvItemHeaderBinding) : RecyclerView.ViewHolder(binding.root){
-        fun bind(result: ArrayList<ListItem>) {
+        fun bind(result: ArrayList<Food>) {
             binding.itemHeaderRvHorizontal
             val homeListHorizontalAdapter = HomeListHorizontalAdapter(result)
             binding.itemHeaderRvHorizontal.layoutManager = LinearLayoutManager(itemView.context, LinearLayoutManager.HORIZONTAL,false)
             homeListHorizontalAdapter.setOnItemClickCallback(object : HomeListHorizontalAdapter.OnItemClickCallback{
-                override fun onItemClicked(data: ListItem) {
+                override fun onItemClicked(data: Food) {
 //                val intent = Intent(requireContext(), DetailStoryActivity::class.java)
 //                intent.putExtra(DetailStoryActivity.USER_DETAIL_EXTRA, data)
                     Toast.makeText(binding.root.context, "HORIZONTAL Item ${data.name}  Clicked", Toast.LENGTH_SHORT).show()
