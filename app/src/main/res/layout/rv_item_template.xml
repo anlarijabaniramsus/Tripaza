@@ -19,7 +19,7 @@
             android:layout_height="128dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
-            app:srcCompat="@drawable/profile_images"
+            app:srcCompat="@drawable/im_places_dummy_images"
             tools:layout_editor_absoluteX="39dp"
             tools:layout_editor_absoluteY="27dp"
             android:contentDescription="@string/featured_images" />

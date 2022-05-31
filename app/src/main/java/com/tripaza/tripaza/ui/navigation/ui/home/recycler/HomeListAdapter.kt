@@ -1,5 +1,6 @@
 package com.tripaza.tripaza.ui.navigation.ui.home.recycler
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
@@ -9,6 +10,8 @@ import com.tripaza.tripaza.R
 import com.tripaza.tripaza.databases.dataobject.Food
 import com.tripaza.tripaza.databinding.RvItemBinding
 import com.tripaza.tripaza.databinding.RvItemHeaderBinding
+import kotlin.math.abs
+import kotlin.random.Random
 
 
 class HomeListAdapter(private val itemList: ArrayList<Food>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -53,6 +56,20 @@ class HomeListAdapter(private val itemList: ArrayList<Food>): RecyclerView.Adapt
             val data = itemList[position]
             (holder as ListViewHolder).binding.itemLayout.title.text = data.name
             holder.binding.itemLayout.starRating.star1.setImageResource(R.drawable.ic_baseline_star_rate_24_gold)
+            val x = abs((Random.nextInt())%5) + 1
+            val starRating = x
+            Log.d("TAG", "onBindViewHolder: " + x)
+            if (starRating >= 1){holder.binding.itemLayout.starRating.star1.setImageResource(R.drawable.ic_baseline_star_rate_24_gold)}
+            if (starRating >= 2){holder.binding.itemLayout.starRating.star2.setImageResource(R.drawable.ic_baseline_star_rate_24_gold)}
+            if (starRating >= 3){holder.binding.itemLayout.starRating.star3.setImageResource(R.drawable.ic_baseline_star_rate_24_gold)}
+            if (starRating >= 4){holder.binding.itemLayout.starRating.star4.setImageResource(R.drawable.ic_baseline_star_rate_24_gold)}
+            if (starRating >= 5){holder.binding.itemLayout.starRating.star5.setImageResource(R.drawable.ic_baseline_star_rate_24_gold)}
+
+//            holder.binding.itemLayout.starRating.star1.setImageResource(R.drawable.ic_baseline_star_rate_24_gold)
+//            holder.binding.itemLayout.starRating.star2.setImageResource(R.drawable.ic_baseline_star_rate_24_gold)
+//            holder.binding.itemLayout.starRating.star3.setImageResource(R.drawable.ic_baseline_star_rate_24_gold)
+//            holder.binding.itemLayout.starRating.star4.setImageResource(R.drawable.ic_baseline_star_rate_24_gold)
+            
         }
         
 //        holder.binding.rvItemRowName.text = data.name

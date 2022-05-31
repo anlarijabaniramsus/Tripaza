@@ -42,7 +42,7 @@
             android:layout_height="match_parent"
             android:layout_width="match_parent"
             android:scaleType="centerCrop"
-            app:srcCompat="@drawable/profile_images"
+            app:srcCompat="@drawable/im_places_dummy_images"
             android:contentDescription="@string/featured_images" />
     </androidx.cardview.widget.CardView>
 
