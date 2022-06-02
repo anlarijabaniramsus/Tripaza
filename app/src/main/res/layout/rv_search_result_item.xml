@@ -10,10 +10,11 @@
     <ImageView
         android:id="@+id/icon"
         android:layout_width="0dp"
-        android:scaleType="centerInside"
+        android:scaleType="centerCrop"
         android:layout_height="60dp"
         android:layout_weight="0.2"
-        app:srcCompat="@drawable/ic_version" />
+        android:layout_marginRight="16dp"
+        app:srcCompat="@drawable/im_places_dummy_images" />
 
     <LinearLayout
         android:layout_width="0dp"
@@ -23,7 +24,7 @@
 
         <TextView
             android:id="@+id/title"
-            style="@style/text.h3"
+            style="@style/text.h2"
             android:maxLines="1"
             android:ellipsize="end"
             android:text="TextView" />

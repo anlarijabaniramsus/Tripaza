@@ -19,7 +19,7 @@ class MapsViewModel : ViewModel() {
         val character = arrayListOf<String>("A", "B", "C", "D")
         val div = character.size
         var ptr = 0
-        data.add(Place("OFFSET", "OFFSET"))
+        
         for (i in 1..10_000){
             val rating = (abs(Random.nextInt()) %5)+1
             data.add( Place("${identifier} ${character[i%div]}${ptr}", "My ${identifier} ${character[i%div]}${ptr}", "My ${identifier} Location ${character[i%div]}${ptr}", "My ${identifier} description ${character[i%div]}${ptr++}", rating) )
