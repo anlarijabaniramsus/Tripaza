@@ -15,16 +15,13 @@ import com.tripaza.tripaza.databases.dataobject.Place
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
-    private lateinit var placeListAdapter: PlaceListAdapter
-    
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
-
+    private lateinit var placeListAdapter: PlaceListAdapter
+    private lateinit var homeViewModel: HomeViewModel
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
 
-        val homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
         placeListAdapter = PlaceListAdapter()
         homeViewModel.foodList.observe(viewLifecycleOwner){
             placeListAdapter.setFoodList(it)

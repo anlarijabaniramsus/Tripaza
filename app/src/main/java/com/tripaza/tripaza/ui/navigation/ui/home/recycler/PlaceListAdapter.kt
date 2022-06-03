@@ -78,8 +78,8 @@ class PlaceListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     interface OnItemClickCallback {
         fun onItemClicked(data: Place)
     }
-    
-    class HeaderViewHolder(var binding: RvItemHeaderBinding) : RecyclerView.ViewHolder(binding.root){
+
+    private class HeaderViewHolder(var binding: RvItemHeaderBinding) : RecyclerView.ViewHolder(binding.root){
         fun bind(foodList: ArrayList<Food>, featuredPlace: Place) {
             binding.itemHeaderRvHorizontal
             val foodListAdapter = FoodListAdapter()
@@ -97,7 +97,7 @@ class PlaceListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         }
     }
     
-    class PlaceViewHolder(var binding: RvItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    private class PlaceViewHolder(var binding: RvItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(holder: PlaceViewHolder, place: Place) {
             holder.apply {
                 StarRatingHelper.setStarRating(holder.binding.itemLayout.starRating, abs((Random.nextInt())%5) + 1)

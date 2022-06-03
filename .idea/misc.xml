@@ -39,6 +39,7 @@
         <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/layout/custom_preference_category.xml" value="0.20833333333333334" />
         <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/layout/fragment_dashboard.xml" value="0.10572916666666667" />
         <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/layout/fragment_home.xml" value="0.14" />
+        <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/layout/fragment_maps.xml" value="0.33" />
         <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/layout/fragment_notifications.xml" value="0.11875" />
         <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/layout/fragment_preferences.xml" value="0.10104166666666667" />
         <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/layout/fragment_profile.xml" value="0.18" />
@@ -50,6 +51,7 @@
         <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/layout/rv_item_header.xml" value="0.18" />
         <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/layout/rv_item_horizontal.xml" value="0.209375" />
         <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/layout/rv_item_template.xml" value="0.25" />
+        <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/layout/rv_search_result_item.xml" value="0.25" />
         <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/layout/star_rating.xml" value="0.33" />
         <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/menu/bottom_nav_menu.xml" value="0.2" />
         <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/xml/preferences.xml" value="0.25" />
