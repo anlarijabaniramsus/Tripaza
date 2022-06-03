@@ -59,5 +59,6 @@
     <string name="location_icon">location icon</string>
     <string name="location">Location</string>
     <string name="star_rating">star rating</string>
+    <string name="nearest_place">Nearest place</string>
 
 </resources>

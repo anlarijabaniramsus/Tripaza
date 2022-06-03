@@ -1,20 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
-
-<!--<fragment xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--    xmlns:tools="http://schemas.android.com/tools"-->
-<!--    android:layout_width="match_parent"-->
-<!--    android:layout_height="match_parent"-->
-<!--    android:id="@+id/map"-->
-<!--    tools:context="com.tripaza.tripaza.ui.navigation.ui.maps.MapsFragment"-->
-<!--    android:name="com.google.android.gms.maps.SupportMapFragment" />-->
-
-
-
-
-
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -29,17 +13,17 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.5"/>
-
+    <TextView
+        style="@style/text.h3"
+        android:layout_marginTop="32dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="16dp"
+        android:text="@string/nearest_place"/>
+    
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_search_result"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.5"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="401dp" />
-
-
+        android:layout_weight="0.5"/>
 </LinearLayout>
-
-
-

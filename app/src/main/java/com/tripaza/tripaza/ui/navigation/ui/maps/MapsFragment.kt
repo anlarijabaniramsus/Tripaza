@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,7 +18,10 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.tripaza.tripaza.R
+import com.tripaza.tripaza.databases.dataobject.Place
 import com.tripaza.tripaza.databinding.FragmentMapsBinding
+import com.tripaza.tripaza.ui.navigation.ui.home.recycler.PlaceListAdapter
+import java.util.concurrent.ForkJoinTask
 
 class MapsFragment : Fragment() {
     private lateinit var mapsViewModel: MapsViewModel
@@ -61,5 +65,10 @@ class MapsFragment : Fragment() {
         }
         binding.rvSearchResult.layoutManager = LinearLayoutManager(requireContext())
         binding.rvSearchResult.adapter = searchResultListAdapter
+        searchResultListAdapter.setOnItemClickCallback(object : SearchResultListAdapter.OnItemClickCallback{
+            override fun onItemClicked(data: Place) {
+                Toast.makeText(requireContext(), "Item ${data.name} Clicked", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 }

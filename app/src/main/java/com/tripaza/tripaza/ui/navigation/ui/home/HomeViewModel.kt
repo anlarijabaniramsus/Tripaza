@@ -39,7 +39,7 @@ class HomeViewModel : ViewModel() {
         val div = character.size
         var ptr = 0
 
-        for (i in 1..10_000){
+        for (i in 1..100){
             val rating = (abs(Random.nextInt())%5)+1
             data.add( Food("${identifier} ${character[i%div]}${ptr}", "My ${identifier} ${character[i%div]}${ptr}", "My ${identifier} Location ${character[i%div]}${ptr}", "My ${identifier} description ${character[i%div]}${ptr++}", rating) )
         }
@@ -52,7 +52,7 @@ class HomeViewModel : ViewModel() {
         val div = character.size
         var ptr = 0
         data.add(Place("OFFSET", "OFFSET"))
-        for (i in 1..10_000){
+        for (i in 1..100){
             val rating = (abs(Random.nextInt())%5)+1
             data.add( Place("${identifier} ${character[i%div]}${ptr}", "My ${identifier} ${character[i%div]}${ptr}", "My ${identifier} Location ${character[i%div]}${ptr}", "My ${identifier} description ${character[i%div]}${ptr++}", rating) )
         }

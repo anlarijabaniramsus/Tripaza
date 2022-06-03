@@ -53,6 +53,7 @@ class SearchResultListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() 
             holder.apply {
                 StarRatingHelper.setStarRating(holder.binding.starRating, abs((Random.nextInt())%5) + 1)
                 this.binding.title.text = place.name
+                this.binding.description.text = place.description
                 Glide.with(this.binding.root.context)
                     .load(R.drawable.im_places_dummy_images)
                     .into(this.binding.icon)
