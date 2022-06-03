@@ -17,9 +17,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.tripaza.tripaza.R
-import com.tripaza.tripaza.databinding.FragmentHomeBinding
 import com.tripaza.tripaza.databinding.FragmentMapsBinding
-import com.tripaza.tripaza.ui.navigation.ui.home.HomeViewModel
 
 class MapsFragment : Fragment() {
     private lateinit var mapsViewModel: MapsViewModel

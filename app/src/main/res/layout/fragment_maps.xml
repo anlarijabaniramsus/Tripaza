@@ -1,19 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
+
+<!--<fragment xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:id="@+id/map"-->
+<!--    tools:context="com.tripaza.tripaza.ui.navigation.ui.maps.MapsFragment"-->
+<!--    android:name="com.google.android.gms.maps.SupportMapFragment" />-->
+
+
+
+
+
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.navigation.ui.home.HomeFragment">
+    tools:context=".ui.navigation.ui.maps.MapsFragment">
 
     <fragment
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.5"
-        tools:context=".ui.navigation.ui.maps.MapsFragment" />
+        android:layout_weight="0.5"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_search_result"
