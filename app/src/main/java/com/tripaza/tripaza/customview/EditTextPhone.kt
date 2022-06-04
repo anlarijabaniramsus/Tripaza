@@ -49,7 +49,7 @@ class EditTextPhone: AppCompatEditText, View.OnTouchListener{
     private fun errorHandler() {
         val textInputLayout = this.parent.parent as TextInputLayout
 
-        val validity = Validator.isPhoneValid(context, text.toString())
+        val validity = Validator.isPhoneValid(text.toString())
         if (validity.valid){
             textInputLayout.error = null
         }else{

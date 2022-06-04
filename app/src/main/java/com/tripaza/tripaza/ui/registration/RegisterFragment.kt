@@ -86,7 +86,7 @@ class RegisterFragment : Fragment() {
         val password = binding.frRegisterEtPassword.text.toString()
 
         var allowRegister = true
-        var result = Validator.isInputValid(requireContext(), name)
+        var result = Validator.isInputValid(name)
         if (allowRegister && !result.valid){
             Toast.makeText(requireContext(), result.errorMessage, Toast.LENGTH_SHORT).show()
             binding.frRegisterEtName.requestFocus()
@@ -94,7 +94,7 @@ class RegisterFragment : Fragment() {
             allowRegister = false
         }
 
-        result = Validator.isInputValid(requireContext(), dob)
+        result = Validator.isInputValid(dob)
         if (allowRegister && !result.valid){
             Toast.makeText(requireContext(), result.errorMessage, Toast.LENGTH_SHORT).show()
             binding.frRegisterEtDob.requestFocus()
@@ -102,7 +102,7 @@ class RegisterFragment : Fragment() {
             allowRegister = false
         }
 
-        result = Validator.isEmailValid(requireContext(), email)
+        result = Validator.isEmailValid(email)
         if (allowRegister && !result.valid){
             Toast.makeText(requireContext(), result.errorMessage, Toast.LENGTH_SHORT).show()
             binding.frRegisterEtEmail.requestFocus()
@@ -110,7 +110,7 @@ class RegisterFragment : Fragment() {
             allowRegister = false
         }
 
-        result = Validator.isPhoneValid(requireContext(), phone)
+        result = Validator.isPhoneValid(phone)
         if (allowRegister && !result.valid){
             Toast.makeText(requireContext(), result.errorMessage, Toast.LENGTH_SHORT).show()
             binding.frRegisterEtPhone.requestFocus()
@@ -118,7 +118,7 @@ class RegisterFragment : Fragment() {
             allowRegister = false
         }
 
-        result = Validator.isPasswordValid(requireContext(), password)
+        result = Validator.isPasswordValid(password)
         if (allowRegister && !result.valid){
             Toast.makeText(requireContext(), result.errorMessage, Toast.LENGTH_SHORT).show()
             binding.frRegisterEtPassword.requestFocus()

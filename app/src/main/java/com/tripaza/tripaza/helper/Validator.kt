@@ -4,7 +4,7 @@ import android.content.Context
 
 class ValidatorResult(var valid: Boolean,var errorMessage: String)
 object Validator {
-    fun isEmailValid(context: Context, email: String): ValidatorResult{
+    fun isEmailValid(email: String): ValidatorResult{
         return if(email.isEmpty())
                     ValidatorResult(false, "Email can't be empty")
                 else if(email[0].isWhitespace())
@@ -15,7 +15,7 @@ object Validator {
                     ValidatorResult(true, "Valid")
     }
     
-    fun isPasswordValid(context: Context, password: String): ValidatorResult{
+    fun isPasswordValid(password: String): ValidatorResult{
         return if(password.isEmpty()){
                     ValidatorResult(false, "Password can't be empty")
                 }else if(password[0].isWhitespace()){
@@ -26,7 +26,7 @@ object Validator {
                     ValidatorResult(true, "Valid")
     }
     
-    fun isPhoneValid(context: Context, phone: String): ValidatorResult{
+    fun isPhoneValid(phone: String): ValidatorResult{
         return if(phone.isEmpty())
                     ValidatorResult(false, "Phone number can't be empty")
                 else if(phone[0].isWhitespace())
@@ -38,7 +38,7 @@ object Validator {
                 else
                     ValidatorResult(true, "Valid")
     }
-    fun isInputValid(context: Context, text: String): ValidatorResult{
+    fun isInputValid(text: String): ValidatorResult{
         return if(text.isEmpty())
             ValidatorResult(false, "Field can't be empty")
         else if(text[0].isWhitespace())

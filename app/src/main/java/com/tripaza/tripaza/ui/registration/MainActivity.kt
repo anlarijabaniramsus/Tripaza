@@ -71,7 +71,7 @@ class MainActivity : AppCompatActivity() {
         val password = binding.mainEtPassword.text.toString()
 
         var allowLogin = true
-        var result = Validator.isEmailValid(this, email)
+        var result = Validator.isEmailValid(email)
         if (allowLogin && !result.valid){
             Toast.makeText(this, result.errorMessage, Toast.LENGTH_SHORT).show()
             binding.mainEtEmail.requestFocus()
@@ -79,7 +79,7 @@ class MainActivity : AppCompatActivity() {
             allowLogin = false
         }
 
-        result = Validator.isPasswordValid(this, password)
+        result = Validator.isPasswordValid(password)
         if (allowLogin && !result.valid){
             Toast.makeText(this, result.errorMessage, Toast.LENGTH_SHORT).show()
             binding.mainEtPassword.requestFocus()

@@ -12,14 +12,14 @@ class PreferencesHelper(val context: Context){
         private const val TAG = "PreferenceHelper"
     }
     private val pref = context.getSharedPreferences(context.getString(R.string.APP_PREFERENCES_NAME), Context.MODE_PRIVATE)
-
-
+    
     fun setUser(u: User){
         val editor = pref.edit()
         editor.putString(USER_ID, u.id)
         editor.putString(NAME, u.name)
         editor.apply()
     }
+    
     fun getUser(): User{
         return User(
             id = pref.getString(USER_ID,"").toString(),
@@ -30,5 +30,4 @@ class PreferencesHelper(val context: Context){
     fun isDarkMode(): Boolean{
         return pref.getBoolean(context.getString(R.string.APP_PREFERENCES_DARK_MODE_KEY), false)
     }
-    
 }
