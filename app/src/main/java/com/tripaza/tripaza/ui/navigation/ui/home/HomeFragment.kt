@@ -1,5 +1,6 @@
 package com.tripaza.tripaza.ui.navigation.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.tripaza.tripaza.databinding.FragmentHomeBinding
 import com.tripaza.tripaza.ui.navigation.ui.home.recycler.PlaceListAdapter
 import com.tripaza.tripaza.databases.dataobject.Place
+import com.tripaza.tripaza.ui.detail.DetailActivity
 
 class HomeFragment : Fragment() {
 
@@ -58,6 +60,9 @@ class HomeFragment : Fragment() {
             override fun onItemClicked(data: Place) {
                 if(data.id != "OFFSET"){
                     Toast.makeText(requireContext(), "Item ${data.name} Clicked", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(requireContext(), DetailActivity::class.java)
+                    startActivity(intent)
+                    
                 }
             }
         })
