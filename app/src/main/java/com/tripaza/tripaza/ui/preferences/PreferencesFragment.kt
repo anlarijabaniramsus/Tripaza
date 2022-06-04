@@ -8,6 +8,8 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import com.tripaza.tripaza.R
+import com.tripaza.tripaza.databases.dataobject.User
+import com.tripaza.tripaza.helper.PreferencesHelper
 import com.tripaza.tripaza.ui.registration.MainActivity
 
 
@@ -28,9 +30,8 @@ class PreferencesFragment : PreferenceFragmentCompat(), SharedPreferences.OnShar
     }
 
     private fun logout() {
-        // CLEAR UP USER DATA HERE
-//        userPreference.setUser(User()) ::for examples
-        // TODO()
+        // CLEAR UP USER DATA
+        PreferencesHelper(requireContext()).setUser(User())
         val intent = Intent(context, MainActivity::class.java)
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)

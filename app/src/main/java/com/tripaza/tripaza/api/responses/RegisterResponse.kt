@@ -1,18 +1,15 @@
-package com.tripaza.tripaza.api
+package com.tripaza.tripaza.api.responses
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class LoginResponse(
+data class RegisterResponse(
 
     @field:SerializedName("status")
-    val status: Boolean? = null,
+    val status: Boolean = false,
 
-    @field:SerializedName("user")
-    val user: Int? = null,
-    
     @field:SerializedName("message")
-    val message: String? = null
+    val message: String = ""
 ):Parcelable

@@ -1,4 +1,4 @@
-package com.tripaza.tripaza.api
+package com.tripaza.tripaza.api.postrequest
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
@@ -11,6 +11,6 @@ data class PostLogin(
     val status: String = "",
 
     @field:SerializedName("password")
-    val user: String = "",
+    val password: String = "",
     
 ):Parcelable

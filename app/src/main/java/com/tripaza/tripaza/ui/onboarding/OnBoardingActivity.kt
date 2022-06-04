@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.Window
 import android.view.WindowManager
 import com.tripaza.tripaza.databinding.ActivityOnBoardingBinding
+import com.tripaza.tripaza.helper.HelperTools
 import com.tripaza.tripaza.ui.navigation.MainNavigationActivity
 import com.tripaza.tripaza.helper.PreferencesHelper
 import com.tripaza.tripaza.ui.registration.MainActivity
@@ -20,16 +21,9 @@ class OnBoardingActivity : AppCompatActivity() {
         
         preferences = PreferencesHelper(this)
         checkIsUserAlreadyLoggedIn()
-        preferences.setUpDarkMode()
+        HelperTools.setUpDarkMode(this)
         fullscreen()
         setContentView(binding.root)
-        
-//        ============
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
-        finish()
-//        ============
-        
         
         binding.button.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
@@ -39,7 +33,7 @@ class OnBoardingActivity : AppCompatActivity() {
     }
 
     private fun checkIsUserAlreadyLoggedIn() {
-        if (preferences.isUserLoggedIn()){
+        if (preferences.getUser().id.isNotEmpty()){
             val intent = Intent(this, MainNavigationActivity::class.java)
             startActivity(intent)
             finish()

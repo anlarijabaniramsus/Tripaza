@@ -145,12 +145,22 @@
         <Button
             android:id="@+id/fr_register_btn_register"
             style="@style/button.wide"
+            android:layout_marginTop="8dp"
             android:text="@string/register"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fr_register_til_password"
-            app:layout_constraintVertical_bias="0.19999999" />
+            app:layout_constraintTop_toBottomOf="@+id/progressBar" />
+
+        <TextView
+            android:id="@+id/fr_register_tv_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#f00"
+            app:layout_constraintBottom_toTopOf="@+id/fr_profile_iv_separator_line_account"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fr_register_btn_register"
+            tools:text="Error" />
 
         <TextView
             android:id="@+id/fr_register_already_have_account"
@@ -165,10 +175,21 @@
             android:id="@+id/fr_profile_iv_separator_line_account"
             style="@style/separator"
             android:layout_marginTop="32dp"
+            android:contentDescription="@string/line_separator"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fr_register_btn_register"
-            android:contentDescription="@string/line_separator" />
+            app:layout_constraintTop_toBottomOf="@id/fr_register_btn_register" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fr_register_til_password" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
     
