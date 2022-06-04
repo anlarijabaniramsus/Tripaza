@@ -60,7 +60,10 @@ class HomeFragment : Fragment() {
             override fun onItemClicked(data: Place) {
                 if(data.id != "OFFSET"){
                     Toast.makeText(requireContext(), "Item ${data.name} Clicked", Toast.LENGTH_SHORT).show()
+                    val bundle = Bundle()
+                    bundle.putParcelable(DetailActivity.EXTRA_DATA, data)
                     val intent = Intent(requireContext(), DetailActivity::class.java)
+                    intent.putExtra(DetailActivity.EXTRA_BUNDLE, bundle)
                     startActivity(intent)
                     
                 }

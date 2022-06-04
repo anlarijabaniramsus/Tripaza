@@ -22,8 +22,52 @@ class DetailViewModel: ViewModel() {
 
         for (i in 1..10){
             val rating = (abs(Random.nextInt()) %5)+1
-            data.add( Food("${identifier} ${character[i%div]}${ptr}", "My ${identifier} ${character[i%div]}${ptr}", "My ${identifier} Location ${character[i%div]}${ptr}", "My ${identifier} description ${character[i%div]}${ptr++}", rating) )
+            data.add( Food(
+                "${identifier} ${character[i%div]}${ptr}", 
+                "My ${identifier} ${character[i%div]}${ptr}", 
+                "My ${identifier} Location ${character[i%div]}${ptr}", 
+                "My ${identifier} description ${character[i%div]}${ptr++}", 
+                rating,
+                0.0,
+                0.0
+            ))
         }
         return data
+    }
+    
+    
+//    View Item
+    private val _title = MutableLiveData<String>()
+    val title: LiveData<String> = _title
+    
+    private val _description = MutableLiveData<String>()
+    val description: LiveData<String> = _description
+    
+    private val _rating = MutableLiveData<Int>()
+    val rating: LiveData<Int> = _rating
+
+    private val _lat = MutableLiveData<Double>()
+    val lat: LiveData<Double> = _lat
+
+    private val _lng = MutableLiveData<Double>()
+    val lng: LiveData<Double> = _lng
+    
+    fun setTitle(title: String){
+        _title.value = title
+    }
+
+    fun setDescription(description: String){
+        _description.value = description
+    }
+
+    fun setRating(rating: Int){
+        _rating.value = rating
+    }
+
+    fun setLat(lat: Double){
+        _lat.value = lat
+    }
+    fun setLng(lng: Double){
+        _lng.value = lng
     }
 }
