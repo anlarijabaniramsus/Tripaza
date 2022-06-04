@@ -23,6 +23,14 @@ class OnBoardingActivity : AppCompatActivity() {
         preferences.setUpDarkMode()
         fullscreen()
         setContentView(binding.root)
+        
+//        ============
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
+//        ============
+        
+        
         binding.button.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)

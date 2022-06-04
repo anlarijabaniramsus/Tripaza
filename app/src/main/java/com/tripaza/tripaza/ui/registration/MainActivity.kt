@@ -2,9 +2,11 @@ package com.tripaza.tripaza.ui.registration
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.tripaza.tripaza.databinding.ActivityMainBinding
 import com.tripaza.tripaza.helper.Validator
 import com.tripaza.tripaza.ui.navigation.MainNavigationActivity
@@ -13,6 +15,7 @@ import com.tripaza.tripaza.ui.onboarding.OnBoardingActivity
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private var isExecutingRegistration = false
+    private lateinit var viewModel: MainActivityModel
     companion object{
         const val REGISTER_EXTRA_EMAIL = "extra_email_after_create_account_success"
         const val REGISTER_EXTRA_PASSWORD = "extra_password_after_create_account_success"
@@ -23,7 +26,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.title = ""
-        
+        viewModel = ViewModelProvider(this).get(MainActivityModel::class.java)
+        viewModel.SET_DEVELOPMENT_ONLY_CONTEXT = this
         binding.mainTvDoNotHaveAccount.setOnClickListener{
             val  intent = Intent(this, RegisterActivity::class.java)
             registerResultLauncher.launch(intent)
@@ -31,9 +35,20 @@ class MainActivity : AppCompatActivity() {
         binding.mainBtnLogin.setOnClickListener {
             login()
         }
-        
-        
-        
+        viewModel.isLoading.observe(this){
+            if (it){
+                binding.mainProgressBar.visibility = View.VISIBLE
+            }else{
+                binding.mainProgressBar.visibility = View.GONE
+                isError(true)
+            }
+        }
+        viewModel.isError.observe(this){
+            isError(it)
+        }
+        // HELPER
+        binding.mainEtEmail.setText("raflyramdhani12@gmail.com")
+        binding.mainEtPassword.setText("rafly06")
 
         
     }
@@ -71,9 +86,21 @@ class MainActivity : AppCompatActivity() {
         }
 
         if (allowLogin){
-            // DO LOGIN PROCESS HERE
-            Toast.makeText(this, "EXECUTING LOGIN PROCESS", Toast.LENGTH_SHORT).show()
-            devImmediateLaunchMainApp()
+            val email = binding.mainEtEmail.text.toString()
+            val password = binding.mainEtPassword.text.toString()
+            viewModel.login(email, password)
+            viewModel.loginResponse.observe(this){
+                if (it.status == true)
+                    launchMainApp()
+            }
+        }
+    }
+    private fun isError(isError: Boolean){
+        if (isError){
+            binding.mainTvError.text = "Wrong email or password"
+            binding.mainTvError.visibility = View.VISIBLE
+        }else{
+            binding.mainTvError.visibility = View.GONE
         }
     }
     
@@ -85,14 +112,13 @@ class MainActivity : AppCompatActivity() {
             binding.mainEtPassword.setText(password)
         }
     }
-
-
+    
     private fun devImmediateLaunchOnboarding() {
         val intent = Intent(this, OnBoardingActivity::class.java)
         startActivity(intent)
     }
 
-    private fun devImmediateLaunchMainApp(){
+    private fun launchMainApp(){
         val intent = Intent(this, MainNavigationActivity::class.java)
         startActivity(intent)
         finish()

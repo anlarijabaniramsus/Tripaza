@@ -21,7 +21,7 @@ class PreferencesHelper(val context: Context){
     
     fun isUserLoggedIn(): Boolean{
 //        TODO()
-        return true
+        return false
     }
     
 }

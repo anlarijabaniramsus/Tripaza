@@ -20,8 +20,8 @@ object Validator {
                     ValidatorResult(false, "Password can't be empty")
                 }else if(password[0].isWhitespace()){
                     ValidatorResult(false, "password should start with character")
-                }else if(password.length < 8){
-                    ValidatorResult(false, "Password should more than 8 character")
+                }else if(password.length < 6){
+                    ValidatorResult(false, "Password should more than 6 character")
                 }else
                     ValidatorResult(true, "Valid")
     }
@@ -31,8 +31,8 @@ object Validator {
                     ValidatorResult(false, "Phone number can't be empty")
                 else if(phone[0].isWhitespace())
                     ValidatorResult(false, "phone should start with character")
-                else if(phone.length < 8)
-                    ValidatorResult(false, "Phone should more than 8 character")
+                else if(phone.length < 6)
+                    ValidatorResult(false, "Phone should more than 6 character")
                 else if(!android.util.Patterns.PHONE.matcher(phone).matches())
                     ValidatorResult(false, "Phone is not valid")
                 else
