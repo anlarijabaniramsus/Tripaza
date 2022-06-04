@@ -67,7 +67,7 @@
                 android:cursorVisible="false"
                 android:enabled="true"
                 android:focusable="false"
-                android:hint="@string/date_22_maret_1999"
+                android:hint="@string/date_1999_01_21"
                 android:inputType="date" />
         </com.google.android.material.textfield.TextInputLayout>
 

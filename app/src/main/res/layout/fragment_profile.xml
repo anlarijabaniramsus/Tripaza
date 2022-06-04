@@ -138,7 +138,7 @@
                     <TextView
                         android:id="@+id/fr_profile_tv_value_dob"
                         style="@style/profile_list_text_value"
-                        android:text="@string/date_22_maret_1999" />
+                        android:text="@string/date_1999_01_21" />
                 </LinearLayout>
             </LinearLayout>
 
