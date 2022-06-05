@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.tripaza.tripaza.databases.dataobject.Food
+import com.tripaza.tripaza.helper.Constants.DUMMY_IMAGE_PLACE
 import kotlin.math.abs
 import kotlin.random.Random
 
@@ -29,7 +30,8 @@ class DetailViewModel: ViewModel() {
                 "My ${identifier} description ${character[i%div]}${ptr++}", 
                 rating,
                 0.0,
-                0.0
+                0.0,
+                DUMMY_IMAGE_PLACE
             ))
         }
         return data

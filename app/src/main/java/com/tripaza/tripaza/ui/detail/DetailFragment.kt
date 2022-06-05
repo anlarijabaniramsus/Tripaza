@@ -1,6 +1,5 @@
 package com.tripaza.tripaza.ui.detail
 
-import android.content.ClipDescription
 import android.content.Intent
 import androidx.fragment.app.Fragment
 
@@ -9,11 +8,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -27,25 +23,31 @@ import com.tripaza.tripaza.databases.dataobject.Place
 import com.tripaza.tripaza.databinding.FragmentDetailBinding
 import com.tripaza.tripaza.helper.StarRatingHelper
 import com.tripaza.tripaza.ui.navigation.ui.home.recycler.FoodListAdapter
-import com.tripaza.tripaza.ui.navigation.ui.home.recycler.PlaceListAdapter
 
 class DetailFragment : Fragment(), OnMapReadyCallback {
     companion object{
-        private val ITEM_TITLE = "item_title"
-        private val ITEM_DESCRIPTION = "item_description"
-        private val ITEM_RATING = "item_rating"
-        private val ITEM_LAT = "item_lat"
-        private val ITEM_LNG = "item_lng"
+        private const val ITEM_ID = "item_id"
+        private const val ITEM_NAME = "item_title"
+        private const val ITEM_LOCATION = "item_location"
+        private const val ITEM_DESCRIPTION = "item_description"
+        private const val ITEM_RATING = "item_rating"
+        private const val ITEM_LAT = "item_lat"
+        private const val ITEM_LNG = "item_lng"
         private const val TAG = "DetailFragment"
         @JvmStatic
-        fun newInstance(title: String,
+        fun newInstance(
+                        id: String,
+                        name: String,
+                        location: String,
                         description: String,
                         rating: Int,
                         lat: Double,
                         lng: Double
         ) = DetailFragment().apply {
             arguments = Bundle().apply {
-                putString(ITEM_TITLE, title)
+                putString(ITEM_ID, id)
+                putString(ITEM_NAME, name)
+                putString(ITEM_LOCATION, name)
                 putString(ITEM_DESCRIPTION, description)
                 putInt(ITEM_RATING, rating)
                 putDouble(ITEM_LAT, lat)
@@ -68,7 +70,7 @@ class DetailFragment : Fragment(), OnMapReadyCallback {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProvider(this).get(DetailViewModel::class.java)
         arguments?.let {
-            val title = it.getString(ITEM_TITLE, "")
+            val title = it.getString(ITEM_NAME, "")
             val description = it.getString(ITEM_DESCRIPTION, "")
             val rating = it.getInt(ITEM_RATING, 0)
             val lat = it.getDouble(ITEM_LAT, 0.0)
@@ -132,7 +134,10 @@ class DetailFragment : Fragment(), OnMapReadyCallback {
         
         foodListAdapter.setOnItemClickCallback(object : FoodListAdapter.OnItemClickCallback{
             override fun onItemClicked(data: Food) {
+                val bundle = Bundle()
+                bundle.putParcelable(DetailActivity.EXTRA_DATA, data)
                 val intent = Intent(requireContext(), DetailActivity::class.java)
+                intent.putExtra(DetailActivity.EXTRA_BUNDLE, bundle)
                 startActivity(intent)
             }
         })

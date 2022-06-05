@@ -6,6 +6,9 @@ import androidx.lifecycle.ViewModel
 import com.tripaza.tripaza.R
 import com.tripaza.tripaza.databases.dataobject.Food
 import com.tripaza.tripaza.databases.dataobject.Place
+import com.tripaza.tripaza.helper.Constants.DUMMY_IMAGE_FEATURED
+import com.tripaza.tripaza.helper.Constants.DUMMY_IMAGE_FOOD
+import com.tripaza.tripaza.helper.Constants.DUMMY_IMAGE_PLACE
 import kotlin.math.abs
 import kotlin.random.Random
 
@@ -26,7 +29,7 @@ class HomeViewModel : ViewModel() {
                 "cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\n" +
                 "proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
         
-        value = Place("123", "Wisata Pantai Bali", "Bali", desc, 5)
+        value = Place("123", "Wisata Pantai Bali", "Bali", desc, 5, 0.0, 0.0, DUMMY_IMAGE_FEATURED)
     }
     
     val foodList: LiveData<ArrayList<Food>> = _foodList
@@ -41,7 +44,7 @@ class HomeViewModel : ViewModel() {
 
         for (i in 1..100){
             val rating = (abs(Random.nextInt())%5)+1
-            data.add( Food("${identifier} ${character[i%div]}${ptr}", "My ${identifier} ${character[i%div]}${ptr}", "My ${identifier} Location ${character[i%div]}${ptr}", "My ${identifier} description ${character[i%div]}${ptr++}", rating) )
+            data.add( Food("${identifier} ${character[i%div]}${ptr}", "My ${identifier} ${character[i%div]}${ptr}", "My ${identifier} Location ${character[i%div]}${ptr}", "My ${identifier} description ${character[i%div]}${ptr++}", rating, 0.0, 0.0, DUMMY_IMAGE_FOOD) )
         }
         return data
     }
@@ -51,10 +54,10 @@ class HomeViewModel : ViewModel() {
         val character = arrayListOf<String>("A", "B", "C", "D")
         val div = character.size
         var ptr = 0
-        data.add(Place("OFFSET", "OFFSET"))
+        data.add(Place("OFFSET", "OFFSET", "OFFSET", "OFFSET", 0, 0.0, 0.0, DUMMY_IMAGE_PLACE))
         for (i in 1..100){
             val rating = (abs(Random.nextInt())%5)+1
-            data.add( Place("${identifier} ${character[i%div]}${ptr}", "My ${identifier} ${character[i%div]}${ptr}", "My ${identifier} Location ${character[i%div]}${ptr}", "My ${identifier} description ${character[i%div]}${ptr++}", rating) )
+            data.add( Place("${identifier} ${character[i%div]}${ptr}", "My ${identifier} ${character[i%div]}${ptr}", "My ${identifier} Location ${character[i%div]}${ptr}", "My ${identifier} description ${character[i%div]}${ptr++}", rating, 0.0, 0.0, DUMMY_IMAGE_PLACE) )
         }
         return data
     }

@@ -31,7 +31,7 @@ class FoodListAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             StarRatingHelper.setStarRating(this.binding.itemLayout.starRating, abs((Random.nextInt())%5) + 1)
             this.binding.itemLayout.title.text = data.name
             Glide.with(holder.binding.root.context)
-                .load(R.drawable.im_places_dummy_images)
+                .load(data.image)
                 .into(holder.binding.itemLayout.ivItemImages)
             this.itemView.setOnClickListener { onItemClickCallback.onItemClicked(foodList[holder.adapterPosition]) }
         }
