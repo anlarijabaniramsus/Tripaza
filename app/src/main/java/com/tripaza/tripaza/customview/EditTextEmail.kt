@@ -48,7 +48,7 @@ class EditTextEmail: AppCompatEditText, View.OnTouchListener{
     private fun errorHandler() {
         val textInputLayout = this.parent.parent as TextInputLayout
         
-        val validity = Validator.isEmailValid(context, text.toString())
+        val validity = Validator.isEmailValid(text.toString())
         if (validity.valid){
             textInputLayout.error = null
         }else{

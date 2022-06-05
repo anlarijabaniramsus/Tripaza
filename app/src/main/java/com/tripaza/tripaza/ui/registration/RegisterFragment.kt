@@ -4,6 +4,7 @@ import android.app.DatePickerDialog
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,18 +12,30 @@ import android.widget.DatePicker
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.tripaza.tripaza.R
 import com.tripaza.tripaza.databinding.FragmentRegisterBinding
 import com.tripaza.tripaza.helper.Validator
 import com.tripaza.tripaza.helper.DateHelper
 import java.util.*
+import com.tripaza.tripaza.api.Result
 
 
 class RegisterFragment : Fragment() {
+    
+    
+    companion object{
+        private const val TAG = "RegisterFragment"
+    }
+    
+    
     private lateinit var binding: FragmentRegisterBinding
     private var isExecutingRegistration = false
+    private lateinit var viewModel: RegisterActivityModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        viewModel = ViewModelProvider(this).get(RegisterActivityModel::class.java)
+        
     }
 
     override fun onCreateView(
@@ -52,7 +65,7 @@ class RegisterFragment : Fragment() {
         var str = "User$dateStr"
         binding.frRegisterEtName.setText(str)
         str += "@mail.com"
-        binding.frRegisterEtDob.setText(DateHelper.getFormattedCurrentDate("dd-MMM-yyyy"))
+        binding.frRegisterEtDob.setText(DateHelper.getFormattedCurrentDate("yyyy-MM-dd"))
         binding.frRegisterEtPhone.setText("081111111111")
         binding.frRegisterEtEmail.setText(str)
         binding.frRegisterEtPassword.setText("$str Password")
@@ -73,7 +86,7 @@ class RegisterFragment : Fragment() {
         val password = binding.frRegisterEtPassword.text.toString()
 
         var allowRegister = true
-        var result = Validator.isInputValid(requireContext(), name)
+        var result = Validator.isInputValid(name)
         if (allowRegister && !result.valid){
             Toast.makeText(requireContext(), result.errorMessage, Toast.LENGTH_SHORT).show()
             binding.frRegisterEtName.requestFocus()
@@ -81,7 +94,7 @@ class RegisterFragment : Fragment() {
             allowRegister = false
         }
 
-        result = Validator.isInputValid(requireContext(), dob)
+        result = Validator.isInputValid(dob)
         if (allowRegister && !result.valid){
             Toast.makeText(requireContext(), result.errorMessage, Toast.LENGTH_SHORT).show()
             binding.frRegisterEtDob.requestFocus()
@@ -89,7 +102,7 @@ class RegisterFragment : Fragment() {
             allowRegister = false
         }
 
-        result = Validator.isEmailValid(requireContext(), email)
+        result = Validator.isEmailValid(email)
         if (allowRegister && !result.valid){
             Toast.makeText(requireContext(), result.errorMessage, Toast.LENGTH_SHORT).show()
             binding.frRegisterEtEmail.requestFocus()
@@ -97,7 +110,7 @@ class RegisterFragment : Fragment() {
             allowRegister = false
         }
 
-        result = Validator.isPhoneValid(requireContext(), phone)
+        result = Validator.isPhoneValid(phone)
         if (allowRegister && !result.valid){
             Toast.makeText(requireContext(), result.errorMessage, Toast.LENGTH_SHORT).show()
             binding.frRegisterEtPhone.requestFocus()
@@ -105,7 +118,7 @@ class RegisterFragment : Fragment() {
             allowRegister = false
         }
 
-        result = Validator.isPasswordValid(requireContext(), password)
+        result = Validator.isPasswordValid(password)
         if (allowRegister && !result.valid){
             Toast.makeText(requireContext(), result.errorMessage, Toast.LENGTH_SHORT).show()
             binding.frRegisterEtPassword.requestFocus()
@@ -114,14 +127,35 @@ class RegisterFragment : Fragment() {
         }
 
         if (allowRegister){
-            // DO REGISTRATION PROCESS HERE
-            Toast.makeText(requireContext(), "EXECUTING REGISTRATION PROCESS", Toast.LENGTH_SHORT).show()
-            setActivityResult()
-            launchLandingFragment()
+            viewModel.register(email, password, name, dob, phone).observe(viewLifecycleOwner){
+                Toast.makeText(requireContext(), "EXECUTING REGISTRATION PROCESS", Toast.LENGTH_SHORT).show()
+                isExecutingRegistration = true
+                when (it) {
+                    is Result.Loading -> {
+                        binding.progressBar.visibility = View.VISIBLE
+                    }
+                    is Result.Error -> {
+                        isExecutingRegistration = false
+                        binding.progressBar.visibility = View.GONE
+                        binding.frRegisterTvError.text = "Registration Failed"
+                    }
+                    is Result.Success -> {
+                        isExecutingRegistration = false
+                        binding.frRegisterTvError.text = ""
+                        binding.progressBar.visibility = View.GONE
+                        if (it.data.status){
+                            onCreateUserSuccess()
+                            launchLandingFragment()
+                        }else{
+                            binding.frRegisterTvError.text = "Registration Failed"
+                        }
+                    }
+                }
+            }
         }
     }
     
-    private fun setActivityResult() {
+    private fun onCreateUserSuccess() {
         val email = binding.frRegisterEtEmail.text.toString()
         val password = binding.frRegisterEtPassword.text.toString()
         
