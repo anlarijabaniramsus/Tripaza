@@ -2,6 +2,8 @@ package com.tripaza.tripaza.ui.registration
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -16,6 +18,8 @@ import com.tripaza.tripaza.ui.onboarding.OnBoardingActivity
 import com.tripaza.tripaza.api.Result
 import com.tripaza.tripaza.api.responses.LoginResponse
 import com.tripaza.tripaza.databases.dataobject.User
+import com.tripaza.tripaza.helper.DoubleTapToExit
+import com.tripaza.tripaza.helper.HelperTools
 import com.tripaza.tripaza.helper.PreferencesHelper
 
 class MainActivity : AppCompatActivity() {
@@ -23,7 +27,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private var isExecutingLogin = false
     private lateinit var viewModel: MainActivityModel
-    
+    private var doubleTapToExit = DoubleTapToExit(false)
     companion object{
         const val REGISTER_EXTRA_EMAIL = "extra_email_after_create_account_success"
         const val REGISTER_EXTRA_PASSWORD = "extra_password_after_create_account_success"
@@ -47,17 +51,16 @@ class MainActivity : AppCompatActivity() {
             login()
         }
         
-        
         // HELPER
         binding.mainEtEmail.setText("raflyramdhani12@gmail.com")
         binding.mainEtPassword.setText("rafly06")
-
         
     }
-
-
-
-
+    
+    override fun onBackPressed() {
+        HelperTools.doubleTapToExit(doubleTapToExit, this)
+    }
+    
     private fun login(){
         if (isExecutingLogin){
             Toast.makeText(this, "Please wait", Toast.LENGTH_SHORT).show()

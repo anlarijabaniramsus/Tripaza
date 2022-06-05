@@ -6,6 +6,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class PostRegister(
+    
     @field:SerializedName("email")
     val email: String = "",
 
@@ -20,4 +21,5 @@ data class PostRegister(
     
     @field:SerializedName("phone_number")
     val phone_number: String = "",
+    
 ):Parcelable

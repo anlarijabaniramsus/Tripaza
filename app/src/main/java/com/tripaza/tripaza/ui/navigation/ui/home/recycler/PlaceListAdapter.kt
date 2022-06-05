@@ -13,7 +13,6 @@ import com.tripaza.tripaza.databinding.RvItemBinding
 import com.tripaza.tripaza.databinding.RvItemHeaderBinding
 import com.tripaza.tripaza.helper.Constants.DUMMY_IMAGE_FEATURED
 import com.tripaza.tripaza.helper.Constants.DUMMY_IMAGE_PLACE
-import com.tripaza.tripaza.helper.Constants.DUMMY_IMAGE_PROFILE
 import com.tripaza.tripaza.helper.HelperTools
 import com.tripaza.tripaza.helper.StarRatingHelper
 import com.tripaza.tripaza.ui.detail.DetailActivity
@@ -72,7 +71,8 @@ class PlaceListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     fun setFoodList(foodList: ArrayList<Food>){
         this.foodList = foodList
     }
-    fun setFeaturedFood(featuredFood: Place){
+    
+    fun setFeaturedItem(featuredFood: Item){
         this.featuredItem = featuredFood
     }
     
@@ -109,8 +109,9 @@ class PlaceListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private class PlaceViewHolder(var binding: RvItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(holder: PlaceViewHolder, place: Place) {
             holder.apply {
-                StarRatingHelper.setStarRating(holder.binding.itemLayout.starRating, abs((Random.nextInt())%5) + 1)
                 this.binding.itemLayout.title.text = place.name
+                this.binding.itemLayout.location.text = place.location
+                StarRatingHelper.setStarRating(holder.binding.itemLayout.starRating, abs((Random.nextInt())%5) + 1)
                 HelperTools.glideLoader(binding.root.context, DUMMY_IMAGE_PLACE, binding.itemLayout.ivItemImages, false)
             }
         }

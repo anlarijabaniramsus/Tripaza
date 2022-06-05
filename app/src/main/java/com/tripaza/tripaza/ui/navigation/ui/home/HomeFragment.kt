@@ -32,7 +32,7 @@ class HomeFragment : Fragment() {
             showStoryRecyclerList()
         }
         homeViewModel.featuredPlace.observe(viewLifecycleOwner){
-            placeListAdapter.setFeaturedFood(it)
+            placeListAdapter.setFeaturedItem(it)
         }
         
         return binding.root

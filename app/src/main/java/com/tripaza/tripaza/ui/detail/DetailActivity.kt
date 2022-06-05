@@ -26,6 +26,8 @@ class DetailActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction().replace(
             R.id.detail_container, detailFragment
         ).commit()
+        
+        
     }
     
 

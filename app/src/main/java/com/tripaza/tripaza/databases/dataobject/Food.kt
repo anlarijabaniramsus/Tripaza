@@ -6,6 +6,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class Food(
+    
     override var id: String,
     override var name: String = "",
     override var location: String  = "",
@@ -14,5 +15,6 @@ data class Food(
     override var lat: Double = 0.0,
     override var lng: Double = 0.0,
     override var image: String
+    
 ) : Parcelable, Item()
 
