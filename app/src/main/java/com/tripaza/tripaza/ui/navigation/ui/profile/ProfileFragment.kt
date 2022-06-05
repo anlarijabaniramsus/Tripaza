@@ -7,11 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.request.RequestOptions
-import com.tripaza.tripaza.R
 import com.tripaza.tripaza.databinding.FragmentProfileBinding
+import com.tripaza.tripaza.helper.Constants.DUMMY_IMAGE_PROFILE
+import com.tripaza.tripaza.helper.HelperTools
 import com.tripaza.tripaza.ui.preferences.PreferencesActivity
 
 class ProfileFragment : Fragment() {
@@ -37,16 +35,8 @@ class ProfileFragment : Fragment() {
             val intent = Intent(context, ProfileEditActivity::class.java)
             startActivity(intent)
         }
-
-        val requestOptions = RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL)
-
-        Glide.with(binding.root.context)
-            .load(R.drawable.profile_images)
-            .circleCrop()
-//            .placeholder(ContextCompat.getDrawable(binding.root.context,R.drawable.abc))
-            .apply(requestOptions)
-            .into(binding.frProfileIvProfilePhoto)
         
+        HelperTools.glideLoader(binding.root.context, DUMMY_IMAGE_PROFILE, binding.frProfileIvProfilePhoto, true)
         return root
     }
 

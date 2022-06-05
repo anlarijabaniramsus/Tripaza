@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.tripaza.tripaza.databases.dataobject.Food
+import com.tripaza.tripaza.databases.dataobject.Item
 import com.tripaza.tripaza.helper.Constants.DUMMY_IMAGE_PLACE
 import kotlin.math.abs
 import kotlin.random.Random
@@ -37,6 +38,12 @@ class DetailViewModel: ViewModel() {
         return data
     }
     
+    private val _item = MutableLiveData<Item>()
+    val item: LiveData<Item> = _item
+    
+    fun setItem(item: Item){
+        this._item.value = item
+    }
     
 //    View Item
     private val _title = MutableLiveData<String>()

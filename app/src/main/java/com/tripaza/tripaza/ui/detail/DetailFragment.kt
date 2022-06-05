@@ -19,39 +19,23 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.tripaza.tripaza.R
 import com.tripaza.tripaza.databases.dataobject.Food
+import com.tripaza.tripaza.databases.dataobject.Item
 import com.tripaza.tripaza.databases.dataobject.Place
 import com.tripaza.tripaza.databinding.FragmentDetailBinding
+import com.tripaza.tripaza.helper.HelperTools
 import com.tripaza.tripaza.helper.StarRatingHelper
 import com.tripaza.tripaza.ui.navigation.ui.home.recycler.FoodListAdapter
 
 class DetailFragment : Fragment(), OnMapReadyCallback {
     companion object{
-        private const val ITEM_ID = "item_id"
-        private const val ITEM_NAME = "item_title"
-        private const val ITEM_LOCATION = "item_location"
-        private const val ITEM_DESCRIPTION = "item_description"
-        private const val ITEM_RATING = "item_rating"
-        private const val ITEM_LAT = "item_lat"
-        private const val ITEM_LNG = "item_lng"
+        private const val ITEM = "item"
         private const val TAG = "DetailFragment"
         @JvmStatic
         fun newInstance(
-                        id: String,
-                        name: String,
-                        location: String,
-                        description: String,
-                        rating: Int,
-                        lat: Double,
-                        lng: Double
+            item: Item
         ) = DetailFragment().apply {
             arguments = Bundle().apply {
-                putString(ITEM_ID, id)
-                putString(ITEM_NAME, name)
-                putString(ITEM_LOCATION, name)
-                putString(ITEM_DESCRIPTION, description)
-                putInt(ITEM_RATING, rating)
-                putDouble(ITEM_LAT, lat)
-                putDouble(ITEM_LNG, lng)
+                putParcelable(ITEM, item)
             }
         }
     }
@@ -68,18 +52,10 @@ class DetailFragment : Fragment(), OnMapReadyCallback {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(DetailViewModel::class.java)
+        viewModel = ViewModelProvider(this)[DetailViewModel::class.java]
         arguments?.let {
-            val title = it.getString(ITEM_NAME, "")
-            val description = it.getString(ITEM_DESCRIPTION, "")
-            val rating = it.getInt(ITEM_RATING, 0)
-            val lat = it.getDouble(ITEM_LAT, 0.0)
-            val lng = it.getDouble(ITEM_LNG, 0.0)
-            viewModel.setTitle(title)
-            viewModel.setDescription(description)
-            viewModel.setRating(rating)
-            viewModel.setLat(lat)
-            viewModel.setLng(lng)
+            val item = it.getParcelable<Item>(ITEM)
+            viewModel.setItem(item!!)
         }
     }
     override fun onCreateView(
@@ -107,14 +83,12 @@ class DetailFragment : Fragment(), OnMapReadyCallback {
         mapFragment?.getMapAsync(this)
         setUpRecyclerView()
         
-        viewModel.title.observe(viewLifecycleOwner){
-            binding.title.text = it
-        }
-        viewModel.description.observe(viewLifecycleOwner){
-            binding.description.text = it
-        }
-        viewModel.rating.observe(viewLifecycleOwner){
-            StarRatingHelper.setStarRating(binding.starRating, it)
+        viewModel.item.observe(viewLifecycleOwner){
+            binding.title.text = it.name
+            binding.description.text = it.description
+            StarRatingHelper.setStarRating(binding.starRating, it.rating)
+            binding.ivItemImage
+            HelperTools.glideLoader(requireContext(), it.image, binding.ivItemImage, false)
         }
     }
 

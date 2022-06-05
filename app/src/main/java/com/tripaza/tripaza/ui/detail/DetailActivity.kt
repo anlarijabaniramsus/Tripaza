@@ -18,32 +18,10 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
         
-        
-        val detailFragment: DetailFragment
         val extraBundle = intent.getBundleExtra(EXTRA_BUNDLE)
         val item = extraBundle?.getParcelable<Item>(EXTRA_DATA)
         
-        val id = item?.id.toString()
-        val name = item?.name.toString()
-        val location = item?.location.toString()
-        val description = item?.description.toString()
-        val rating = item?.rating?:0
-        val lat = item?.lat?:0.0
-        val lng = item?.lng?:0.0
-        
-        item.apply {
-            detailFragment = 
-            DetailFragment.newInstance(
-                id,
-                name,
-                location, 
-                description, 
-                rating, 
-                lat,
-                lng,
-            )
-        }
-        
+        val detailFragment = DetailFragment.newInstance(item!!)
         supportActionBar?.title = "Detail"
         supportFragmentManager.beginTransaction().replace(
             R.id.detail_container, detailFragment
