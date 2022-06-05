@@ -48,7 +48,7 @@ class EditTextPassword: AppCompatEditText, View.OnTouchListener{
     private fun errorHandler() {
         val textInputLayout = this.parent.parent as TextInputLayout
 
-        val validity = Validator.isPasswordValid(context, text.toString())
+        val validity = Validator.isPasswordValid(text.toString())
         if (validity.valid){
             textInputLayout.error = null
         }else{

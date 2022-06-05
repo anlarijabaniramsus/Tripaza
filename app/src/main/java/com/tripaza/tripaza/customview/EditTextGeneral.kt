@@ -48,7 +48,7 @@ class EditTextGeneral: AppCompatEditText, View.OnTouchListener{
     private fun errorHandler() {
         val textInputLayout = this.parent.parent as TextInputLayout
 
-        val validity = Validator.isInputValid(context, text.toString())
+        val validity = Validator.isInputValid(text.toString())
         if (validity.valid){
             textInputLayout.error = null
         }else{
