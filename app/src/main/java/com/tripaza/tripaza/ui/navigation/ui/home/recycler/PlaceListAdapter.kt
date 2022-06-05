@@ -65,6 +65,9 @@ class PlaceListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun getItemCount(): Int = placeList.size
     
     fun setPlaceList(placeList: ArrayList<Place>){
+        placeList.add(0, Place("OFFSET", "OFFSET", "OFFSET", "OFFSET", 0, 0.0, 0.0,
+            DUMMY_IMAGE_PLACE
+        ))
         this.placeList = placeList
     }
     
