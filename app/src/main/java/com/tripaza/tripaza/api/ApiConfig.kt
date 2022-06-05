@@ -1,6 +1,7 @@
 package com.tripaza.tripaza.api
 
-import com.tripaza.tripaza.BuildConfig
+import androidx.viewbinding.BuildConfig
+import com.tripaza.tripaza.helper.Constants.API_BASE_URL
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -17,7 +18,7 @@ class ApiConfig {
 
             val client = OkHttpClient.Builder().addInterceptor(loggingInterceptor).build()
             val retrofit = Retrofit.Builder()
-                .baseUrl("https://tripaza-352307.uc.r.appspot.com/")
+                .baseUrl(API_BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build()

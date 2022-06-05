@@ -128,6 +128,12 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
+    private fun launchMainApp(){
+        val intent = Intent(this, MainNavigationActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
     
     private val registerResultLauncher = registerForActivityResult( ActivityResultContracts.StartActivityForResult()) { result ->
         if (result.resultCode == REGISTER_EXTRA_CODE && result.data != null) {
@@ -136,11 +142,5 @@ class MainActivity : AppCompatActivity() {
             binding.mainEtEmail.setText(email)
             binding.mainEtPassword.setText(password)
         }
-    }
-    
-    private fun launchMainApp(){
-        val intent = Intent(this, MainNavigationActivity::class.java)
-        startActivity(intent)
-        finish()
     }
 }

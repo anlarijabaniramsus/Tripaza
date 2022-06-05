@@ -14,6 +14,6 @@ import retrofit2.Response
 
 class RegisterActivityModel: ViewModel() {
     private var userRepository =  Injection.provideUserRepository()
-    fun register(email: String, password: String, full_name:String, birth_date:String, phone_number:String)
+    fun register(email: String, password: String, full_name: String, birth_date: String, phone_number: String)
         = userRepository.register(email, password, full_name, birth_date, phone_number)
 }

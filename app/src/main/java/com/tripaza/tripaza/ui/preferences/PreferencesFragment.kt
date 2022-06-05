@@ -9,6 +9,7 @@ import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import com.tripaza.tripaza.R
 import com.tripaza.tripaza.databases.dataobject.User
+import com.tripaza.tripaza.helper.HelperTools
 import com.tripaza.tripaza.helper.PreferencesHelper
 import com.tripaza.tripaza.ui.registration.MainActivity
 
@@ -62,11 +63,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), SharedPreferences.OnShar
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
         when(key) {
             keyDarkMode ->{
-                    if (sharedPreferences?.getBoolean(keyDarkMode, false) == true) {
-                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                    } else {
-                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
-                    }
+                    HelperTools.setUpDarkMode(requireContext())
             }
         }
     }
