@@ -11,12 +11,10 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 
-import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.tripaza.tripaza.R
@@ -78,7 +76,7 @@ class DetailFragment : Fragment(), OnMapReadyCallback {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        
+        binding.mapParentLayout.clipToOutline = true
         val bundle = arguments?.getBundle(DetailActivity.EXTRA_BUNDLE)
         val place = bundle?.getParcelable<Place>(DetailActivity.EXTRA_DATA)
         Log.d(TAG, "onViewCreated: ${place?.name}" )
@@ -92,7 +90,7 @@ class DetailFragment : Fragment(), OnMapReadyCallback {
             binding.description.text = it.description
             StarRatingHelper.setStarRating(binding.starRating, it.rating)
             Log.d(TAG, "onViewCreated: ${it.image}")
-            HelperTools.glideLoader(requireContext(), it.image, binding.ivItemImage, false)
+            HelperTools.glideLoaderRounded(requireContext(), it.image, binding.ivItemImage)
         }
     }
 

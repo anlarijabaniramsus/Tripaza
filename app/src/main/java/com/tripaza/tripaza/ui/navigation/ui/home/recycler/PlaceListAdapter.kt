@@ -11,7 +11,6 @@ import com.tripaza.tripaza.databases.dataobject.Item
 import com.tripaza.tripaza.databases.dataobject.Place
 import com.tripaza.tripaza.databinding.RvItemBinding
 import com.tripaza.tripaza.databinding.RvItemHeaderBinding
-import com.tripaza.tripaza.helper.Constants.DUMMY_IMAGE_FEATURED
 import com.tripaza.tripaza.helper.Constants.DUMMY_IMAGE_PLACE
 import com.tripaza.tripaza.helper.HelperTools
 import com.tripaza.tripaza.helper.StarRatingHelper
@@ -21,8 +20,8 @@ import kotlin.random.Random
 
 
 class PlaceListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    private lateinit var placeList: ArrayList<Place>
-    private lateinit var foodList: ArrayList<Food>
+    private var placeList = ArrayList<Place>()
+    private var foodList = ArrayList<Food>()
     private lateinit var featuredItem: Item
     private lateinit var onItemClickCallback: OnItemClickCallback
     
@@ -65,9 +64,6 @@ class PlaceListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun getItemCount(): Int = placeList.size
     
     fun setPlaceList(placeList: ArrayList<Place>){
-        placeList.add(0, Place("OFFSET", "OFFSET", "OFFSET", "OFFSET", 0, 0.0, 0.0,
-            DUMMY_IMAGE_PLACE
-        ))
         this.placeList = placeList
     }
     
@@ -89,7 +85,8 @@ class PlaceListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private class HeaderViewHolder(var binding: RvItemHeaderBinding) : RecyclerView.ViewHolder(binding.root){
         fun bind(foodList: ArrayList<Food>, featuredPlace: Item) {
-            HelperTools.glideLoader(binding.root.context, featuredPlace.image, this.binding.ivFeaturedItemImage, false)
+            HelperTools.glideLoaderRounded(binding.root.context, featuredPlace.image, this.binding.ivFeaturedItemImage)
+            
             val foodListAdapter = FoodListAdapter()
             foodListAdapter.setFoodList(foodList)
             binding.tvFeaturedItemHeader.text = featuredPlace.name
@@ -115,7 +112,7 @@ class PlaceListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 this.binding.itemLayout.title.text = place.name
                 this.binding.itemLayout.location.text = place.location
                 StarRatingHelper.setStarRating(holder.binding.itemLayout.starRating, abs((Random.nextInt())%5) + 1)
-                HelperTools.glideLoader(binding.root.context, DUMMY_IMAGE_PLACE, binding.itemLayout.ivItemImages, false)
+                HelperTools.glideLoaderRounded(binding.root.context, DUMMY_IMAGE_PLACE, binding.itemLayout.ivItemImages)
             }
         }
     }

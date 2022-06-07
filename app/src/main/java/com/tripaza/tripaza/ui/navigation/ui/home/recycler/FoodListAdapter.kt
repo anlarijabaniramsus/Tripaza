@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.tripaza.tripaza.databases.dataobject.Food
 import com.tripaza.tripaza.databinding.RvItemHorizontalBinding
-import com.tripaza.tripaza.helper.Constants
 import com.tripaza.tripaza.helper.HelperTools
 import com.tripaza.tripaza.helper.StarRatingHelper
 import kotlin.math.abs
@@ -29,7 +28,7 @@ class FoodListAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             StarRatingHelper.setStarRating(this.binding.itemLayout.starRating, abs((Random.nextInt())%5) + 1)
             this.binding.itemLayout.title.text = data.name
             this.binding.itemLayout.location.text = data.location
-            HelperTools.glideLoader(binding.root.context, data.image, binding.itemLayout.ivItemImages, false)
+            HelperTools.glideLoaderRounded(binding.root.context, data.image, binding.itemLayout.ivItemImages)
             this.itemView.setOnClickListener { onItemClickCallback.onItemClicked(foodList[holder.adapterPosition]) }
         }
     }

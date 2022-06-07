@@ -10,6 +10,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.tripaza.tripaza.databases.dataobject.Food
 import com.tripaza.tripaza.databases.dataobject.Item
@@ -27,19 +29,24 @@ object HelperTools {
         }
     }
     
-    fun glideLoader(context: Context, imageUrl: String, imageView: ImageView, circleCrop: Boolean){
+    fun glideLoaderCircle(context: Context, imageUrl: String, imageView: ImageView){
         val requestOptions = RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL)
-        if (circleCrop)
-            Glide.with(context)
-                .load(imageUrl)
-                .circleCrop()
-                .apply(requestOptions)
-                .into(imageView)
-        else
-            Glide.with(context)
-                .load(imageUrl)
-                .apply(requestOptions)
-                .into(imageView)
+        Glide.with(context)
+            .load(imageUrl)
+            .circleCrop()
+            .apply(requestOptions)
+            .into(imageView)
+    }
+    fun glideLoaderRounded(context: Context, imageUrl: String, imageView: ImageView){
+        val requestOptions = RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL)
+        val roundedOptions = RequestOptions.bitmapTransform(RoundedCorners(16))
+        val centerCropOptions = RequestOptions.centerCropTransform()
+        Glide.with(context)
+            .load(imageUrl)
+            .apply(centerCropOptions)
+            .apply(requestOptions)
+            .apply(roundedOptions)
+            .into(imageView)
     }
     
     /*

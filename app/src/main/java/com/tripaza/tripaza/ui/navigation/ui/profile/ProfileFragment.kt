@@ -36,7 +36,7 @@ class ProfileFragment : Fragment() {
             startActivity(intent)
         }
         
-        HelperTools.glideLoader(binding.root.context, DUMMY_IMAGE_PROFILE, binding.frProfileIvProfilePhoto, true)
+        HelperTools.glideLoaderCircle(binding.root.context, DUMMY_IMAGE_PROFILE, binding.frProfileIvProfilePhoto)
         return root
     }
 
