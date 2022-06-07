@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:fillViewport="true"
+    tools:context=".ui.detail.DetailActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:orientation="vertical">
+        <ImageView
+            android:id="@+id/iv_item_image"
+            android:layout_height="160dp"
+            android:layout_width="match_parent"
+            android:layout_marginTop="16dp"
+            app:srcCompat="@drawable/im_places_dummy_images"
+            android:contentDescription="@string/featured_images" />
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/text.h2"
+            android:layout_marginTop="16dp"
+            android:text="Wisata Biru"/>
+
+        <include
+            android:id="@+id/star_rating"
+            layout="@layout/star_rating"/>
+
+        <TextView
+            android:id="@+id/description"
+            style="@style/text.p3"
+            android:layout_marginTop="16dp"
+            android:text="@string/featured_item_text"/>
+
+<!--        <androidx.cardview.widget.CardView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:minHeight="256dp"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            app:cardCornerRadius="8dp"-->
+<!--            android:layout_weight="0.5">-->
+
+<!--            <fragment-->
+<!--                android:id="@+id/map_detail"-->
+<!--                android:name="com.google.android.gms.maps.SupportMapFragment"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                tools:context=".ui.detail.DetailFragment" />-->
+<!--        </androidx.cardview.widget.CardView>-->
+
+                <LinearLayout
+                    android:id="@+id/mapParentLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:minHeight="256dp"
+                    android:layout_marginTop="16dp"
+                    app:cardCornerRadius="8dp"
+                    android:background="@drawable/rounded_corner"
+                    android:layout_weight="0.5">
+
+                    <fragment
+                        android:id="@+id/map_detail"
+                        android:name="com.google.android.gms.maps.SupportMapFragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        tools:context=".ui.detail.DetailFragment" />
+                </LinearLayout>
+        
+        <TextView
+            style="@style/text.h2"
+            android:layout_marginTop="16dp"
+            android:text="You may also like"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_you_may_also_like"
+            android:orientation="vertical"
+            android:layout_height="200dp"
+            android:layout_width="match_parent"
+            android:layout_weight="0.1"/>
+    </LinearLayout>
+    
+</ScrollView>

@@ -3,12 +3,9 @@ package com.tripaza.tripaza.ui.navigation.ui.home.recycler
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.tripaza.tripaza.R
 import com.tripaza.tripaza.databases.dataobject.Food
-import com.tripaza.tripaza.databinding.RvItemBinding
 import com.tripaza.tripaza.databinding.RvItemHorizontalBinding
-import com.tripaza.tripaza.databinding.StarRatingBinding
+import com.tripaza.tripaza.helper.HelperTools
 import com.tripaza.tripaza.helper.StarRatingHelper
 import kotlin.math.abs
 import kotlin.random.Random
@@ -30,9 +27,8 @@ class FoodListAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         (holder as ListViewHolder).apply {
             StarRatingHelper.setStarRating(this.binding.itemLayout.starRating, abs((Random.nextInt())%5) + 1)
             this.binding.itemLayout.title.text = data.name
-            Glide.with(holder.binding.root.context)
-                .load(R.drawable.im_places_dummy_images)
-                .into(holder.binding.itemLayout.ivItemImages)
+            this.binding.itemLayout.location.text = data.location
+            HelperTools.glideLoaderRounded(binding.root.context, data.image, binding.itemLayout.ivItemImages)
             this.itemView.setOnClickListener { onItemClickCallback.onItemClicked(foodList[holder.adapterPosition]) }
         }
     }

@@ -1,31 +1,30 @@
 package com.tripaza.tripaza.ui.navigation.ui.home.recycler
 
-import android.content.Context
+import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.tripaza.tripaza.R
 import com.tripaza.tripaza.databases.dataobject.Food
+import com.tripaza.tripaza.databases.dataobject.Item
 import com.tripaza.tripaza.databases.dataobject.Place
 import com.tripaza.tripaza.databinding.RvItemBinding
 import com.tripaza.tripaza.databinding.RvItemHeaderBinding
+import com.tripaza.tripaza.helper.Constants.DUMMY_IMAGE_PLACE
+import com.tripaza.tripaza.helper.HelperTools
 import com.tripaza.tripaza.helper.StarRatingHelper
+import com.tripaza.tripaza.ui.detail.DetailActivity
 import kotlin.math.abs
 import kotlin.random.Random
 
 
 class PlaceListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    private lateinit var placeList: ArrayList<Place>
-    private lateinit var foodList: ArrayList<Food>
-    private lateinit var featuredPlace: Place
+    private var placeList = ArrayList<Place>()
+    private var foodList = ArrayList<Food>()
+    private lateinit var featuredItem: Item
     private lateinit var onItemClickCallback: OnItemClickCallback
-    private lateinit var DEVELOPMENT_ONLY_CONTEXT: Context  //HELPER ONLY
-    fun DEVELOPMENT_ONLY_CONTEXT(DEVELOPMENT_ONLY_CONTEXT: Context){
-        this.DEVELOPMENT_ONLY_CONTEXT = DEVELOPMENT_ONLY_CONTEXT
-    }
+    
     companion object{
         const val HEADER = 0
     }
@@ -43,10 +42,14 @@ class PlaceListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (position == 0){
-            (holder as HeaderViewHolder).bind(foodList, featuredPlace)
+            (holder as HeaderViewHolder).bind(foodList, featuredItem)
             
             val handler = fun(){
-                Toast.makeText(DEVELOPMENT_ONLY_CONTEXT, "Featured Item Clicked", Toast.LENGTH_SHORT).show()
+                val bundle = Bundle()
+                bundle.putParcelable(DetailActivity.EXTRA_DATA, featuredItem)
+                val intent = Intent(holder.binding.root.context, DetailActivity::class.java)
+                intent.putExtra(DetailActivity.EXTRA_BUNDLE, bundle)
+                holder.binding.root.context.startActivity(intent)
             }
             
             holder.binding.tvFeaturedItemHeader.setOnClickListener { handler() }
@@ -67,8 +70,9 @@ class PlaceListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     fun setFoodList(foodList: ArrayList<Food>){
         this.foodList = foodList
     }
-    fun setFeaturedFood(featuredFood: Place){
-        this.featuredPlace = featuredFood
+    
+    fun setFeaturedItem(featuredFood: Item){
+        this.featuredItem = featuredFood
     }
     
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
@@ -80,8 +84,9 @@ class PlaceListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     private class HeaderViewHolder(var binding: RvItemHeaderBinding) : RecyclerView.ViewHolder(binding.root){
-        fun bind(foodList: ArrayList<Food>, featuredPlace: Place) {
-            binding.itemHeaderRvHorizontal
+        fun bind(foodList: ArrayList<Food>, featuredPlace: Item) {
+            HelperTools.glideLoaderRounded(binding.root.context, featuredPlace.image, this.binding.ivFeaturedItemImage)
+            
             val foodListAdapter = FoodListAdapter()
             foodListAdapter.setFoodList(foodList)
             binding.tvFeaturedItemHeader.text = featuredPlace.name
@@ -90,7 +95,11 @@ class PlaceListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             binding.itemHeaderRvHorizontal.layoutManager = LinearLayoutManager(itemView.context, LinearLayoutManager.HORIZONTAL,false)
             foodListAdapter.setOnItemClickCallback(object : FoodListAdapter.OnItemClickCallback{
                 override fun onItemClicked(data: Food) {
-                    Toast.makeText(binding.root.context, "HORIZONTAL Item ${data.name}  Clicked", Toast.LENGTH_SHORT).show()
+                    val bundle = Bundle()
+                    bundle.putParcelable(DetailActivity.EXTRA_DATA, data)
+                    val intent = Intent(binding.root.context, DetailActivity::class.java)
+                    intent.putExtra(DetailActivity.EXTRA_BUNDLE, bundle)
+                    binding.root.context.startActivity(intent)
                 }
             })
             binding.itemHeaderRvHorizontal.adapter = foodListAdapter
@@ -100,11 +109,10 @@ class PlaceListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private class PlaceViewHolder(var binding: RvItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(holder: PlaceViewHolder, place: Place) {
             holder.apply {
-                StarRatingHelper.setStarRating(holder.binding.itemLayout.starRating, abs((Random.nextInt())%5) + 1)
                 this.binding.itemLayout.title.text = place.name
-                Glide.with(this.binding.root.context)
-                    .load(R.drawable.im_places_dummy_images)
-                    .into(this.binding.itemLayout.ivItemImages)
+                this.binding.itemLayout.location.text = place.location
+                StarRatingHelper.setStarRating(holder.binding.itemLayout.starRating, abs((Random.nextInt())%5) + 1)
+                HelperTools.glideLoaderRounded(binding.root.context, DUMMY_IMAGE_PLACE, binding.itemLayout.ivItemImages)
             }
         }
     }

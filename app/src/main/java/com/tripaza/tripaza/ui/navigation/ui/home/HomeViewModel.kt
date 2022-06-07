@@ -5,58 +5,30 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.tripaza.tripaza.R
 import com.tripaza.tripaza.databases.dataobject.Food
+import com.tripaza.tripaza.databases.dataobject.Item
 import com.tripaza.tripaza.databases.dataobject.Place
+import com.tripaza.tripaza.helper.Constants.DUMMY_IMAGE_FEATURED
+import com.tripaza.tripaza.helper.Constants.DUMMY_IMAGE_FOOD
+import com.tripaza.tripaza.helper.Constants.DUMMY_IMAGE_PLACE
+import com.tripaza.tripaza.helper.HelperTools
 import kotlin.math.abs
 import kotlin.random.Random
 
 class HomeViewModel : ViewModel() {
 
     private val _foodList = MutableLiveData<ArrayList<Food>>().apply {
-        value = generateFoodList("VeryLongFoodString")
+        value = HelperTools.generateFoodList("Food")
     }
     private val _placeList = MutableLiveData<ArrayList<Place>>().apply {
-        value = generatePlaceList("VeryLongPlaceString")
+        value = HelperTools.generatePlaceList("Place")
     }
 
-    private val _featuredPlace = MutableLiveData<Place>().apply {
-        val desc = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\n" +
-                "tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\n" +
-                "quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\n" +
-                "consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\n" +
-                "cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\n" +
-                "proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-        
-        value = Place("123", "Wisata Pantai Bali", "Bali", desc, 5)
+    private val _featuredPlace = MutableLiveData<Item>().apply {
+        value = HelperTools.generateFeaturedItem()
     }
     
     val foodList: LiveData<ArrayList<Food>> = _foodList
     val placeList: LiveData<ArrayList<Place>> = _placeList
-    val featuredPlace: LiveData<Place> = _featuredPlace
-    
-    private fun generateFoodList(identifier: String): ArrayList<Food>{
-        val data = arrayListOf<Food>()
-        val character = arrayListOf<String>("A", "B", "C", "D")
-        val div = character.size
-        var ptr = 0
-
-        for (i in 1..100){
-            val rating = (abs(Random.nextInt())%5)+1
-            data.add( Food("${identifier} ${character[i%div]}${ptr}", "My ${identifier} ${character[i%div]}${ptr}", "My ${identifier} Location ${character[i%div]}${ptr}", "My ${identifier} description ${character[i%div]}${ptr++}", rating) )
-        }
-        return data
-    }
-    
-    private fun generatePlaceList(identifier: String): ArrayList<Place>{
-        val data = arrayListOf<Place>()
-        val character = arrayListOf<String>("A", "B", "C", "D")
-        val div = character.size
-        var ptr = 0
-        data.add(Place("OFFSET", "OFFSET"))
-        for (i in 1..100){
-            val rating = (abs(Random.nextInt())%5)+1
-            data.add( Place("${identifier} ${character[i%div]}${ptr}", "My ${identifier} ${character[i%div]}${ptr}", "My ${identifier} Location ${character[i%div]}${ptr}", "My ${identifier} description ${character[i%div]}${ptr++}", rating) )
-        }
-        return data
-    }
+    val featuredPlace: LiveData<Item> = _featuredPlace
 
 }

@@ -3,27 +3,24 @@ package com.tripaza.tripaza.ui.navigation.ui.maps
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.google.android.gms.maps.model.Marker
+import com.google.android.gms.maps.model.MarkerOptions
 import com.tripaza.tripaza.databases.dataobject.Place
+import com.tripaza.tripaza.helper.Constants.DUMMY_IMAGE_PLACE
+import com.tripaza.tripaza.helper.HelperTools
 import kotlin.math.abs
 import kotlin.random.Random
 
 class MapsViewModel : ViewModel() {
     private val _placeList = MutableLiveData<ArrayList<Place>>().apply {
-        value = generatePlaceList("VeryLongPlaceString")
+        value = HelperTools.generatePlaceList("VeryLongPlaceString")
     }
-
     val placeList: LiveData<ArrayList<Place>> = _placeList
+    val getPlaceListSize = placeList.value?.size
     
-    private fun generatePlaceList(identifier: String): ArrayList<Place>{
-        val data = arrayListOf<Place>()
-        val character = arrayListOf<String>("A", "B", "C", "D")
-        val div = character.size
-        var ptr = 0
-        
-        for (i in 1..100){
-            val rating = (abs(Random.nextInt()) %5)+1
-            data.add( Place("${identifier} ${character[i%div]}${ptr}", "My ${identifier} ${character[i%div]}${ptr}", "My ${identifier} Location ${character[i%div]}${ptr}", "My ${identifier} description ${character[i%div]}${ptr++}", rating) )
-        }
-        return data
-    }
+//    private val _selectedMarker = MutableLiveData<MarkerOptions>().apply { value = MarkerOptions() }
+//    val selectedMarker: LiveData<MarkerOptions> = _selectedMarker
+////    fun setSelectedMarker(marker: MarkerOptions){
+////        _selectedMarker.value = marker
+////    }
 }

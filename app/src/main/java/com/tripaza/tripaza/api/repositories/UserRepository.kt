@@ -14,10 +14,13 @@ class UserRepository {
     companion object{
         private const val TAG = "UserRepository"
     }
+    
     private lateinit var apiService: ApiService
+    
     fun setApiService(apiService: ApiService){
         this.apiService = apiService
     }
+    
     fun login(email: String, password: String): LiveData<Result<LoginResponse>> = liveData{
         emit(Result.Loading)
         try {

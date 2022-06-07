@@ -16,4 +16,5 @@ data class LoginResponse(
     
     @field:SerializedName("message")
     val message: String = ""
+
 ):Parcelable

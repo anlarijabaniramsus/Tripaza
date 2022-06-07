@@ -3,8 +3,11 @@ package com.tripaza.tripaza.ui.registration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.tripaza.tripaza.R
+import com.tripaza.tripaza.helper.DoubleTapToExit
+import com.tripaza.tripaza.helper.HelperTools
 
 class RegisterActivity : AppCompatActivity() {
+    private val doubleTapToExit = DoubleTapToExit(false)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
@@ -26,5 +29,9 @@ class RegisterActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return super.onSupportNavigateUp()
+    }
+    
+    override fun onBackPressed() {
+        HelperTools.doubleTapToExit(doubleTapToExit, this)
     }
 }

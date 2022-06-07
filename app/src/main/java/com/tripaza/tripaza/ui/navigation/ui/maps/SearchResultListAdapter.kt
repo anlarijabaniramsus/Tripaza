@@ -4,12 +4,11 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.tripaza.tripaza.R
 import com.tripaza.tripaza.databases.dataobject.Place
 import com.tripaza.tripaza.databinding.RvSearchResultItemBinding
+import com.tripaza.tripaza.helper.Constants.DUMMY_IMAGE_PLACE
+import com.tripaza.tripaza.helper.HelperTools
 import com.tripaza.tripaza.helper.StarRatingHelper
-import com.tripaza.tripaza.ui.navigation.ui.home.recycler.FoodListAdapter
 import kotlin.math.abs
 import kotlin.random.Random
 
@@ -54,9 +53,7 @@ class SearchResultListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() 
                 StarRatingHelper.setStarRating(holder.binding.starRating, abs((Random.nextInt())%5) + 1)
                 this.binding.title.text = place.name
                 this.binding.description.text = place.description
-                Glide.with(this.binding.root.context)
-                    .load(R.drawable.im_places_dummy_images)
-                    .into(this.binding.icon)
+                HelperTools.glideLoaderRounded(binding.root.context, DUMMY_IMAGE_PLACE, binding.icon)
             }
         }
     }

@@ -4,12 +4,17 @@ import android.os.Parcelable
 import androidx.room.Entity
 import kotlinx.android.parcel.Parcelize
 
-@Entity(tableName = "Food")
 @Parcelize
 data class Food(
-    val id: String,
-    val name: String? = null,
-    val location: String  = "",
-    val description: String  = "",
-    val rating: Int = 1
-) : Parcelable
+    
+    override var id: String,
+    override var name: String = "",
+    override var location: String  = "",
+    override var description: String  = "",
+    override var rating: Int = 0,
+    override var lat: Double = 0.0,
+    override var lng: Double = 0.0,
+    override var image: String
+    
+) : Parcelable, Item()
+

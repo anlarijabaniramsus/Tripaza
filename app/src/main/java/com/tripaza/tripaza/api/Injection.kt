@@ -4,6 +4,7 @@ import android.content.Context
 import com.tripaza.tripaza.api.repositories.UserRepository
 
 object Injection {
+    
     fun provideUserRepository(): UserRepository {
         val apiService = ApiConfig.getApiService()
         val userRepository = UserRepository()
