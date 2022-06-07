@@ -16,6 +16,8 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MapStyleOptions
+import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.tripaza.tripaza.R
 import com.tripaza.tripaza.databases.dataobject.Food
@@ -23,10 +25,12 @@ import com.tripaza.tripaza.databases.dataobject.Item
 import com.tripaza.tripaza.databases.dataobject.Place
 import com.tripaza.tripaza.databinding.FragmentDetailBinding
 import com.tripaza.tripaza.helper.HelperTools
+import com.tripaza.tripaza.helper.MapHelper
 import com.tripaza.tripaza.helper.StarRatingHelper
 import com.tripaza.tripaza.ui.navigation.ui.home.recycler.FoodListAdapter
 
 class DetailFragment : Fragment(), OnMapReadyCallback {
+    private lateinit var selectedMarker: Marker
     companion object{
         private const val ITEM = "item"
         private const val TAG = "DetailFragment"
@@ -87,16 +91,27 @@ class DetailFragment : Fragment(), OnMapReadyCallback {
             binding.title.text = it.name
             binding.description.text = it.description
             StarRatingHelper.setStarRating(binding.starRating, it.rating)
-            binding.ivItemImage
+            Log.d(TAG, "onViewCreated: ${it.image}")
             HelperTools.glideLoader(requireContext(), it.image, binding.ivItemImage, false)
         }
     }
 
     override fun onMapReady(mMap: GoogleMap) {
         this.mMap = mMap
-        val sydney = LatLng(-34.0, 151.0)
-        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+        
+        
+        val markerOptions = MarkerOptions()
+        markerOptions.visible(false)
+        markerOptions.position(LatLng(0.0, 0.0))
+        selectedMarker = mMap.addMarker(markerOptions)!!
+        
+        viewModel.item.observe(this){
+            selectedMarker.position = LatLng(it.lat, it.lng)
+            selectedMarker.title = it.name
+            selectedMarker.isVisible = true
+            MapHelper.moveCamera(mMap, LatLng(it.lat, it.lng))
+        }
+        
     }
 
     override fun onResume() {

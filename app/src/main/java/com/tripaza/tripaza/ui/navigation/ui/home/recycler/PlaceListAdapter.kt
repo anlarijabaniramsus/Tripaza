@@ -89,7 +89,7 @@ class PlaceListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private class HeaderViewHolder(var binding: RvItemHeaderBinding) : RecyclerView.ViewHolder(binding.root){
         fun bind(foodList: ArrayList<Food>, featuredPlace: Item) {
-            HelperTools.glideLoader(binding.root.context, DUMMY_IMAGE_FEATURED, this.binding.ivFeaturedItemImage, false)
+            HelperTools.glideLoader(binding.root.context, featuredPlace.image, this.binding.ivFeaturedItemImage, false)
             val foodListAdapter = FoodListAdapter()
             foodListAdapter.setFoodList(foodList)
             binding.tvFeaturedItemHeader.text = featuredPlace.name

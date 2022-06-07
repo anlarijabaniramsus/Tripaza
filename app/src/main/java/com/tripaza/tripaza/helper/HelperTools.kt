@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
@@ -17,7 +18,7 @@ import kotlin.math.abs
 import kotlin.random.Random
 
 object HelperTools {
-    
+    private const val TAG = "HelperTools"
     fun setUpDarkMode(context: Context){
         if (PreferencesHelper(context).isDarkMode()) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
@@ -41,13 +42,51 @@ object HelperTools {
                 .into(imageView)
     }
     
+    /*
+    * Lat : -6.175381
+    * Lng : 106.827147
+    * */
+    private fun latGenerator(): Double{
+        val coordinate = (Random.nextDouble()*-1)+-6.175381      + -0.0003 + -0.01
+        Log.d(TAG, "coordinateGenerator: $coordinate")
+        return coordinate
+    }
+    
+    private fun lngGenerator(): Double{
+        val coordinate = Random.nextDouble()+106.827147     + 0.0003
+        Log.d(TAG, "coordinateGenerator: $coordinate")
+        return coordinate
+    }
+    
+    fun generatePlaceList(identifier: String): ArrayList<Place>{
+        val data = arrayListOf<Place>()
+        val character = arrayListOf<String>("A", "B", "C", "D")
+        val div = character.size
+        var ptr = 0
+
+        for (i in 0..20){
+            val rating = (abs(Random.nextInt())%5)+1
+            data.add( Place(
+                "${identifier} ${character[i%div]}${ptr}",
+                "My ${identifier} ${character[i%div]}${ptr}",
+                "My ${identifier} Location ${character[i%div]}${ptr}",
+                "My ${identifier} description ${character[i%div]}${ptr++}",
+                rating,
+                latGenerator(),
+                lngGenerator(),
+                Constants.DUMMY_IMAGE_PLACE
+            ))
+        }
+        return data
+    }
+
     fun generateFoodList(identifier: String): ArrayList<Food>{
         val data = arrayListOf<Food>()
         val character = arrayListOf("A", "B", "C", "D")
         val div = character.size
         var ptr = 0
 
-        for (i in 1..10){
+        for (i in 0..10){
             val rating = (abs(Random.nextInt()) %5)+1
             data.add( Food(
                 "${identifier} ${character[i%div]}${ptr}",
@@ -55,15 +94,15 @@ object HelperTools {
                 "My ${identifier} Location ${character[i%div]}${ptr}",
                 "My ${identifier} description ${character[i%div]}${ptr++}",
                 rating,
-                0.0,
-                0.0,
-                Constants.DUMMY_IMAGE_PLACE
+                latGenerator(),
+                lngGenerator(),
+                Constants.DUMMY_IMAGE_FOOD
             )
             )
         }
         return data
     }
-    
+
     fun generateFeaturedItem(): Item {
         val desc = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\n" +
                 "tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\n" +
@@ -72,31 +111,7 @@ object HelperTools {
                 "cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\n" +
                 "proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 
-        return Place("x123", "Wisata Pantai Bali", "Bali", desc, 5, 0.0, 0.0, Constants.DUMMY_IMAGE_FEATURED)
-    }
-    
-    fun generatePlaceList(identifier: String): ArrayList<Place>{
-        val data = arrayListOf<Place>()
-        val character = arrayListOf<String>("A", "B", "C", "D")
-        val div = character.size
-        var ptr = 0
-        data.add(Place("OFFSET", "OFFSET", "OFFSET", "OFFSET", 0, 0.0, 0.0,
-            Constants.DUMMY_IMAGE_PLACE
-        ))
-        for (i in 0..100){
-            val rating = (abs(Random.nextInt())%5)+1
-            data.add( Place(
-                "${identifier} ${character[i%div]}${ptr}",
-                "My ${identifier} ${character[i%div]}${ptr}",
-                "My ${identifier} Location ${character[i%div]}${ptr}",
-                "My ${identifier} description ${character[i%div]}${ptr++}",
-                rating, 
-                0.0, 
-                0.0,
-                Constants.DUMMY_IMAGE_PLACE
-            ))
-        }
-        return data
+        return Place("x123", "Wisata Pantai Bali", "Bali", desc, 5, latGenerator(), lngGenerator(), Constants.DUMMY_IMAGE_FEATURED)
     }
     
     fun doubleTapToExit(doubleTabToExit: DoubleTapToExit, activity: Activity) {

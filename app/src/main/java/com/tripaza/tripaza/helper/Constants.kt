@@ -12,5 +12,13 @@ object Constants {
 //    const val DUMMY_IMAGE_FEATURED = "https://cdnb.artstation.com/p/assets/images/images/024/538/827/original/pixel-jeff-clipa-s.gif?1582740711"
     const val DUMMY_IMAGE_FEATURED = "https://media.istockphoto.com/photos/retro-futuristic-city-flythrough-background-80s-scifi-landscape-in-picture-id1248619427?b=1&k=20&m=1248619427&s=170667a&w=0&h=svQPXt8hCva0D5xKx4l7LHW9v9zjZfBJwfWWWUMvFWw="
     const val DUMMY_IMAGE_PROFILE = "https://wallpaperaccess.com/full/4958080.jpg"
-    
+
+
+
+    const val MAP_FIT_TO_MARKER_PADDING = 150
+    const val MAP_BOUNDARY_TOP_LONGITUDE = 6.020783894579806
+    const val MAP_BOUNDARY_TOP_LATITUDE = 95.0279631472171
+    const val MAP_BOUNDARY_BOTTOM_LONGITUDE = -12.952934231330184
+    const val MAP_BOUNDARY_BOTTOM_LATITUDE = 141.58526255474823
+    const val MAP_ICON_MARKER_COLOR = "#C12E2E"
 }

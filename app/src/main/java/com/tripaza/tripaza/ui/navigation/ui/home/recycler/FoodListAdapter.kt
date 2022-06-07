@@ -29,7 +29,7 @@ class FoodListAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             StarRatingHelper.setStarRating(this.binding.itemLayout.starRating, abs((Random.nextInt())%5) + 1)
             this.binding.itemLayout.title.text = data.name
             this.binding.itemLayout.location.text = data.location
-            HelperTools.glideLoader(binding.root.context, Constants.DUMMY_IMAGE_FOOD, binding.itemLayout.ivItemImages, false)
+            HelperTools.glideLoader(binding.root.context, data.image, binding.itemLayout.ivItemImages, false)
             this.itemView.setOnClickListener { onItemClickCallback.onItemClicked(foodList[holder.adapterPosition]) }
         }
     }
