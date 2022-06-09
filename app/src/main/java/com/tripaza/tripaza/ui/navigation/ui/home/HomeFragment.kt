@@ -1,10 +1,12 @@
 package com.tripaza.tripaza.ui.navigation.ui.home
 
 import android.Manifest
+import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -77,11 +79,20 @@ class HomeFragment : Fragment() {
 //                Log.d(TAG, "prepareCameraX: HERE 2")
             startActivity(intent)
 //            }
-
+            
+//            if(!allPermissionsGranted()){
+//                ActivityCompat.requestPermissions(
+//                    requireActivity(),
+//                    REQUIRED_PERMISSIONS,
+//                    REQUEST_CODE_PERMISSIONS
+//                )
+//            }else{
+//                val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+//                
+//            }
         }
     }
-
-
+    
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
