@@ -22,7 +22,9 @@ import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.drawable.DrawableCompat
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -44,6 +46,7 @@ import com.tripaza.tripaza.helper.Constants.MAP_FIT_TO_MARKER_PADDING
 import com.tripaza.tripaza.helper.MapHelper
 import com.tripaza.tripaza.api.Result
 import com.tripaza.tripaza.helper.HelperTools
+import kotlin.math.log
 
 
 class MapsFragment : Fragment(), OnMapReadyCallback {
@@ -61,7 +64,31 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
         private const val TAG = "MapsFragment"
     }
     
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        Log.d(TAG, "onCreateView: ")
+        _binding = FragmentMapsBinding.inflate(inflater, container, false)
+        viewModel = ViewModelProvider(requireActivity()).get(MapsViewModel::class.java)
+        searchResultListAdapter = SearchResultListAdapter()
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
+        viewModel.placeList.observe(viewLifecycleOwner){
+            searchResultListAdapter = SearchResultListAdapter()
+            searchResultListAdapter.setPlaceList(it)
+            showRecyclerList()
+        }
+        
+        viewModel.deviceLocation.observe(viewLifecycleOwner){
+            deviceLocation = it
+            if (it != null){
+                retrieveNearbyLocation()
+            }
+        }
+        
+        showRecyclerList()
+        return binding.root
+    }
+
     override fun onMapReady(mMap: GoogleMap) {
+        Log.d(TAG, "onMapReady: ")
         this.mMap = mMap
         mMap.uiSettings.isZoomControlsEnabled = true
         mMap.uiSettings.isIndoorLevelPickerEnabled = true
@@ -71,34 +98,26 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
         mMap.uiSettings.isTiltGesturesEnabled = true
         mMap.uiSettings.isMyLocationButtonEnabled = true
         mMap.uiSettings.isZoomGesturesEnabled = true
-//        val sydney = LatLng(-34.0, 151.0)
-//        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-//        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+
         val markerOptions = MarkerOptions()
         markerOptions.position(LatLng(1.0,2.0))
         markerOptions.visible(false)
         selectedMarker = mMap.addMarker(markerOptions)!!
-        
-        viewModel.deviceLocation.observe(this){
-            if (it != null){
-                retrieveNearbyLocation()
+
+
+        viewModel.placeList.observe(viewLifecycleOwner){
+            if (it != null && it.size > 0){
+                generateMarker(it as ArrayList<Item>)
             }
         }
-        
-        
-        viewModel.placeList.observe(this){
-            showRecyclerList()
-            if (it.size > 0)
-                generateMarker(it as ArrayList<Item>)
-        }
-        
+
         
         
     }
 
     private fun retrieveNearbyLocation() {
         Log.d(TAG, "retrieveNearbyLocation: ")
-        viewModel.mapNearbySearch("restaurant", "${deviceLocation.latitude},${deviceLocation.longitude}", 1500).observe(this){
+        viewModel.mapNearbySearch("restaurant", "${deviceLocation.latitude},${deviceLocation.longitude}", 1500).observe(viewLifecycleOwner){
             when(it){
                 is Result.Loading -> {Log.d(TAG, "retrieveNearbyLocation: LOADING")}
                 is Result.Error -> {Log.d(TAG, "retrieveNearbyLocation: ERROR")}
@@ -111,12 +130,19 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
                                 id = i?.placeId.toString(),
                                 name = i?.name.toString(),
                                 rating = i?.rating?.toInt()?:0,
+                                lat = i?.geometry?.location?.lat?.toDouble()?:0.0,
+                                lng = i?.geometry?.location?.lng?.toDouble()?:0.0,
                                 image = HelperTools.createMapImageLink(i?.photos?.get(0)?.photoReference.toString())
                             )
-                            Log.d(TAG, "retrieveNearbyLocation: DATA ${place}")
+//                            Log.d(TAG, "retrieveNearbyLocation: DATA ${place}")
                             newList.add(place)
                         }
+                        Log.d(TAG, "retrieveNearbyLocation: LIST SIZE: ${newList.size}")
+                        
                         viewModel.setPlaceList(newList)
+                        showRecyclerList()
+                    }else{
+                        Log.e(TAG, "retrieveNearbyLocation: NOT OK", )
                     }
                 }
                 
@@ -124,7 +150,9 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
         }
     }
 
+
     private fun generateMarker(itemList: ArrayList<Item>){
+        Log.d(TAG, "generateMarker: ")
         val bounds = LatLngBounds.builder()
         for (i in itemList.indices){
             if(itemList[i].lat != 0.0 && itemList[i].lng != 0.0){
@@ -161,30 +189,22 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
         }
     }
     
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        _binding = FragmentMapsBinding.inflate(inflater, container, false)
-        this.viewModel = ViewModelProvider(this).get(MapsViewModel::class.java)
-        searchResultListAdapter = SearchResultListAdapter()
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
-        return binding.root
-    }
-
 
     
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        Log.d(TAG, "onViewCreated: ")
         super.onViewCreated(view, savedInstanceState)
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment?.getMapAsync(this)
         
         
-        this.viewModel.placeList.observe(viewLifecycleOwner){
-            searchResultListAdapter.setPlaceList(it)
-        }
+
         requestPermissionLauncher.launch(Manifest.permission.ACCESS_COARSE_LOCATION)
         requestPermissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
         
 
     }
+    
     private fun vectorToBitmap(@DrawableRes id: Int, @ColorInt color: Int): BitmapDescriptor {
         val vectorDrawable = ResourcesCompat.getDrawable(resources, id, null)
         if (vectorDrawable == null) {
@@ -204,6 +224,8 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
     }
 
     private fun showRecyclerList(){
+        Log.d(TAG, "showRecyclerList: ")
+        
         binding.rvSearchResult.layoutManager = LinearLayoutManager(requireContext())
         binding.rvSearchResult.adapter = searchResultListAdapter
         searchResultListAdapter.setOnItemClickCallback(object : SearchResultListAdapter.OnItemClickCallback{
@@ -212,8 +234,8 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
                 selectedMarker.position = LatLng(data.lat, data.lng)
 //                val markerIcon = vectorToBitmap(R.drawable.ic_baseline_location_blue, Color.parseColor("#0000FF"))
 //                selectedMarker.setIcon(markerIcon)
-                MapHelper.moveCamera(mMap, LatLng(data.lat, data.lng))
-                selectedMarker.isVisible = true
+                MapHelper.moveCamera(mMap, LatLng(data.lat, data.lng), 15.0F)
+                
             }
         })
     }
@@ -227,9 +249,15 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
                 getCurrentLocation()
             }
         }
-    
+
+    override fun onResume() {
+        Log.d(TAG, "onResume: ")
+        super.onResume()
+        getMyLocation()
+    }
     @SuppressLint("MissingPermission")
     private fun getMyLocation() {
+        Log.d(TAG, "getMyLocation: ")
         if (ContextCompat.checkSelfPermission( requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             mMap.isMyLocationEnabled = true
         } else {
@@ -239,10 +267,13 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
     
     @SuppressLint("MissingPermission")
     private fun getCurrentLocation() {
+        Log.d(TAG, "getCurrentLocation: ")
         fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
             if (location != null) {
-                deviceLocation = LatLng(location.latitude, location.longitude)
-                viewModel.setDeviceLocation(LatLng(location.latitude, location.longitude))
+                val latLng = LatLng(location.latitude, location.longitude)
+                deviceLocation = latLng
+                viewModel.setDeviceLocation(latLng)
+                MapHelper.moveCamera(mMap, latLng)
             } else {
                 Toast.makeText(
                     requireContext(),
