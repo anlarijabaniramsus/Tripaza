@@ -42,6 +42,9 @@ import com.tripaza.tripaza.helper.Constants.MAP_BOUNDARY_TOP_LATITUDE
 import com.tripaza.tripaza.helper.Constants.MAP_BOUNDARY_TOP_LONGITUDE
 import com.tripaza.tripaza.helper.Constants.MAP_FIT_TO_MARKER_PADDING
 import com.tripaza.tripaza.helper.MapHelper
+import com.tripaza.tripaza.api.Result
+import com.tripaza.tripaza.helper.HelperTools
+
 
 class MapsFragment : Fragment(), OnMapReadyCallback {
     private lateinit var searchResultListAdapter: SearchResultListAdapter
@@ -49,11 +52,14 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
     private val binding get() = _binding!!
     private val markers = ArrayList<Marker>()
     private lateinit var mMap: GoogleMap
-    private lateinit var deviceLocation: LatLng
+    private var deviceLocation = LatLng(0.0,0.0)
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var viewModel: MapsViewModel
     private lateinit var selectedMarker: Marker
     
+    companion object{
+        private const val TAG = "MapsFragment"
+    }
     
     override fun onMapReady(mMap: GoogleMap) {
         this.mMap = mMap
@@ -73,11 +79,49 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
         markerOptions.visible(false)
         selectedMarker = mMap.addMarker(markerOptions)!!
         
+        viewModel.deviceLocation.observe(this){
+            if (it != null){
+                retrieveNearbyLocation()
+            }
+        }
+        
+        
         viewModel.placeList.observe(this){
+            showRecyclerList()
             if (it.size > 0)
                 generateMarker(it as ArrayList<Item>)
         }
         
+        
+        
+    }
+
+    private fun retrieveNearbyLocation() {
+        Log.d(TAG, "retrieveNearbyLocation: ")
+        viewModel.mapNearbySearch("restaurant", "${deviceLocation.latitude},${deviceLocation.longitude}", 1500).observe(this){
+            when(it){
+                is Result.Loading -> {Log.d(TAG, "retrieveNearbyLocation: LOADING")}
+                is Result.Error -> {Log.d(TAG, "retrieveNearbyLocation: ERROR")}
+                is Result.Success ->{
+                    Log.d(TAG, "retrieveNearbyLocation: SUCCESS")
+                    val newList = ArrayList<Place>()
+                    if (it.data.status == "OK"){
+                        for (i in it.data.results!!){
+                            val place = Place(
+                                id = i?.placeId.toString(),
+                                name = i?.name.toString(),
+                                rating = i?.rating?.toInt()?:0,
+                                image = HelperTools.createMapImageLink(i?.photos?.get(0)?.photoReference.toString())
+                            )
+                            Log.d(TAG, "retrieveNearbyLocation: DATA ${place}")
+                            newList.add(place)
+                        }
+                        viewModel.setPlaceList(newList)
+                    }
+                }
+                
+            }
+        }
     }
 
     private fun generateMarker(itemList: ArrayList<Item>){
@@ -139,18 +183,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
         requestPermissionLauncher.launch(Manifest.permission.ACCESS_COARSE_LOCATION)
         requestPermissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
         
-        binding.rvSearchResult.layoutManager = LinearLayoutManager(requireContext())
-        binding.rvSearchResult.adapter = searchResultListAdapter
-        searchResultListAdapter.setOnItemClickCallback(object : SearchResultListAdapter.OnItemClickCallback{
-            override fun onItemClicked(data: Place) {
-//                Toast.makeText(requireContext(), "Item ${data.name} Clicked ${data.lat} ${data.lng}", Toast.LENGTH_SHORT).show()
-                selectedMarker.position = LatLng(data.lat, data.lng)
-//                val markerIcon = vectorToBitmap(R.drawable.ic_baseline_location_blue, Color.parseColor("#0000FF"))
-//                selectedMarker.setIcon(markerIcon)
-                MapHelper.moveCamera(mMap, LatLng(data.lat, data.lng))
-                selectedMarker.isVisible = true
-            }
-        })
+
     }
     private fun vectorToBitmap(@DrawableRes id: Int, @ColorInt color: Int): BitmapDescriptor {
         val vectorDrawable = ResourcesCompat.getDrawable(resources, id, null)
@@ -170,7 +203,20 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
         return BitmapDescriptorFactory.fromBitmap(bitmap)
     }
 
-
+    private fun showRecyclerList(){
+        binding.rvSearchResult.layoutManager = LinearLayoutManager(requireContext())
+        binding.rvSearchResult.adapter = searchResultListAdapter
+        searchResultListAdapter.setOnItemClickCallback(object : SearchResultListAdapter.OnItemClickCallback{
+            override fun onItemClicked(data: Place) {
+//                Toast.makeText(requireContext(), "Item ${data.name} Clicked ${data.lat} ${data.lng}", Toast.LENGTH_SHORT).show()
+                selectedMarker.position = LatLng(data.lat, data.lng)
+//                val markerIcon = vectorToBitmap(R.drawable.ic_baseline_location_blue, Color.parseColor("#0000FF"))
+//                selectedMarker.setIcon(markerIcon)
+                MapHelper.moveCamera(mMap, LatLng(data.lat, data.lng))
+                selectedMarker.isVisible = true
+            }
+        })
+    }
     
     private val requestPermissionLauncher =
         registerForActivityResult(
@@ -196,6 +242,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
         fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
             if (location != null) {
                 deviceLocation = LatLng(location.latitude, location.longitude)
+                viewModel.setDeviceLocation(LatLng(location.latitude, location.longitude))
             } else {
                 Toast.makeText(
                     requireContext(),

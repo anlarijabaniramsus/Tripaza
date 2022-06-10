@@ -1,10 +1,13 @@
 package com.tripaza.tripaza.helper
 
+import com.tripaza.tripaza.BuildConfig
+
 object Constants {
     
     const val USER_DATA_MIN_PASSWORD_LENGTH = 6
     const val USER_DATA_MIN_PHONE_LENGTH = 6
     const val API_BASE_URL = "https://tripaza-352307.uc.r.appspot.com/"
+    const val MAP_API_BASE_URL = "https://maps.googleapis.com/"
     
     // Dummy Images urls
     const val DUMMY_IMAGE_PLACE = "https://images.hdqwalls.com/download/small-memory-8k-2a-1920x1080.jpg"
@@ -15,6 +18,7 @@ object Constants {
 
 
 
+    const val MAP_API_KEY = BuildConfig.MAPS_API_KEY
     const val MAP_FIT_TO_MARKER_PADDING = 150
     const val MAP_BOUNDARY_TOP_LONGITUDE = 6.020783894579806
     const val MAP_BOUNDARY_TOP_LATITUDE = 95.0279631472171

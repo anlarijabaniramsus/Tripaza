@@ -16,6 +16,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.tripaza.tripaza.databases.dataobject.Food
 import com.tripaza.tripaza.databases.dataobject.Item
 import com.tripaza.tripaza.databases.dataobject.Place
+import com.tripaza.tripaza.helper.Constants.MAP_API_KEY
 import kotlin.math.abs
 import kotlin.random.Random
 
@@ -129,5 +130,11 @@ object HelperTools {
         doubleTabToExit.exit = true
         Toast.makeText(activity, "Double tap to exit", Toast.LENGTH_SHORT).show()
         Handler(Looper.getMainLooper()).postDelayed({ doubleTabToExit.exit = false }, 2000)
+    }
+    fun createMapImageLink(photoReference: String): String{
+        return "https://maps.googleapis.com/maps/api/place/photo?"+
+            "maxwidth=480"+
+            "&photo_reference=${photoReference}"+
+            "&key=${MAP_API_KEY}"
     }
 }
