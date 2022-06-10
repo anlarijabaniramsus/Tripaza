@@ -1,28 +1,33 @@
 package com.tripaza.tripaza.ui.navigation.ui.home
 
 import android.Manifest
-import android.app.Activity.RESULT_OK
+import android.app.AlertDialog
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.BitmapFactory
+import android.graphics.Bitmap
+import android.net.Uri
 import android.os.Bundle
+import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.tripaza.tripaza.databinding.FragmentHomeBinding
 import com.tripaza.tripaza.ui.navigation.ui.home.recycler.PlaceListAdapter
 import com.tripaza.tripaza.databases.dataobject.Place
-import com.tripaza.tripaza.ui.camera.CameraActivity
+import com.tripaza.tripaza.ui.camera.DetectResultActivity
 import com.tripaza.tripaza.ui.detail.DetailActivity
-import java.io.File
+import java.io.*
 
 class HomeFragment : Fragment() {
     companion object{
@@ -56,40 +61,102 @@ class HomeFragment : Fragment() {
             placeListAdapter.setFeaturedItem(it)
         }
 
-        ActivityCompat.requestPermissions(requireActivity(), arrayOf<String>(Manifest.permission.CAMERA), 19992)
+//        ActivityCompat.requestPermissions(requireActivity(), arrayOf<String>(Manifest.permission.CAMERA), 19992)
 
-        prepareCameraX()
+        prepareCameraBtn()
         return binding.root
     }
     private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
         ContextCompat.checkSelfPermission(activity?.baseContext!!, it) == PackageManager.PERMISSION_GRANTED
     }
-    private fun prepareCameraX() {
+    private fun prepareCameraBtn() {
         binding.fabCamera.setOnClickListener {
-//            if (!allPermissionsGranted()) {
-//                ActivityCompat.requestPermissions(
-//                    requireActivity(),
-//                    REQUIRED_PERMISSIONS,
-//                    REQUEST_CODE_PERMISSIONS
-//                )
-//
-//                Log.d(TAG, "prepareCameraX: HERE")
-//            }else{
-            val intent = Intent(requireContext(), CameraActivity::class.java)
-//                Log.d(TAG, "prepareCameraX: HERE 2")
-            startActivity(intent)
-//            }
+            if (!allPermissionsGranted()) {
+                Toast.makeText(requireContext(), "Permission Required", Toast.LENGTH_SHORT).show()
+                ActivityCompat.requestPermissions(
+                    requireActivity(),
+                    REQUIRED_PERMISSIONS,
+                    12473
+                )
+            }else{
+                startDialog()
+            }
+        }
+    }
+    
+    private fun startDetectResultActivity(bitmap: Bitmap){
+        Log.d(TAG, "StartDetectResultActivity")
+        val intent = Intent(requireContext(), DetectResultActivity::class.java)
+        val fileUri = createTemporaryFile(bitmap)
+        Log.d(TAG, "Uri: $fileUri")
+        intent.putExtra(DetectResultActivity.IMAGE_FILE_URI, fileUri.toString())
+        startActivity(intent)
+    }
+
+    private fun createTemporaryFile(bitmap: Bitmap): Uri {
+        Log.d(TAG, "createTemporaryFile: started")
+        val directory: File? = requireActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+        val tempFile = File.createTempFile("tempFile", ".jpg", directory)
+        try {
+            val byteArrayOutputStream = ByteArrayOutputStream()
+            bitmap.compress(Bitmap.CompressFormat.JPEG,100 , byteArrayOutputStream)
+            val outputStream: OutputStream = FileOutputStream(tempFile)
+            outputStream.write(byteArrayOutputStream.toByteArray())
+            outputStream.close()
+        }catch (e: Exception){
+            Log.e(TAG, "createTemporaryFile: FAILED", )
+        }
+        Log.d(TAG, "createTemporaryFile: returned uri: ${tempFile.toUri()}")
+        return tempFile.toUri()
+    }
+    
+    private fun startDialog() {
+        val myAlertDialog: AlertDialog.Builder = AlertDialog.Builder(requireContext())
+        myAlertDialog.setTitle("Food Detection")
+        myAlertDialog.setMessage("How do you want to get your picture?")
+        myAlertDialog.setPositiveButton("Gallery") { arg0, arg1 ->
+            startGallery()
+        }
+        myAlertDialog.setNegativeButton("Camera") { arg0, arg1 ->
             
-//            if(!allPermissionsGranted()){
-//                ActivityCompat.requestPermissions(
-//                    requireActivity(),
-//                    REQUIRED_PERMISSIONS,
-//                    REQUEST_CODE_PERMISSIONS
-//                )
-//            }else{
-//                val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-//                
-//            }
+//            startActivityForResult(intent, 333)
+            startCamera()
+        }
+        myAlertDialog.show()
+    }
+    private fun startCamera(){
+        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        launcherIntentCamera.launch(intent)
+    }
+    
+    private val launcherIntentCamera = registerForActivityResult( ActivityResultContracts.StartActivityForResult()) { result ->
+        Log.d(TAG, "launcherIntentGallery: ")
+        if (result.resultCode == AppCompatActivity.RESULT_OK) {
+            var image = result.data?.extras?.get("data") as Bitmap
+            startDetectResultActivity(image)
+        }
+    }
+    
+    private fun startGallery() {
+        val intent = Intent()
+        intent.action = Intent.ACTION_GET_CONTENT
+        intent.type = "image/*"
+        val chooser = Intent.createChooser(intent, "Choose a Picture")
+        launcherIntentGallery.launch(chooser)
+    }
+    
+    private val launcherIntentGallery = registerForActivityResult( ActivityResultContracts.StartActivityForResult()) { result ->
+        Log.d(TAG, "launcherIntentGallery: ")
+        if (result.resultCode == AppCompatActivity.RESULT_OK) {
+            val selectedImgUri: Uri = result.data?.data as Uri
+            try{
+                val bitmap = MediaStore.Images.Media.getBitmap(requireContext().contentResolver, selectedImgUri)
+                startDetectResultActivity(bitmap)
+                Log.d(TAG, "launcherIntentGallery: try")
+            }catch (e: Exception){
+                Toast.makeText(requireContext(), "Something went wrong", Toast.LENGTH_SHORT).show()
+                Log.e(TAG, "launcherIntentGallery: bitmap", e)
+            }
         }
     }
     

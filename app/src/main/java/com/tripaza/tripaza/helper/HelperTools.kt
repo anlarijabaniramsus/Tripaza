@@ -55,13 +55,13 @@ object HelperTools {
     * */
     private fun latGenerator(): Double{
         val coordinate = (Random.nextDouble()*-1)+-6.175381      + -0.0003 + -0.01
-        Log.d(TAG, "coordinateGenerator: $coordinate")
+//        Log.d(TAG, "coordinateGenerator: $coordinate")
         return coordinate
     }
     
     private fun lngGenerator(): Double{
         val coordinate = Random.nextDouble()+106.827147     + 0.0003
-        Log.d(TAG, "coordinateGenerator: $coordinate")
+//        Log.d(TAG, "coordinateGenerator: $coordinate")
         return coordinate
     }
     
