@@ -4,6 +4,9 @@ import android.graphics.Bitmap
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.google.android.gms.maps.model.LatLng
+import com.tripaza.tripaza.api.Injection
+import com.tripaza.tripaza.databases.dataobject.Place
 import com.tripaza.tripaza.ml.MLFoodModel
 
 class DetectResultActivityViewModel: ViewModel() {

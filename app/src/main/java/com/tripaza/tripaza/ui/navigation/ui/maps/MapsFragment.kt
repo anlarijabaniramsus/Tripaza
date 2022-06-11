@@ -28,11 +28,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import com.google.android.gms.maps.*
 
-import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.OnMapReadyCallback
-import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
 import com.tripaza.tripaza.R
 import com.tripaza.tripaza.databases.dataobject.Item
@@ -46,6 +43,7 @@ import com.tripaza.tripaza.helper.Constants.MAP_FIT_TO_MARKER_PADDING
 import com.tripaza.tripaza.helper.MapHelper
 import com.tripaza.tripaza.api.Result
 import com.tripaza.tripaza.helper.HelperTools
+import com.tripaza.tripaza.ui.detail.DetailFragment
 import kotlin.math.log
 
 
@@ -59,9 +57,19 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var viewModel: MapsViewModel
     private lateinit var selectedMarker: Marker
+    private var searchQuery = "closest restaurant"
     
     companion object{
         private const val TAG = "MapsFragment"
+        private const val SEARCH_QUERY = "searchQuery"
+        @JvmStatic
+        fun newInstance(
+            searchQuery: String
+        ) = MapsFragment().apply {
+            arguments = Bundle().apply {
+                putString(SEARCH_QUERY, searchQuery)
+            }
+        }
     }
     
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -70,6 +78,12 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
         viewModel = ViewModelProvider(requireActivity()).get(MapsViewModel::class.java)
         searchResultListAdapter = SearchResultListAdapter()
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
+
+        arguments?.let {
+            val searchQuery = it.getString(SEARCH_QUERY)
+            this.searchQuery = searchQuery?:"restaurant near me"
+        }
+        
         viewModel.placeList.observe(viewLifecycleOwner){
             searchResultListAdapter = SearchResultListAdapter()
             searchResultListAdapter.setPlaceList(it)
@@ -117,7 +131,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
 
     private fun retrieveNearbyLocation() {
         Log.d(TAG, "retrieveNearbyLocation: ")
-        viewModel.mapNearbySearch("restaurant", "${deviceLocation.latitude},${deviceLocation.longitude}", 1500).observe(viewLifecycleOwner){
+        viewModel.mapNearbySearch(searchQuery, "${deviceLocation.latitude},${deviceLocation.longitude}", 1500).observe(viewLifecycleOwner){
             when(it){
                 is Result.Loading -> {Log.d(TAG, "retrieveNearbyLocation: LOADING")}
                 is Result.Error -> {Log.d(TAG, "retrieveNearbyLocation: ERROR")}
@@ -253,7 +267,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
     override fun onResume() {
         Log.d(TAG, "onResume: ")
         super.onResume()
-        getMyLocation()
+//        getMyLocation()
     }
     @SuppressLint("MissingPermission")
     private fun getMyLocation() {

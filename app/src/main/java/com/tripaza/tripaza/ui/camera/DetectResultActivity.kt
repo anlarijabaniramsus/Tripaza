@@ -1,5 +1,6 @@
 package com.tripaza.tripaza.ui.camera
 
+import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
@@ -13,6 +14,7 @@ import com.tripaza.tripaza.databinding.ActivityDetectResultBinding
 import com.tripaza.tripaza.helper.HelperTools
 import com.tripaza.tripaza.ml.MLFoodModel
 import com.tripaza.tripaza.ui.camera.recycler.DetectResultAdapter
+import com.tripaza.tripaza.ui.camera.recycler.DetectResultMapActivity
 import com.tripaza.tripaza.ui.navigation.ui.home.recycler.PlaceListAdapter
 import org.tensorflow.lite.support.image.TensorImage
 
@@ -95,10 +97,10 @@ class DetectResultActivity : AppCompatActivity() {
             override fun onItemClicked(data: MLFoodModel.DetectionResult) {
 //                val bundle = Bundle()
 //                bundle.putParcelable(DetailActivity.EXTRA_DATA, data)
-//                val intent = Intent(this, DetailActivity::class.java)
-//                intent.putExtra(DetailActivity.EXTRA_BUNDLE, bundle)
-//                startActivity(intent)
-                Toast.makeText(baseContext, "ITEM CLICKED", Toast.LENGTH_SHORT).show()
+                val intent = Intent(baseContext, DetectResultMapActivity::class.java)
+                Toast.makeText(baseContext, "ITEM CLICKED ${data.categoryAsString}", Toast.LENGTH_SHORT).show()
+                intent.putExtra(DetectResultMapActivity.EXTRA_SEARCH_QUERY, data.categoryAsString)
+                startActivity(intent)
             }
         })
         binding.rvDetectResult.adapter = detectResultAdapter

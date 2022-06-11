@@ -27,7 +27,7 @@ interface ApiService {
         @Query("keyword") keyword: String,
         @Query("location") location: String,
         @Query("radius") radius: Int,
-        @Query("type") type: String = "restaurant",
+        @Query("type") type: String = "restaurant,bakery,liquor_store,meal_delivery,meal_takeaway,food,cafe",
         @Query("key") key: String = MAP_API_KEY
     ): MapNearbyResponse
 }
