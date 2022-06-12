@@ -104,7 +104,7 @@ class PlaceListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             val foodListAdapter = FoodListAdapter()
             foodListAdapter.setFoodList(foodList)
             binding.tvFeaturedItemHeader.text = featuredPlace.name
-            binding.tvHeaderPopularIn.text = "Popular in ${featuredPlace.location}"
+            binding.tvHeaderPopularIn.text = "Popular in Bali"
             binding.tvFeaturedItemDescription.text = featuredPlace.description
             binding.itemHeaderRvHorizontal.layoutManager = LinearLayoutManager(itemView.context, LinearLayoutManager.HORIZONTAL,false)
             foodListAdapter.setOnItemClickCallback(object : FoodListAdapter.OnItemClickCallback{
@@ -126,7 +126,7 @@ class PlaceListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             holder.apply {
                 this.binding.itemLayout.title.text = place.name
                 this.binding.itemLayout.location.text = place.location
-                StarRatingHelper.setStarRating(holder.binding.itemLayout.starRating, abs((Random.nextInt())%5) + 1)
+                StarRatingHelper.setStarRating(holder.binding.itemLayout.starRating, place.rating)
                 HelperTools.glideLoaderRounded(binding.root.context, DUMMY_IMAGE_PLACE, binding.itemLayout.ivItemImages)
             }
         }

@@ -2,6 +2,8 @@ package com.tripaza.tripaza.helper
 
 import com.tripaza.tripaza.R
 import com.tripaza.tripaza.databinding.StarRatingBinding
+import kotlin.math.abs
+import kotlin.random.Random
 
 object StarRatingHelper {
     fun setStarRating(item: StarRatingBinding, rating: Int){
@@ -18,5 +20,8 @@ object StarRatingHelper {
             else
                 ratingStar[i].setImageResource(R.drawable.ic_baseline_star_rate_24)
         }
+    }
+    fun generateRandomRating(): Int{
+        return abs((Random.nextInt())%5) + 1
     }
 }

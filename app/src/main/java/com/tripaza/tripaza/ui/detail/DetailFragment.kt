@@ -18,6 +18,8 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.tripaza.tripaza.R
+import com.tripaza.tripaza.api.Result
+import com.tripaza.tripaza.api.responses.FoodsItem
 import com.tripaza.tripaza.databases.dataobject.Food
 import com.tripaza.tripaza.databases.dataobject.Item
 import com.tripaza.tripaza.databases.dataobject.Place
@@ -25,6 +27,7 @@ import com.tripaza.tripaza.databinding.FragmentDetailBinding
 import com.tripaza.tripaza.helper.HelperTools
 import com.tripaza.tripaza.helper.MapHelper
 import com.tripaza.tripaza.helper.StarRatingHelper
+import com.tripaza.tripaza.ui.navigation.ui.home.HomeFragment
 import com.tripaza.tripaza.ui.navigation.ui.home.recycler.FoodListAdapter
 
 class DetailFragment : Fragment(), OnMapReadyCallback {
@@ -47,12 +50,13 @@ class DetailFragment : Fragment(), OnMapReadyCallback {
     
     private lateinit var foodListAdapter: FoodListAdapter
     private lateinit var viewModel: DetailViewModel
-    
+    private var foodList = ArrayList<Food>()
     private lateinit var mMap: GoogleMap
     
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        Log.d(TAG, "onCreate")
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProvider(this)[DetailViewModel::class.java]
         arguments?.let {
@@ -60,21 +64,15 @@ class DetailFragment : Fragment(), OnMapReadyCallback {
             viewModel.setItem(item!!)
         }
     }
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        Log.d(TAG, "onCreateView")
         _binding = FragmentDetailBinding.inflate(inflater, container, false)
         
-        viewModel.foodList.observe(viewLifecycleOwner){
-            foodListAdapter.setFoodList(it)
-        }
-        foodListAdapter = FoodListAdapter()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        Log.d(TAG, "onViewCreated")
         super.onViewCreated(view, savedInstanceState)
         binding.mapParentLayout.clipToOutline = true
         val bundle = arguments?.getBundle(DetailActivity.EXTRA_BUNDLE)
@@ -83,9 +81,47 @@ class DetailFragment : Fragment(), OnMapReadyCallback {
         
         val mapFragment = childFragmentManager.findFragmentById(R.id.map_detail) as SupportMapFragment?
         mapFragment?.getMapAsync(this)
-        setUpRecyclerView()
+        viewModel.retrieveFoodList().observe(viewLifecycleOwner){
+                when(it) {
+                    is Result.Error -> {
+                        Log.d(TAG, "retrieveFoodList: ERROR")
+                    }
+                    is Result.Loading -> {
+                        Log.d(TAG, "retrieveFoodList: LOADING")
+                    }
+                    is Result.Success -> {
+                        Log.d(TAG, "retrieveFoodList: SUCCESS")
+                        val nFoodList = arrayListOf<Food>()
+                        var dummyId = 1
+                        val foodItem = it.data.foods as ArrayList<FoodsItem>
+                        Log.d(TAG, "retrieveFoodList: SUCCESS retrievedArrayListSize: ${it.data.foods.size}")
+                        for (i in foodItem) {
+                            val item = Food(
+                                "ID_${dummyId++}",
+                                i.foodName.toString(),
+                                i.restaurantAddress.toString(),
+                                "",
+                                0,
+                                0.0,
+                                0.0,
+                                "",
+                            )
+                            nFoodList.add(item)
+                        }
+                        viewModel.setFoodList(nFoodList)
+                        setUpRecyclerView()
+                    }
+                }
+        }
+        
+        viewModel.foodList.observe(viewLifecycleOwner){
+            Log.d(TAG, "onViewCreated: OBSERVE foodlist: ${it.size}")
+            foodList = it
+            setUpRecyclerView()
+        }
         
         viewModel.item.observe(viewLifecycleOwner){
+            Log.d(TAG, "onViewCreated: OBSERVE item: ${it.name}")
             binding.title.text = it.name
             binding.description.text = it.description
             StarRatingHelper.setStarRating(binding.starRating, it.rating)
@@ -95,6 +131,7 @@ class DetailFragment : Fragment(), OnMapReadyCallback {
     }
 
     override fun onMapReady(mMap: GoogleMap) {
+        Log.d(TAG, "onMapReady")
         this.mMap = mMap
         
         
@@ -117,6 +154,9 @@ class DetailFragment : Fragment(), OnMapReadyCallback {
         setUpRecyclerView()
     }
     private fun setUpRecyclerView(){
+        Log.d(TAG, "setUpRecyclerView")
+        foodListAdapter = FoodListAdapter()
+        foodListAdapter.setFoodList(foodList)
         binding.rvYouMayAlsoLike.layoutManager =  LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL,false)
         
         foodListAdapter.setOnItemClickCallback(object : FoodListAdapter.OnItemClickCallback{

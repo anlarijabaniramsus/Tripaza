@@ -38,13 +38,13 @@ class UserRepository {
     fun register(email: String, password: String, full_name:String, birth_date:String, phone_number:String): LiveData<Result<RegisterResponse>> = liveData{
         emit(Result.Loading)
         try {
-            Log.d(TAG, "login: executing login")
+            Log.d(TAG, "register: executing register")
             val postRegister = PostRegister(email, password, full_name, birth_date, phone_number)
             val response = apiService.register(postRegister)
             emit(Result.Success(response))
         } catch (e: Exception) {
-            Log.d(TAG, "login: FAILED " + e.message.toString())
-            emit(Result.Error("Login Failed"))
+            Log.d(TAG, "register: FAILED " + e.message.toString())
+            emit(Result.Error("register Failed"))
         }
     }
     
@@ -59,6 +59,5 @@ class UserRepository {
             Log.d(TAG, "getFoodList: EXCEPTION ERROR: ${e.cause}")
         }
     }
-    
     
 }

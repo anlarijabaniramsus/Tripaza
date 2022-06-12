@@ -11,36 +11,20 @@ import com.tripaza.tripaza.databases.dataobject.Place
 import com.tripaza.tripaza.helper.HelperTools
 
 class HomeViewModel : ViewModel() {
+    companion object{
+        private const val TAG = "HomeViewModel"
+    }
+    
     private var userRepository =  Injection.provideUserRepository()
-    private val _foodList = MutableLiveData<ArrayList<Food>>().apply { 
-        val x = HelperTools.generateFoodList("Food")
-        value = x
-
-        Log.d(TAG, "SAMPLE: ${x.size}")
-    }
+    private val _foodList = MutableLiveData<ArrayList<Food>>()
     private val _verticalList = MutableLiveData<ArrayList<Food>>()
-    
-    fun retrieveFoodList() = userRepository.getFoodList()
-    
-    private val _featuredFood = MutableLiveData<Food>().apply { 
-        value = Food(
-            "",
-            "",
-            "",
-            "",
-            1,
-            0.0,
-            0.0,
-            ""
-        )
-    }
+    private val _featuredFood = MutableLiveData<Food>()
     
     val foodList: LiveData<ArrayList<Food>> = _foodList
     val placeList: LiveData<ArrayList<Food>> = _verticalList
     val featuredPlace: LiveData<Food> = _featuredFood
-    companion object{
-        private const val TAG = "HomeViewModel"
-    }
+    
+    fun retrieveFoodList() = userRepository.getFoodList()
     
     fun setPlaceList(list:  ArrayList<Food>){
         _verticalList.value = list 

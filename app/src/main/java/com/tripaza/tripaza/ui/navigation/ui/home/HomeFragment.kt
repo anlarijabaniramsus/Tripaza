@@ -104,10 +104,10 @@ class HomeFragment : Fragment() {
                     val nFoodList = arrayListOf<Food>()
                     val nPlaceList = arrayListOf<Food>()
                     var nFeaturedFood = Food("", "", "", "", 0, 0.0, 0.0, "" )
-                    var dummyId = 1
+                    var dummyId = 0
                     for(i in (it.data.foods as ArrayList<FoodsItem>)) {
                         val item = Food(
-                            "ID_${dummyId++}",
+                            "ID_${dummyId}",
                             i.foodName.toString(),
                             i.restaurantAddress.toString(),
                             "",
@@ -124,6 +124,7 @@ class HomeFragment : Fragment() {
                             nPlaceList.add(item)
                         }
                         nFoodList.add(item)
+                        dummyId++
                     }
 
                     homeViewModel.setFoodList(nFoodList) 
