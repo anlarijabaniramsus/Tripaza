@@ -37,7 +37,7 @@
         <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/layout/fragment_maps.xml" value="0.10182370820668693" />
         <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/layout/fragment_notifications.xml" value="0.11875" />
-        <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/layout/fragment_profile.xml" value="0.16" />
+        <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/layout/fragment_profile.xml" value="0.1" />
         <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/layout/fragment_register.xml" value="0.1" />
         <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/layout/fragment_register_landing.xml" value="0.12" />
         <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/layout/rv_detect_result_item.xml" value="0.22" />
@@ -47,6 +47,7 @@
         <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/layout/rv_item_template.xml" value="0.1" />
         <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/layout/rv_search_result_item.xml" value="0.1" />
         <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/menu/bottom_nav_menu.xml" value="0.2" />
+        <entry key="..\:/DevOps/AndroidDevOps/Tripaza/app/src/main/res/xml/network_security_config.xml" value="0.13072916666666667" />
         <entry key="..\:/Users/Anla Rijabani Ramsus/Desktop/Tripaza/app/src/main/res/drawable/ic_baseline_cameraswitch_24.xml" value="0.2115" />
         <entry key="..\:/Users/Anla Rijabani Ramsus/Desktop/Tripaza/app/src/main/res/layout/activity_camera.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Anla Rijabani Ramsus/Desktop/Tripaza/app/src/main/res/layout/fragment_home.xml" value="0.20416666666666666" />

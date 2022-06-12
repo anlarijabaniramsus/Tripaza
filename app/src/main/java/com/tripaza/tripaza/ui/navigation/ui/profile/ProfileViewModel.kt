@@ -1,14 +1,15 @@
 package com.tripaza.tripaza.ui.navigation.ui.profile
 
+import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.tripaza.tripaza.api.Injection
 import com.tripaza.tripaza.databases.dataobject.User
+import com.tripaza.tripaza.helper.PreferencesHelper
 
 class ProfileViewModel : ViewModel(){
     private var userRepository =  Injection.provideUserRepository()
-    
     private val _user = MutableLiveData<User>()
     val user: LiveData<User> = _user
     

@@ -52,8 +52,8 @@ class MainActivity : AppCompatActivity() {
         }
         
         // HELPER
-        binding.mainEtEmail.setText("raflymasloman16@gmail.com")
-        binding.mainEtPassword.setText("rafly16")
+        binding.mainEtEmail.setText("User20220613010025@gmail.com")
+        binding.mainEtPassword.setText("User20220613010025@gmail.com Password")
         
     }
     
@@ -120,7 +120,7 @@ class MainActivity : AppCompatActivity() {
                 if (result.data.status == true){
                     Log.d(TAG, "handleLoginResult: SUCCESS STATE + USER VALIDE")
                     val user = User(
-                        id = result.data.token.toString()
+                        id = result.data.id.toString()
                     )
                     preferenceHelper.setUser(user)
                     launchMainApp()

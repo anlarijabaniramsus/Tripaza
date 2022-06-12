@@ -1,6 +1,7 @@
 package com.tripaza.tripaza.helper
 
 import android.content.Context
+import android.util.Log
 import androidx.appcompat.app.AppCompatDelegate
 import com.tripaza.tripaza.R
 import com.tripaza.tripaza.databases.dataobject.User
@@ -17,6 +18,7 @@ class PreferencesHelper(val context: Context){
     private val pref = context.getSharedPreferences(context.getString(R.string.APP_PREFERENCES_NAME), Context.MODE_PRIVATE)
     
     fun setUser(u: User){
+        Log.d(TAG, "setUser: ${u}")
         val editor = pref.edit()
         editor.putString(USER_ID, u.id)
         editor.putString(NAME, u.name)

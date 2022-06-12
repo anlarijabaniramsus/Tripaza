@@ -37,20 +37,23 @@ class ProfileFragment : Fragment() {
     ): View {
         viewModel = ViewModelProvider(this).get(ProfileViewModel::class.java)
         preferences = PreferencesHelper(requireContext())
+        user = preferences.getUser()
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
         val root: View = binding.root
-        user = preferences.getUser()
-        updateUi()
+        
         binding.profileIvEditAccountButton.setOnClickListener {
             val intent = Intent(context, ProfileEditActivity::class.java)
+            intent.putExtra(ProfileEditActivity.EXTRA_USER_DATA, user)
             startActivity(intent)
         }
         
         HelperTools.glideLoaderCircle(binding.root.context, DUMMY_IMAGE_PROFILE, binding.frProfileIvProfilePhoto)
         viewModel.user.observe(viewLifecycleOwner){
             user = it
+            Log.d(TAG, "onCreateView: ${user}")
             updateUi()
         }
+        
         viewModel.getUserProfileData(user.id).observe(viewLifecycleOwner){
             Log.d(TAG, "onViewCreated: viewModel.getUserProfileData(user.id)")
             when(it) {
@@ -65,10 +68,11 @@ class ProfileFragment : Fragment() {
                         val user = User(
                             user.id,
                             it.data.data?.fullName.toString(),
-                            it.data.data?.birthday.toString(),
+                            it.data.data?.birthday.toString().substring(0..9),
                             it.data.data?.phoneNumber.toString(),
                             it.data.data?.email.toString()
                         )
+                        Log.d(TAG, "onCreateView: FRESH FETCH USER: ${user}")
                         Log.d(TAG, "onViewCreated: new USER DATA: ${user}")
                         preferences.setUser(user)
                         viewModel.setUser(user)
@@ -88,11 +92,6 @@ class ProfileFragment : Fragment() {
             val intent = Intent(context, PreferencesActivity::class.java)
             startActivity(intent)
         }
-        
-        
-        
-        
-        
     }
 
     private fun updateUi() {
@@ -101,7 +100,7 @@ class ProfileFragment : Fragment() {
         binding.frProfileTvValueDob.text = user.dob
         binding.frProfileTvValuePhone.text = user.phone
         binding.frProfileTvValueEmail.text = user.email
-        binding.frProfileTvValuePassword.text = user.name
+        binding.frProfileTvValuePassword.text = "****"
     }
 
     override fun onDestroyView() {

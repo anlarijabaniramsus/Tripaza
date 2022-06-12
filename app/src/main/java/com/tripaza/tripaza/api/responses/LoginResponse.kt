@@ -11,8 +11,8 @@ data class LoginResponse(
     val status: Boolean = false,
     
     // database id cannot be NULL
-    @field:SerializedName("token")
-    val token: String? = "",
+    @field:SerializedName("id")
+    val id: String? = "",
     
     @field:SerializedName("message")
     val message: String = ""

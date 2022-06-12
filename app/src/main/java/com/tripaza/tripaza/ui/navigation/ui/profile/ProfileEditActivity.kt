@@ -21,6 +21,7 @@ class ProfileEditActivity : AppCompatActivity() {
     
     companion object{
         private const val TAG = "ProfileEditActivity"
+        const val EXTRA_USER_DATA = "extra_user_data_edit"
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,40 +30,47 @@ class ProfileEditActivity : AppCompatActivity() {
         
         viewModel = ViewModelProvider(this).get(ProfileViewModel::class.java)
         preferences = PreferencesHelper(this)
-        user = preferences.getUser()
-        
-        viewModel.getUserProfileData(user.id).observe(this){
-            when(it) {
-                is Result.Error -> {
-                    binding.progressBar.visibility = View.GONE
-                    Log.d(TAG, "getUserProfileData: ERROR")
-                    Toast.makeText(this, "Check your internet connection", Toast.LENGTH_SHORT).show()
-                }
-                is Result.Loading -> {
-                    Log.d(TAG, "getUserProfileData: LOADING")
-                    binding.progressBar.visibility = View.VISIBLE
-                }
-                is Result.Success -> {
-                    if (it.data.status == true){
-                        binding.progressBar.visibility = View.GONE
-                        val user = User(
-                            user.id,
-                            it.data.data?.fullName.toString(),
-                            it.data.data?.birthday.toString(),
-                            it.data.data?.phoneNumber.toString(),
-                            it.data.data?.email.toString()
-                        )
-                        Log.d(TAG, "pnCreate: new USER DATA: ${user}")
-                        preferences.setUser(user)
-                        viewModel.setUser(user)
-                        updateUi()
-                    }else{
-                        Toast.makeText(this, "Check your internet connection", Toast.LENGTH_SHORT).show()
-                        finish()
-                    }
-                }
-            }
+        //        user = preferences.getUser()
+        val x = intent.getParcelableExtra<User>(EXTRA_USER_DATA)
+        if (x != null){
+            user = x
         }
+        
+
+        Log.d(TAG, "onCreate: ${user}")
+        updateUi()
+//        viewModel.getUserProfileData(user.id).observe(this){
+//            when(it) {
+//                is Result.Error -> {
+//                    binding.progressBar.visibility = View.GONE
+//                    Log.d(TAG, "getUserProfileData: ERROR")
+//                    Toast.makeText(this, "Check your internet connection", Toast.LENGTH_SHORT).show()
+//                }
+//                is Result.Loading -> {
+//                    Log.d(TAG, "getUserProfileData: LOADING")
+//                    binding.progressBar.visibility = View.VISIBLE
+//                }
+//                is Result.Success -> {
+//                    if (it.data.status == true){
+//                        binding.progressBar.visibility = View.GONE
+//                        val user = User(
+//                            user.id,
+//                            it.data.data?.fullName.toString(),
+//                            it.data.data?.birthday.toString(),
+//                            it.data.data?.phoneNumber.toString(),
+//                            it.data.data?.email.toString()
+//                        )
+//                        Log.d(TAG, "pnCreate: new USER DATA: ${user}")
+//                        preferences.setUser(user)
+//                        viewModel.setUser(user)
+//                        updateUi()
+//                    }else{
+//                        Toast.makeText(this, "Check your internet connection", Toast.LENGTH_SHORT).show()
+//                        finish()
+//                    }
+//                }
+//            }
+//        }
         
         binding.profileEditBtnUpdate.setOnClickListener{
             if (isExecutingRegistration){
@@ -74,6 +82,7 @@ class ProfileEditActivity : AppCompatActivity() {
         
     }
     fun updateUi(){
+        Log.d(TAG, "updateUi: ${user.toString()}")
         binding.profileEditEtName.setText(user.name)
         binding.profileEditEtDob.setText(user.dob)
         binding.profileEditEtEmail.setText(user.email)
@@ -87,7 +96,7 @@ class ProfileEditActivity : AppCompatActivity() {
         val email = binding.profileEditEtEmail.text.toString()
         val phone = binding.profileEditEtPhone.text.toString()
         val password = binding.profileEditEtPassword.text.toString()
-
+        Log.d(TAG, "performUpdateDataValidation: $name, $dob, $email, $phone, $password")
         var allowUpdateProcess = true
         var result = Validator.isInputValid(name)
         if (allowUpdateProcess && !result.valid){

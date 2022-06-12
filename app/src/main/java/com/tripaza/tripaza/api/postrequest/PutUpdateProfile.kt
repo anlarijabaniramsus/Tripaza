@@ -7,8 +7,8 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class PutUpdateProfile(
 
-    @field:SerializedName("token")
-    val token: Int? = null,
+    @field:SerializedName("id")
+    val id: Int? = null,
 
     @field:SerializedName("full_name")
     val full_name: String = "",
