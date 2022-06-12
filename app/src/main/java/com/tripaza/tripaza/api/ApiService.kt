@@ -2,6 +2,7 @@ package com.tripaza.tripaza.api
 
 import com.tripaza.tripaza.api.postrequest.PostLogin
 import com.tripaza.tripaza.api.postrequest.PostRegister
+import com.tripaza.tripaza.api.responses.FoodsResponse
 import com.tripaza.tripaza.api.responses.LoginResponse
 import com.tripaza.tripaza.api.responses.MapNearbyResponse
 import com.tripaza.tripaza.api.responses.RegisterResponse
@@ -21,7 +22,9 @@ interface ApiService {
         @Body() postRegister: PostRegister
     ): RegisterResponse
     
-//    @FormUrlEncoded
+    @POST("home")
+    suspend fun getFoodList(): FoodsResponse
+    
     @POST("maps/api/place/nearbysearch/json")
     suspend fun mapNearbySearch(
         @Query("keyword") keyword: String,

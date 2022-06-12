@@ -56,7 +56,7 @@ class DetailFragment : Fragment(), OnMapReadyCallback {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProvider(this)[DetailViewModel::class.java]
         arguments?.let {
-            val item = it.getParcelable<Item>(ITEM)
+            val item = it.getParcelable<Food>(ITEM)
             viewModel.setItem(item!!)
         }
     }

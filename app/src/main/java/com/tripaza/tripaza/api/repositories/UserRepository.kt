@@ -7,6 +7,7 @@ import com.tripaza.tripaza.api.ApiService
 import com.tripaza.tripaza.api.Result
 import com.tripaza.tripaza.api.postrequest.PostLogin
 import com.tripaza.tripaza.api.postrequest.PostRegister
+import com.tripaza.tripaza.api.responses.FoodsResponse
 import com.tripaza.tripaza.api.responses.LoginResponse
 import com.tripaza.tripaza.api.responses.RegisterResponse
 
@@ -46,5 +47,18 @@ class UserRepository {
             emit(Result.Error("Login Failed"))
         }
     }
+    
+    fun getFoodList(): LiveData<Result<FoodsResponse>> = liveData{
+        emit(Result.Loading)
+        try {
+            val response = apiService.getFoodList()
+            emit(Result.Success(response))
+            Log.d(TAG, "getFoodList: SUCCESS")
+        }catch (e: Exception){
+            emit(Result.Error("getFoodList() request error"))
+            Log.d(TAG, "getFoodList: EXCEPTION ERROR: ${e.cause}")
+        }
+    }
+    
     
 }

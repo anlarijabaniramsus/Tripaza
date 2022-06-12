@@ -20,8 +20,13 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
+import com.tripaza.tripaza.api.Result
+import com.tripaza.tripaza.api.responses.FoodsItem
+import com.tripaza.tripaza.databases.dataobject.Food
+import com.tripaza.tripaza.databases.dataobject.Item
 import com.tripaza.tripaza.databinding.FragmentHomeBinding
 import com.tripaza.tripaza.ui.navigation.ui.home.recycler.PlaceListAdapter
 import com.tripaza.tripaza.databases.dataobject.Place
@@ -44,21 +49,36 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var placeListAdapter: PlaceListAdapter
     private lateinit var homeViewModel: HomeViewModel
-
+    private lateinit var gridLayoutManager: GridLayoutManager
+    private lateinit var foodList: ArrayList<Food>
+    private lateinit var featuredItem: Food
+    private lateinit var placeList: ArrayList<Food>
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        Log.d(TAG, "onCreateView")
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
-
-        placeListAdapter = PlaceListAdapter()
+//        homeViewModel.retrieveFoodList(viewLifecycleOwner)
+        foodList = arrayListOf<Food>()
+        placeList = arrayListOf<Food>()
+        featuredItem = Food("","","","",0,0.0,0.0,"")
+        retrieveFoodList()
+        
+        
         homeViewModel.foodList.observe(viewLifecycleOwner){
-            placeListAdapter.setFoodList(it)
+            Log.d(TAG, "onCreateView: OBSERVE: foodlist")
+            foodList = it
+            showRecyclerList()
         }
+        
         homeViewModel.placeList.observe(viewLifecycleOwner){
-            placeListAdapter.setPlaceList(it)
-            showStoryRecyclerList()
+            Log.d(TAG, "onCreateView: OBSERVE: placelist")
+            placeList = it
+            showRecyclerList()
         }
         homeViewModel.featuredPlace.observe(viewLifecycleOwner){
-            placeListAdapter.setFeaturedItem(it)
+            Log.d(TAG, "onCreateView: OBSERVE: featuredPlace")
+            featuredItem = it
+            showRecyclerList()
         }
 
 //        ActivityCompat.requestPermissions(requireActivity(), arrayOf<String>(Manifest.permission.CAMERA), 19992)
@@ -69,6 +89,52 @@ class HomeFragment : Fragment() {
     private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
         ContextCompat.checkSelfPermission(activity?.baseContext!!, it) == PackageManager.PERMISSION_GRANTED
     }
+
+    fun retrieveFoodList(){
+        homeViewModel.retrieveFoodList().observe(viewLifecycleOwner){
+            when(it){
+                is Result.Error -> {
+                    Log.d(TAG, "retrieveFoodList: ERROR")
+                }
+                is Result.Loading -> {
+                    Log.d(TAG, "retrieveFoodList: LOADING")
+                }
+                is Result.Success -> {
+                    Log.d(TAG, "retrieveFoodList: SUCCESS")
+                    val nFoodList = arrayListOf<Food>()
+                    val nPlaceList = arrayListOf<Food>()
+                    var nFeaturedFood = Food("", "", "", "", 0, 0.0, 0.0, "" )
+                    var dummyId = 1
+                    for(i in (it.data.foods as ArrayList<FoodsItem>)) {
+                        val item = Food(
+                            "ID_${dummyId++}",
+                            i.foodName.toString(),
+                            i.restaurantAddress.toString(),
+                            "",
+                            0,
+                            0.0,
+                            0.0,
+                            "",
+                        )
+                        if (dummyId == 0){
+                            nFeaturedFood = item
+                        }else if(dummyId < 5){
+                            nFoodList.add(item)
+                        }else{
+                            nPlaceList.add(item)
+                        }
+                        nFoodList.add(item)
+                    }
+
+                    homeViewModel.setFoodList(nFoodList) 
+                    homeViewModel.setPlaceList(nPlaceList) 
+                    homeViewModel.setFeaturedPlace(nFeaturedFood)
+
+                }
+            }
+        }
+    }
+    
     private fun prepareCameraBtn() {
         binding.fabCamera.setOnClickListener {
             if (!allPermissionsGranted()) {
@@ -165,8 +231,15 @@ class HomeFragment : Fragment() {
         _binding = null
     }
 
-    private fun showStoryRecyclerList(){
-        val gridLayoutManager = GridLayoutManager(requireContext(),2)
+    private fun showRecyclerList(){
+        Log.d(TAG, "showRecyclerList")
+        placeListAdapter = PlaceListAdapter()
+        gridLayoutManager = GridLayoutManager(requireContext(),2)
+        
+        placeListAdapter.setFoodList(foodList)
+        placeListAdapter.setPlaceList(placeList)
+        placeListAdapter.setFeaturedFood(featuredItem)
+        
         gridLayoutManager.setSpanSizeLookup(object : GridLayoutManager.SpanSizeLookup() {
             override fun getSpanSize(position: Int): Int {
                 return when (placeListAdapter.getItemViewType(position)) {
@@ -175,9 +248,9 @@ class HomeFragment : Fragment() {
                 }
             }
         })
-        binding.frHomeRvHomeList.layoutManager = gridLayoutManager
+        placeListAdapter.notifyDataSetChanged()
         placeListAdapter.setOnItemClickCallback(object : PlaceListAdapter.OnItemClickCallback{
-            override fun onItemClicked(data: Place) {
+            override fun onItemClicked(data: Food) {
                 if(data.id != "OFFSET"){
                     val bundle = Bundle()
                     bundle.putParcelable(DetailActivity.EXTRA_DATA, data)
@@ -187,6 +260,7 @@ class HomeFragment : Fragment() {
                 }
             }
         })
+        binding.frHomeRvHomeList.layoutManager = gridLayoutManager
         binding.frHomeRvHomeList.adapter = placeListAdapter
     }
 }

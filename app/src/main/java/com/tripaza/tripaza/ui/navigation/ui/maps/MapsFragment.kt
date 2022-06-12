@@ -42,6 +42,7 @@ import com.tripaza.tripaza.helper.Constants.MAP_BOUNDARY_TOP_LONGITUDE
 import com.tripaza.tripaza.helper.Constants.MAP_FIT_TO_MARKER_PADDING
 import com.tripaza.tripaza.helper.MapHelper
 import com.tripaza.tripaza.api.Result
+import com.tripaza.tripaza.databases.dataobject.Food
 import com.tripaza.tripaza.helper.HelperTools
 import com.tripaza.tripaza.ui.detail.DetailFragment
 import kotlin.math.log
@@ -121,7 +122,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
 
         viewModel.placeList.observe(viewLifecycleOwner){
             if (it != null && it.size > 0){
-                generateMarker(it as ArrayList<Item>)
+                generateMarker(it as ArrayList<Food>)
             }
         }
 
@@ -137,10 +138,10 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
                 is Result.Error -> {Log.d(TAG, "retrieveNearbyLocation: ERROR")}
                 is Result.Success ->{
                     Log.d(TAG, "retrieveNearbyLocation: SUCCESS")
-                    val newList = ArrayList<Place>()
+                    val newList = ArrayList<Food>()
                     if (it.data.status == "OK"){
                         for (i in it.data.results!!){
-                            val place = Place(
+                            val place = Food(
                                 id = i?.placeId.toString(),
                                 name = i?.name.toString(),
                                 rating = i?.rating?.toInt()?:0,
@@ -165,7 +166,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
     }
 
 
-    private fun generateMarker(itemList: ArrayList<Item>){
+    private fun generateMarker(itemList: ArrayList<Food>){
         Log.d(TAG, "generateMarker: ")
         val bounds = LatLngBounds.builder()
         for (i in itemList.indices){
@@ -243,7 +244,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
         binding.rvSearchResult.layoutManager = LinearLayoutManager(requireContext())
         binding.rvSearchResult.adapter = searchResultListAdapter
         searchResultListAdapter.setOnItemClickCallback(object : SearchResultListAdapter.OnItemClickCallback{
-            override fun onItemClicked(data: Place) {
+            override fun onItemClicked(data: Food) {
 //                Toast.makeText(requireContext(), "Item ${data.name} Clicked ${data.lat} ${data.lng}", Toast.LENGTH_SHORT).show()
                 selectedMarker.position = LatLng(data.lat, data.lng)
 //                val markerIcon = vectorToBitmap(R.drawable.ic_baseline_location_blue, Color.parseColor("#0000FF"))

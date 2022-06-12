@@ -13,6 +13,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
+import com.tripaza.tripaza.R
 import com.tripaza.tripaza.databases.dataobject.Food
 import com.tripaza.tripaza.databases.dataobject.Item
 import com.tripaza.tripaza.databases.dataobject.Place
@@ -34,6 +35,7 @@ object HelperTools {
         val requestOptions = RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL)
         Glide.with(context)
             .load(imageUrl)
+            .placeholder(R.drawable.ic_placeholder)
             .circleCrop()
             .apply(requestOptions)
             .into(imageView)
@@ -44,6 +46,7 @@ object HelperTools {
         val centerCropOptions = RequestOptions.centerCropTransform()
         Glide.with(context)
             .load(imageUrl)
+            .placeholder(R.drawable.ic_placeholder)
             .apply(centerCropOptions)
             .apply(requestOptions)
             .apply(roundedOptions)

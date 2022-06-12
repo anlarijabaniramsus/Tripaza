@@ -10,14 +10,14 @@ import com.tripaza.tripaza.helper.HelperTools
 class DetailViewModel: ViewModel() {
 
     private val _foodList = MutableLiveData<ArrayList<Food>>().apply {
-        value = HelperTools.generateFoodList("It's MyFood")
+//        value = HelperTools.generateFoodList("It's MyFood")
     }
     val foodList: LiveData<ArrayList<Food>> = _foodList
     
-    private val _item = MutableLiveData<Item>()
-    val item: LiveData<Item> = _item
+    private val _item = MutableLiveData<Food>()
+    val item: LiveData<Food> = _item
     
-    fun setItem(item: Item){
+    fun setItem(item: Food){
         this._item.value = item
     }
 }

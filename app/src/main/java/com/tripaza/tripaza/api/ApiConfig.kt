@@ -14,7 +14,8 @@ class ApiConfig {
             val loggingInterceptor = if (BuildConfig.DEBUG){
                 HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
             }else{
-                HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.NONE)
+//                HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.NONE)
+                HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
             }
 
             val client = OkHttpClient.Builder().addInterceptor(loggingInterceptor).build()

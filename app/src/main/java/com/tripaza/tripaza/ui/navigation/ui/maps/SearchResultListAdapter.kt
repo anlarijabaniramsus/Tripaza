@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.tripaza.tripaza.databases.dataobject.Food
 import com.tripaza.tripaza.databases.dataobject.Place
 import com.tripaza.tripaza.databinding.RvSearchResultItemBinding
 import com.tripaza.tripaza.helper.Constants.DUMMY_IMAGE_PLACE
@@ -14,7 +15,7 @@ import kotlin.math.abs
 import kotlin.random.Random
 
 class SearchResultListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    private var placeList = ArrayList<Place>()
+    private var placeList = ArrayList<Food>()
     private lateinit var onItemClickCallback: OnItemClickCallback
     companion object{
         private const val TAG = "SearchResultListAdapter"
@@ -30,7 +31,7 @@ class SearchResultListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() 
 
     override fun getItemCount(): Int = placeList.size
 
-    fun setPlaceList(placeList: ArrayList<Place>){
+    fun setPlaceList(placeList: ArrayList<Food>){
         Log.d(TAG, "setPlaceList: NEW ARRAY LIST SIZE:  ${placeList.size}")
         this.placeList = placeList
         notifyDataSetChanged()
@@ -42,11 +43,11 @@ class SearchResultListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() 
     }
 
     interface OnItemClickCallback {
-        fun onItemClicked(data: Place)
+        fun onItemClicked(data: Food)
     }
 
     private class PlaceViewHolder(var binding: RvSearchResultItemBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(holder: PlaceViewHolder, place: Place) {
+        fun bind(holder: PlaceViewHolder, place: Food) {
             holder.apply {
                 StarRatingHelper.setStarRating(holder.binding.starRating, abs((Random.nextInt())%5) + 1)
                 this.binding.title.text = place.name

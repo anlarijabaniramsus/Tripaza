@@ -8,7 +8,7 @@ import kotlinx.android.parcel.Parcelize
 data class RegisterResponse(
 
     @field:SerializedName("status")
-    val status: Boolean = false,
+    val status: String = "",
 
     @field:SerializedName("message")
     val message: String = ""

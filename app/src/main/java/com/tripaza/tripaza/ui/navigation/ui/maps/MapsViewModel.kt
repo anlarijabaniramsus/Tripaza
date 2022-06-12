@@ -8,6 +8,7 @@ import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.tripaza.tripaza.api.Injection
 import com.tripaza.tripaza.api.responses.Location
+import com.tripaza.tripaza.databases.dataobject.Food
 import com.tripaza.tripaza.databases.dataobject.Place
 import com.tripaza.tripaza.helper.Constants.DUMMY_IMAGE_PLACE
 import com.tripaza.tripaza.helper.HelperTools
@@ -17,10 +18,10 @@ import kotlin.random.Random
 class MapsViewModel : ViewModel() {
     private var mapRepository =  Injection.provideMapRepository()
     
-    private val _placeList = MutableLiveData<ArrayList<Place>>()
-    val placeList: LiveData<ArrayList<Place>> = _placeList
+    private val _placeList = MutableLiveData<ArrayList<Food>>()
+    val placeList: LiveData<ArrayList<Food>> = _placeList
     
-    fun setPlaceList(placeList: ArrayList<Place>){
+    fun setPlaceList(placeList: ArrayList<Food>){
         _placeList.value = placeList
     }
 
