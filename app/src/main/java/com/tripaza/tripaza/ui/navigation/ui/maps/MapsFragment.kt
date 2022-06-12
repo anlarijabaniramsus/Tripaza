@@ -132,7 +132,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
 
     private fun retrieveNearbyLocation() {
         Log.d(TAG, "retrieveNearbyLocation: ")
-        viewModel.mapNearbySearch(searchQuery, "${deviceLocation.latitude},${deviceLocation.longitude}", 1500).observe(viewLifecycleOwner){
+        viewModel.mapNearbySearch(searchQuery, "${deviceLocation.latitude},${deviceLocation.longitude}", 10000).observe(viewLifecycleOwner){
             when(it){
                 is Result.Loading -> {Log.d(TAG, "retrieveNearbyLocation: LOADING")}
                 is Result.Error -> {Log.d(TAG, "retrieveNearbyLocation: ERROR")}
@@ -160,7 +160,6 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
                         Log.e(TAG, "retrieveNearbyLocation: NOT OK", )
                     }
                 }
-                
             }
         }
     }

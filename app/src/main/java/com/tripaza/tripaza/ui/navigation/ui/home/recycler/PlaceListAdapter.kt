@@ -127,7 +127,7 @@ class PlaceListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 this.binding.itemLayout.title.text = place.name
                 this.binding.itemLayout.location.text = place.location
                 StarRatingHelper.setStarRating(holder.binding.itemLayout.starRating, place.rating)
-                HelperTools.glideLoaderRounded(binding.root.context, DUMMY_IMAGE_PLACE, binding.itemLayout.ivItemImages)
+                HelperTools.glideLoaderRounded(binding.root.context, place.image, binding.itemLayout.ivItemImages)
             }
         }
     }
