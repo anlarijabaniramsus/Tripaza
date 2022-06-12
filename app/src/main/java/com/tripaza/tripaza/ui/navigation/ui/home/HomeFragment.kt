@@ -31,6 +31,7 @@ import com.tripaza.tripaza.databinding.FragmentHomeBinding
 import com.tripaza.tripaza.ui.navigation.ui.home.recycler.PlaceListAdapter
 import com.tripaza.tripaza.databases.dataobject.Place
 import com.tripaza.tripaza.helper.Constants.DUMMY_IMAGE_FEATURED
+import com.tripaza.tripaza.helper.Constants.DUMMY_IMAGE_FOOD
 import com.tripaza.tripaza.ui.camera.DetectResultActivity
 import com.tripaza.tripaza.ui.detail.DetailActivity
 import java.io.*
@@ -115,7 +116,7 @@ class HomeFragment : Fragment() {
                             0,
                             0.0,
                             0.0,
-                            "",
+                            DUMMY_IMAGE_FOOD,
                         )
                         if (dummyId == 0){
                             // Override original item, and set featured item
