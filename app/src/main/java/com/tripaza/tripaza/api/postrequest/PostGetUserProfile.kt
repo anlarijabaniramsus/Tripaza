@@ -9,4 +9,4 @@ data class PostGetUserProfile(
     @field:SerializedName("id")
     val id: String = "",
 
-    ): Parcelable
+): Parcelable

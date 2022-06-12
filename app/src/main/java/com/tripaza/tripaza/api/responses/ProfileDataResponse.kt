@@ -31,4 +31,5 @@ data class Data(
 
 	@field:SerializedName("email")
 	val email: String? = null
+
 ) : Parcelable

@@ -8,10 +8,8 @@ import com.tripaza.tripaza.api.Result
 import com.tripaza.tripaza.api.postrequest.PostGetUserProfile
 import com.tripaza.tripaza.api.postrequest.PostLogin
 import com.tripaza.tripaza.api.postrequest.PostRegister
-import com.tripaza.tripaza.api.responses.FoodsResponse
-import com.tripaza.tripaza.api.responses.LoginResponse
-import com.tripaza.tripaza.api.responses.ProfileDataResponse
-import com.tripaza.tripaza.api.responses.RegisterResponse
+import com.tripaza.tripaza.api.postrequest.PutUpdateProfile
+import com.tripaza.tripaza.api.responses.*
 
 class UserRepository {
     companion object{
@@ -56,6 +54,26 @@ class UserRepository {
             Log.d(TAG, "register: executing getUserProfileData")
             val postGetUserProfile = PostGetUserProfile(token)
             val response = apiService.getUserProfileData(postGetUserProfile)
+            emit(Result.Success(response))
+        } catch (e: Exception) {
+            Log.d(TAG, "getUserProfileData: FAILED " + e.message.toString())
+            emit(Result.Error("getUserProfileData Failed"))
+        }
+    }
+    fun updateUserProfileData(
+        token: Int,
+        full_name: String,
+        birth_date: String,
+        phone_number: String,
+        email: String, 
+        password: String
+    ): LiveData<Result<PutUpdateProfileResponse>> = liveData{
+        emit(Result.Loading)
+        try {
+            Log.d(TAG, "register: executing getUserProfileData")
+            
+            val putUpdateProfile = PutUpdateProfile(token, full_name, birth_date, phone_number, email, password)
+            val response = apiService.updateUserProfile(putUpdateProfile)
             emit(Result.Success(response))
         } catch (e: Exception) {
             Log.d(TAG, "getUserProfileData: FAILED " + e.message.toString())
