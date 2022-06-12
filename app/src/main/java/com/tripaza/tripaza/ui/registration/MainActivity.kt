@@ -52,8 +52,8 @@ class MainActivity : AppCompatActivity() {
         }
         
         // HELPER
-        binding.mainEtEmail.setText("raflyramdhani12@gmail.com")
-        binding.mainEtPassword.setText("rafly06")
+        binding.mainEtEmail.setText("User20220613010025@gmail.com")
+        binding.mainEtPassword.setText("User20220613010025@gmail.com Password")
         
     }
     
@@ -117,10 +117,10 @@ class MainActivity : AppCompatActivity() {
                 Log.d(TAG, "handleLoginResult: SUCCESS STATE")
                 isExecutingLogin = false
                 binding.mainProgressBar.visibility = View.GONE
-                if (result.data.status){
+                if (result.data.status == true){
                     Log.d(TAG, "handleLoginResult: SUCCESS STATE + USER VALIDE")
                     val user = User(
-                        id = result.data.user.toString()
+                        id = result.data.id.toString()
                     )
                     preferenceHelper.setUser(user)
                     launchMainApp()

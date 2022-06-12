@@ -64,7 +64,7 @@ class RegisterFragment : Fragment() {
         val dateStr = DateHelper.getFormattedCurrentDate("yyyyMMddHHmmss")
         var str = "User$dateStr"
         binding.frRegisterEtName.setText(str)
-        str += "@mail.com"
+        str += "@gmail.com"
         binding.frRegisterEtDob.setText(DateHelper.getFormattedCurrentDate("yyyy-MM-dd"))
         binding.frRegisterEtPhone.setText("081111111111")
         binding.frRegisterEtEmail.setText(str)
@@ -143,7 +143,7 @@ class RegisterFragment : Fragment() {
                         isExecutingRegistration = false
                         binding.frRegisterTvError.text = ""
                         binding.progressBar.visibility = View.GONE
-                        if (it.data.status){
+                        if (it.data.status == "success"){
                             onCreateUserSuccess()
                             launchLandingFragment()
                         }else{

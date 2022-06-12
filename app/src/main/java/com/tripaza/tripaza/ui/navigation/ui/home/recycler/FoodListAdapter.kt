@@ -1,5 +1,6 @@
 package com.tripaza.tripaza.ui.navigation.ui.home.recycler
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -12,8 +13,10 @@ import kotlin.random.Random
 
 class FoodListAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private lateinit var onItemClickCallback: OnItemClickCallback
-    private lateinit var foodList: ArrayList<Food>
-    
+    private var listHorizontal = ArrayList<Food>()
+    companion object{
+        private const val TAG = "FoodListAdapter"
+    }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return ListViewHolder(RvItemHorizontalBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
@@ -23,20 +26,24 @@ class FoodListAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
     
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val data = foodList[position]
+        val data = listHorizontal[position]
         (holder as ListViewHolder).apply {
-            StarRatingHelper.setStarRating(this.binding.itemLayout.starRating, abs((Random.nextInt())%5) + 1)
+            StarRatingHelper.setStarRating(this.binding.itemLayout.starRating, data.rating)
             this.binding.itemLayout.title.text = data.name
             this.binding.itemLayout.location.text = data.location
             HelperTools.glideLoaderRounded(binding.root.context, data.image, binding.itemLayout.ivItemImages)
-            this.itemView.setOnClickListener { onItemClickCallback.onItemClicked(foodList[holder.adapterPosition]) }
+            this.itemView.setOnClickListener { onItemClickCallback.onItemClicked(listHorizontal[holder.adapterPosition]) }
         }
     }
     
-    override fun getItemCount(): Int = foodList.size
+    override fun getItemCount(): Int{
+        Log.d(TAG, "getItemCount: ${listHorizontal.size}")
+        return listHorizontal.size
+    }
 
     fun setFoodList(foodList: ArrayList<Food>){
-        this.foodList = foodList
+        Log.d(TAG, "setFoodList: array list input to adapter size: ${foodList.size} ")
+        this.listHorizontal = foodList
     }
     
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {

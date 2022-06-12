@@ -6,8 +6,8 @@ import com.google.android.gms.maps.model.LatLng
 
 object MapHelper {
 
-    fun moveCamera(mMap: GoogleMap, latLng: LatLng){
-        val cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, 11F) // 0 - 18 zoom level
+    fun moveCamera(mMap: GoogleMap, latLng: LatLng, zoom: Float = 11.0F){
+        val cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, zoom) // 0 - 18 zoom level
         mMap.animateCamera(cameraUpdate)
 
     }

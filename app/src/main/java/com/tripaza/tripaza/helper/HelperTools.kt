@@ -13,9 +13,11 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
+import com.tripaza.tripaza.R
 import com.tripaza.tripaza.databases.dataobject.Food
 import com.tripaza.tripaza.databases.dataobject.Item
 import com.tripaza.tripaza.databases.dataobject.Place
+import com.tripaza.tripaza.helper.Constants.MAP_API_KEY
 import kotlin.math.abs
 import kotlin.random.Random
 
@@ -33,6 +35,7 @@ object HelperTools {
         val requestOptions = RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL)
         Glide.with(context)
             .load(imageUrl)
+            .placeholder(R.drawable.ic_placeholder)
             .circleCrop()
             .apply(requestOptions)
             .into(imageView)
@@ -43,6 +46,7 @@ object HelperTools {
         val centerCropOptions = RequestOptions.centerCropTransform()
         Glide.with(context)
             .load(imageUrl)
+            .placeholder(R.drawable.ic_placeholder)
             .apply(centerCropOptions)
             .apply(requestOptions)
             .apply(roundedOptions)
@@ -55,13 +59,13 @@ object HelperTools {
     * */
     private fun latGenerator(): Double{
         val coordinate = (Random.nextDouble()*-1)+-6.175381      + -0.0003 + -0.01
-        Log.d(TAG, "coordinateGenerator: $coordinate")
+//        Log.d(TAG, "coordinateGenerator: $coordinate")
         return coordinate
     }
     
     private fun lngGenerator(): Double{
         val coordinate = Random.nextDouble()+106.827147     + 0.0003
-        Log.d(TAG, "coordinateGenerator: $coordinate")
+//        Log.d(TAG, "coordinateGenerator: $coordinate")
         return coordinate
     }
     
@@ -129,5 +133,12 @@ object HelperTools {
         doubleTabToExit.exit = true
         Toast.makeText(activity, "Double tap to exit", Toast.LENGTH_SHORT).show()
         Handler(Looper.getMainLooper()).postDelayed({ doubleTabToExit.exit = false }, 2000)
+    }
+    
+    fun createMapImageLink(photoReference: String): String{
+        return "https://maps.googleapis.com/maps/api/place/photo?"+
+            "maxwidth=480"+
+            "&photo_reference=${photoReference}"+
+            "&key=${MAP_API_KEY}"
     }
 }
