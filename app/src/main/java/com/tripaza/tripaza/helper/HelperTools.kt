@@ -134,6 +134,7 @@ object HelperTools {
         Toast.makeText(activity, "Double tap to exit", Toast.LENGTH_SHORT).show()
         Handler(Looper.getMainLooper()).postDelayed({ doubleTabToExit.exit = false }, 2000)
     }
+    
     fun createMapImageLink(photoReference: String): String{
         return "https://maps.googleapis.com/maps/api/place/photo?"+
             "maxwidth=480"+

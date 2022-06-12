@@ -5,10 +5,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.tripaza.tripaza.api.ApiService
 import com.tripaza.tripaza.api.Result
+import com.tripaza.tripaza.api.postrequest.PostGetUserProfile
 import com.tripaza.tripaza.api.postrequest.PostLogin
 import com.tripaza.tripaza.api.postrequest.PostRegister
 import com.tripaza.tripaza.api.responses.FoodsResponse
 import com.tripaza.tripaza.api.responses.LoginResponse
+import com.tripaza.tripaza.api.responses.ProfileDataResponse
 import com.tripaza.tripaza.api.responses.RegisterResponse
 
 class UserRepository {
@@ -48,6 +50,19 @@ class UserRepository {
         }
     }
     
+    fun getUserProfileData(token: String): LiveData<Result<ProfileDataResponse>> = liveData{
+        emit(Result.Loading)
+        try {
+            Log.d(TAG, "register: executing getUserProfileData")
+            val postGetUserProfile = PostGetUserProfile(token)
+            val response = apiService.getUserProfileData(postGetUserProfile)
+            emit(Result.Success(response))
+        } catch (e: Exception) {
+            Log.d(TAG, "getUserProfileData: FAILED " + e.message.toString())
+            emit(Result.Error("getUserProfileData Failed"))
+        }
+    }
+    
     fun getFoodList(): LiveData<Result<FoodsResponse>> = liveData{
         emit(Result.Loading)
         try {
@@ -59,5 +74,4 @@ class UserRepository {
             Log.d(TAG, "getFoodList: EXCEPTION ERROR: ${e.cause}")
         }
     }
-    
 }

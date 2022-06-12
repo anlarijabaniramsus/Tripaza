@@ -79,8 +79,7 @@ class DetectResultActivity : AppCompatActivity() {
         viewModel.setDetectionResultList(outputs.detectionResultList as ArrayList<MLFoodModel.DetectionResult>)
         model.close()
     }
-
-
+    
     private fun showStoryRecyclerList(){
         val gridLayoutManager = GridLayoutManager(this,2)
         gridLayoutManager.setSpanSizeLookup(object : GridLayoutManager.SpanSizeLookup() {

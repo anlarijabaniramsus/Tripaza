@@ -113,10 +113,10 @@ class HomeFragment : Fragment() {
                             i.foodName.toString(),
                             i.restaurantAddress.toString(),
                             "",
-                            0,
-                            0.0,
-                            0.0,
-                            DUMMY_IMAGE_FOOD,
+                            i.rating?.toInt()?:0,
+                            i.latitude?.toDouble()?:0.0,
+                            i.longitude?.toDouble()?:0.0,
+                            i.imageUrl.toString(),
                         )
                         if (dummyId == 0){
                             // Override original item, and set featured item

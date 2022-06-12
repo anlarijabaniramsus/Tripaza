@@ -101,10 +101,10 @@ class DetailFragment : Fragment(), OnMapReadyCallback {
                                 i.foodName.toString(),
                                 i.restaurantAddress.toString(),
                                 "",
-                                0,
-                                0.0,
-                                0.0,
-                                "",
+                                i.rating?.toInt()?:0,
+                                i.latitude?.toDouble()?:0.0,
+                                i.longitude?.toDouble()?:0.0,
+                                i.imageUrl.toString(),
                             )
                             nFoodList.add(item)
                         }
