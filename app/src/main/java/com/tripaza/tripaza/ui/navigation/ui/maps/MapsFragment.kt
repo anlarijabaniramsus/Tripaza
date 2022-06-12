@@ -163,8 +163,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
             }
         }
     }
-
-
+    
     private fun generateMarker(itemList: ArrayList<Food>){
         Log.d(TAG, "generateMarker: ")
         val bounds = LatLngBounds.builder()

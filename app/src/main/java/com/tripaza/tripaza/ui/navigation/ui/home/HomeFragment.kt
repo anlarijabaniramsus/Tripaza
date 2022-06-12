@@ -30,6 +30,7 @@ import com.tripaza.tripaza.databases.dataobject.Item
 import com.tripaza.tripaza.databinding.FragmentHomeBinding
 import com.tripaza.tripaza.ui.navigation.ui.home.recycler.PlaceListAdapter
 import com.tripaza.tripaza.databases.dataobject.Place
+import com.tripaza.tripaza.helper.Constants.DUMMY_IMAGE_FEATURED
 import com.tripaza.tripaza.ui.camera.DetectResultActivity
 import com.tripaza.tripaza.ui.detail.DetailActivity
 import java.io.*
@@ -117,6 +118,22 @@ class HomeFragment : Fragment() {
                             "",
                         )
                         if (dummyId == 0){
+                            // Override original item, and set featured item
+                            item.name = "Ayam Betutu"
+                            item.location = "Bali"
+                            item.rating = 5
+                            item.image = DUMMY_IMAGE_FEATURED
+                            item.lat = -8.740561
+                            item.lng = 115.178836 
+                            item.description = "" +
+                            "Betutu adalah lauk yang terbuat dari ayam atau bebek yang utuh yang" +
+                            "berisi bumbu, kemudian dipanggang dalam api sekam. Betutu ini telah" +
+                            "dikenal di seluruh kabupaten di Bali. Betutu merupakan jenis makanan" +
+                            "tradisional daerah Bali yang bahan mentahnya berupa karkas utuh itik" +
+                            "dan ayam. Kata betutu berasal dari kata tunu yang berarti bakar dan" +
+                            "dirangkai dengan kata be yang berarti daging. Berdasarkan uraian tersebu" +
+                            "betutu berarti daging yang dibakar."
+                            
                             nFeaturedFood = item
                         }else if(dummyId < 5){
                             nFoodList.add(item)
