@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import com.tripaza.tripaza.R
 import com.tripaza.tripaza.api.Result
 import com.tripaza.tripaza.api.responses.FoodsItem
 import com.tripaza.tripaza.databases.dataobject.Food
