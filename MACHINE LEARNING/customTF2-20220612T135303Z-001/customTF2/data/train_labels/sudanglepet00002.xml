@@ -1,0 +1,38 @@
+<annotation>
+	<folder>resize_Bali</folder>
+	<filename>sudanglepet00002.jpg</filename>
+	<path>/Users/mac/Downloads/resize_Bali/sudanglepet00002.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>500</width>
+		<height>500</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>sudang lepet</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>73</xmin>
+			<ymin>188</ymin>
+			<xmax>261</xmax>
+			<ymax>431</ymax>
+		</bndbox>
+	</object>
+	<object>
+		<name>sudang lepet</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>261</xmin>
+			<ymin>175</ymin>
+			<xmax>448</xmax>
+			<ymax>434</ymax>
+		</bndbox>
+	</object>
+</annotation>

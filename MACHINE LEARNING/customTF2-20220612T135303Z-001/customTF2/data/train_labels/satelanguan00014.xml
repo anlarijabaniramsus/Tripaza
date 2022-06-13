@@ -1,0 +1,50 @@
+<annotation>
+	<folder>resize_Bali</folder>
+	<filename>satelanguan00014.jpg</filename>
+	<path>/Users/mac/Downloads/resize_Bali/satelanguan00014.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>500</width>
+		<height>500</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>sate languan</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>73</xmin>
+			<ymin>234</ymin>
+			<xmax>289</xmax>
+			<ymax>464</ymax>
+		</bndbox>
+	</object>
+	<object>
+		<name>sate languan</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>172</xmin>
+			<ymin>155</ymin>
+			<xmax>412</xmax>
+			<ymax>441</ymax>
+		</bndbox>
+	</object>
+	<object>
+		<name>sate languan</name>
+		<pose>Unspecified</pose>
+		<truncated>1</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>298</xmin>
+			<ymin>181</ymin>
+			<xmax>500</xmax>
+			<ymax>346</ymax>
+		</bndbox>
+	</object>
+</annotation>

@@ -1,0 +1,26 @@
+<annotation>
+	<folder>sate lilit</folder>
+	<filename>satelilit_test(11).jpg</filename>
+	<path>C:\Users\piani\Downloads\test\bali\sate lilit\satelilit_test(11).jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>500</width>
+		<height>500</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>sate lilit</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>12</xmin>
+			<ymin>96</ymin>
+			<xmax>431</xmax>
+			<ymax>220</ymax>
+		</bndbox>
+	</object>
+</annotation>

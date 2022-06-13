@@ -1,0 +1,26 @@
+<annotation>
+	<folder>resize_Bali</folder>
+	<filename>nasitepeng00009.jpg</filename>
+	<path>/Users/mac/Downloads/resize_Bali/nasitepeng00009.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>500</width>
+		<height>500</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>nasi tepeng</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>10</xmin>
+			<ymin>67</ymin>
+			<xmax>496</xmax>
+			<ymax>432</ymax>
+		</bndbox>
+	</object>
+</annotation>

@@ -1,0 +1,26 @@
+<annotation>
+	<folder>nasi campur bali</folder>
+	<filename>nasicampurbali_test(16).jpg</filename>
+	<path>C:\Users\piani\Downloads\test\bali\nasi campur bali\nasicampurbali_test(16).jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>500</width>
+		<height>500</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>nasi campur bali</name>
+		<pose>Unspecified</pose>
+		<truncated>1</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>20</xmin>
+			<ymin>62</ymin>
+			<xmax>500</xmax>
+			<ymax>395</ymax>
+		</bndbox>
+	</object>
+</annotation>

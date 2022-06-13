@@ -1,0 +1,26 @@
+<annotation>
+	<folder>laklak</folder>
+	<filename>laklak_test(1).jpg</filename>
+	<path>C:\Users\piani\Downloads\test\bali\laklak\laklak_test(1).jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>500</width>
+		<height>500</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>laklak</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>107</xmin>
+			<ymin>131</ymin>
+			<xmax>417</xmax>
+			<ymax>345</ymax>
+		</bndbox>
+	</object>
+</annotation>

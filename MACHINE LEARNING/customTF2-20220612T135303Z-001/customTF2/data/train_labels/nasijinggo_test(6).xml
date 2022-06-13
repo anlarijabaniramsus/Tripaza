@@ -1,0 +1,26 @@
+<annotation>
+	<folder>nasi jinggo</folder>
+	<filename>nasijinggo_test(6).jpg</filename>
+	<path>C:\Users\piani\Downloads\test\bali\nasi jinggo\nasijinggo_test(6).jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>500</width>
+		<height>500</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>nasi jinggo</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>66</xmin>
+			<ymin>118</ymin>
+			<xmax>474</xmax>
+			<ymax>439</ymax>
+		</bndbox>
+	</object>
+</annotation>

@@ -1,0 +1,26 @@
+<annotation>
+	<folder>resize_Bali</folder>
+	<filename>sateplecing00008.jpg</filename>
+	<path>/Users/mac/Downloads/resize_Bali/sateplecing00008.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>500</width>
+		<height>500</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>sate plecing</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>97</xmin>
+			<ymin>73</ymin>
+			<xmax>440</xmax>
+			<ymax>392</ymax>
+		</bndbox>
+	</object>
+</annotation>

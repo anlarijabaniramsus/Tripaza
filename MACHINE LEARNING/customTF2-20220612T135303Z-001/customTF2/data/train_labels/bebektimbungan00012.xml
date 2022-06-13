@@ -1,0 +1,26 @@
+<annotation>
+	<folder>resize_Bali</folder>
+	<filename>bebektimbungan00012.jpg</filename>
+	<path>/Users/mac/Downloads/resize_Bali/bebektimbungan00012.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>500</width>
+		<height>500</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>bebek timbungan</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>184</xmin>
+			<ymin>159</ymin>
+			<xmax>332</xmax>
+			<ymax>385</ymax>
+		</bndbox>
+	</object>
+</annotation>

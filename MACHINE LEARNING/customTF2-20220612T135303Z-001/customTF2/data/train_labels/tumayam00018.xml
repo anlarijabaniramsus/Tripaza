@@ -1,0 +1,26 @@
+<annotation>
+	<folder>resize_Bali</folder>
+	<filename>tumayam00018.jpg</filename>
+	<path>/Users/mac/Downloads/resize_Bali/tumayam00018.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>500</width>
+		<height>500</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>tum ayam</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>202</xmin>
+			<ymin>178</ymin>
+			<xmax>408</xmax>
+			<ymax>367</ymax>
+		</bndbox>
+	</object>
+</annotation>

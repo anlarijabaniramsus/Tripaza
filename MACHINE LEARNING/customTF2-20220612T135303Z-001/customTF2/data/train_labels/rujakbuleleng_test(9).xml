@@ -1,0 +1,26 @@
+<annotation>
+	<folder>rujak buleleng</folder>
+	<filename>rujakbuleleng_test(9).jpg</filename>
+	<path>C:\Users\piani\Downloads\test\bali\rujak buleleng\rujakbuleleng_test(9).jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>500</width>
+		<height>500</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>rujak buleleng</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>68</xmin>
+			<ymin>171</ymin>
+			<xmax>309</xmax>
+			<ymax>429</ymax>
+		</bndbox>
+	</object>
+</annotation>

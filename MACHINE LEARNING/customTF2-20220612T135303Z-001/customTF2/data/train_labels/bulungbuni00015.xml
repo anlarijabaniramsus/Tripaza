@@ -1,0 +1,26 @@
+<annotation>
+	<folder>resize_Bali</folder>
+	<filename>bulungbuni00015.jpg</filename>
+	<path>/Users/mac/Downloads/resize_Bali/bulungbuni00015.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>500</width>
+		<height>500</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>bulung buni</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>26</xmin>
+			<ymin>49</ymin>
+			<xmax>487</xmax>
+			<ymax>462</ymax>
+		</bndbox>
+	</object>
+</annotation>

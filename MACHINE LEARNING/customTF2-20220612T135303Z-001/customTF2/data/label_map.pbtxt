@@ -1,0 +1,104 @@
+item {
+    id: 1
+    name: 'ayam betutu'
+}
+
+item {
+    id: 2
+    name: 'bubur mengguh'
+}
+
+item {
+    id: 3
+    name: 'bulung buni'
+}
+
+item {
+    id: 4
+    name: 'jukut urap'
+}
+
+item {
+    id: 5
+    name: 'komoh'
+}
+
+item {
+    id: 6
+    name: 'laklak'
+}
+
+item {
+    id: 7
+    name: 'lawar'
+}
+
+item {
+    id: 8
+    name: 'nasi campur bali'
+}
+
+item {
+    id: 9
+    name: 'nasi jinggo'
+}
+
+item {
+    id: 10
+    name: 'nasi tepeng'
+}
+
+item {
+    id: 11
+    name: 'pie susu'
+}
+
+item {
+    id: 12
+    name: 'rujak buleleng'
+}
+
+item {
+    id: 13
+    name: 'sate languan'
+}
+
+item {
+    id: 14
+    name: 'sate lilit'
+}
+
+item {
+    id: 15
+    name: 'sate plecing'
+}
+
+item {
+    id: 16
+    name: 'serombotan'
+}
+
+item {
+    id: 17
+    name: 'sudang lepet'
+}
+
+item {
+    id: 18
+    name: 'tipat blayag'
+}
+
+item {
+    id: 19
+    name: 'tipat cantok'
+}
+
+item {
+    id: 20
+    name: 'tum ayam'
+}
+
+item {
+    id: 21
+    name: 'bebek timbungan'
+}

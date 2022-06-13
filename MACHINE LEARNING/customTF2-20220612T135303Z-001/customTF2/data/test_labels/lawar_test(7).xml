@@ -1,0 +1,26 @@
+<annotation>
+	<folder>lawar</folder>
+	<filename>lawar_test(7).jpg</filename>
+	<path>C:\Users\piani\Downloads\test\bali\lawar\lawar_test(7).jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>500</width>
+		<height>500</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>lawar</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>67</xmin>
+			<ymin>59</ymin>
+			<xmax>485</xmax>
+			<ymax>392</ymax>
+		</bndbox>
+	</object>
+</annotation>

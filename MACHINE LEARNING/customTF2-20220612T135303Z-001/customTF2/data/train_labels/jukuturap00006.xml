@@ -1,0 +1,26 @@
+<annotation>
+	<folder>resize_Bali</folder>
+	<filename>jukuturap00006.jpg</filename>
+	<path>/Users/mac/Downloads/resize_Bali/jukuturap00006.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>500</width>
+		<height>500</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>jukut urap</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>10</xmin>
+			<ymin>58</ymin>
+			<xmax>406</xmax>
+			<ymax>410</ymax>
+		</bndbox>
+	</object>
+</annotation>

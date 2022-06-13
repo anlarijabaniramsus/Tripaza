@@ -1,0 +1,26 @@
+<annotation>
+	<folder>resize_Bali</folder>
+	<filename>tipatblayag00019.jpg</filename>
+	<path>/Users/mac/Downloads/resize_Bali/tipatblayag00019.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>500</width>
+		<height>500</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>tipat blayag</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>16</xmin>
+			<ymin>90</ymin>
+			<xmax>482</xmax>
+			<ymax>350</ymax>
+		</bndbox>
+	</object>
+</annotation>

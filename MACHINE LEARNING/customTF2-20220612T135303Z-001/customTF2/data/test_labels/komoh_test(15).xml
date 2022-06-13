@@ -1,0 +1,26 @@
+<annotation>
+	<folder>komoh</folder>
+	<filename>komoh_test(15).jpg</filename>
+	<path>C:\Users\piani\Downloads\test\bali\komoh\komoh_test(15).jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>500</width>
+		<height>500</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>komoh</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>63</xmin>
+			<ymin>7</ymin>
+			<xmax>444</xmax>
+			<ymax>372</ymax>
+		</bndbox>
+	</object>
+</annotation>

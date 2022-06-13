@@ -1,0 +1,38 @@
+<annotation>
+	<folder>resize_Bali</folder>
+	<filename>piesusu00010.jpg</filename>
+	<path>/Users/mac/Downloads/resize_Bali/piesusu00010.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>500</width>
+		<height>500</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>pie susu</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>174</xmin>
+			<ymin>64</ymin>
+			<xmax>357</xmax>
+			<ymax>246</ymax>
+		</bndbox>
+	</object>
+	<object>
+		<name>pie susu</name>
+		<pose>Unspecified</pose>
+		<truncated>1</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>344</xmin>
+			<ymin>234</ymin>
+			<xmax>500</xmax>
+			<ymax>405</ymax>
+		</bndbox>
+	</object>
+</annotation>
