@@ -58,7 +58,7 @@ class RegisterFragment : Fragment() {
         binding.frRegisterBtnRegister.setOnClickListener{
             register()
         }
-        devAutoFill()
+//        devAutoFill()
     }
     private fun devAutoFill(){
         val dateStr = DateHelper.getFormattedCurrentDate("yyyyMMddHHmmss")

@@ -7,7 +7,8 @@ object Constants {
     const val USER_DATA_MIN_PASSWORD_LENGTH = 6
     const val USER_DATA_MIN_PHONE_LENGTH = 6
 //    const val API_BASE_URL = "https://tripaza-352307.uc.r.appspot.com/"
-    const val API_BASE_URL = "http://34.128.80.205/"
+//    const val API_BASE_URL = "http://34.128.80.205/"
+    const val API_BASE_URL = "https://tripaza-353116.et.r.appspot.com/"
     const val MAP_API_BASE_URL = "https://maps.googleapis.com/"
     
     // Dummy Images urls

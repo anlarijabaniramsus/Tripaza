@@ -52,8 +52,8 @@ class MainActivity : AppCompatActivity() {
         }
         
         // HELPER
-        binding.mainEtEmail.setText("User20220613010025@gmail.com")
-        binding.mainEtPassword.setText("User20220613010025@gmail.com Password")
+//        binding.mainEtEmail.setText("User20220613010025@gmail.com")
+//        binding.mainEtPassword.setText("User20220613010025@gmail.com Password")
         
     }
     
